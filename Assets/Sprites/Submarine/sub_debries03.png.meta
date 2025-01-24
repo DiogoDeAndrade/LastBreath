@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: d26361ed3cea2254ebfc7dec6dab7dcc
+guid: f9e10cafea03c6d498d488245df0328b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7668638094660879284
-    second: _effects_sub_0
+      213: 495051804465125140
+    second: sub_debries03_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
-    sRGBTexture: 0
+    sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
@@ -50,7 +50,7 @@ TextureImporter:
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
-  spritePivot: {x: 0.25, y: 0.5}
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 1
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: _effects_sub_0
+      name: sub_debries03_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 13
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4b34a4787b97c6a60800000000000000
-      internalID: 7668638094660879284
+      spriteID: 4175f864ef6ced600800000000000000
+      internalID: 495051804465125140
       vertices: []
       indices: 
       edges: []
@@ -131,11 +131,13 @@ TextureImporter:
     indices: 
     edges: []
     weights: []
-    secondaryTextures: []
+    secondaryTextures:
+    - texture: {fileID: 2800000, guid: da648bce79665db41966be5b293bc76f, type: 3}
+      name: _EffectTexture
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      _effects_sub_0: 7668638094660879284
+      sub_debries03_0: 495051804465125140
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

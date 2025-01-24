@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d26361ed3cea2254ebfc7dec6dab7dcc
+guid: 16356123437287844940d2de3c0be070
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7668638094660879284
-    second: _effects_sub_0
+      213: -2598310713470834875
+    second: _effects_sub_debries01_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -50,7 +50,7 @@ TextureImporter:
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
-  spritePivot: {x: 0.25, y: 0.5}
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 1
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: _effects_sub_0
+      name: _effects_sub_debries01_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 13
+        height: 7
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4b34a4787b97c6a60800000000000000
-      internalID: 7668638094660879284
+      spriteID: 547aa7b2c22f0fbd0800000000000000
+      internalID: -2598310713470834875
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      _effects_sub_0: 7668638094660879284
+      _effects_sub_debries01_0: -2598310713470834875
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

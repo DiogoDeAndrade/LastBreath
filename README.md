@@ -15,7 +15,7 @@ Developed for the [Global Game Jam'25] at Lusofona University, with theme "Bubbl
     - Bonus points for example for getting "blonde female bubble with male spiky hair bubble", etc...
   - Bubble Parasite => You are a small bubble that can infect (walk on the surface) of large bubbles, consuming it. There are "protector" bubbles on the surface as well, that are trying to stop you from killing the host. You have to jump ship before the big bubble pops.
 
-### Decisions
+### Decisions (1h30)
   - "Last Breath"
   - Multiplayer, couch competitive
   - Players control a submarine that has to fetch resources for their homebase
@@ -28,14 +28,28 @@ Developed for the [Global Game Jam'25] at Lusofona University, with theme "Bubbl
 
 ![Design](Screenshots/design01.png)
 
-### First prototype - movement
+### First prototype - movement (3h)
 
 ![Design](Screenshots/screen01.png)
 ![Design](Screenshots/screen02.png)
 
 Players can now move around the map.
 
+### Damage system (6h)
+
+- Got the damage system and explosions working, with some bugs related to the input system and the debris (probably linked)
+
 ## Todo
+
+- Bug with input and respawns
+- Bug with explosion debris not showing up
+- Critical damage
+- Torpedo
+- City requests
+- City upgrades
+- End conditions
+- Main menu
+- Character customization
 
 ## Art
 
