@@ -3,6 +3,7 @@ using System;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static HealthSystem;
 
 public class Submarine : MonoBehaviour
 {
@@ -68,6 +69,7 @@ public class Submarine : MonoBehaviour
     private int             inventoryQuantity;
 
     private Tweener.BaseInterpolator healthGainEffect;
+    private Tweener.BaseInterpolator hitFlash;
 
     public float normalizedAmmo => _ammo / (float)maxTorpedo;
     public float ammo => _ammo;
@@ -145,14 +147,20 @@ public class Submarine : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void HealthSystem_onHit(float damage, Vector3 damagePosition, Vector3 damageNormal)
+    private void HealthSystem_onHit(DamageType damageType, float damage, Vector3 damagePosition, Vector3 damageNormal)
     {
         if (damageNormal.magnitude > 0)
         {
             rb.linearVelocity = damageNormal * maxSpeed * 0.5f;
         }
-        spriteEffect.FlashColor(0.1f, Color.red);
-        noControlTime = healthSystem.invulnerabilityTime * 0.5f;
+        if ((hitFlash == null) || (hitFlash.isFinished))
+        {
+            hitFlash = spriteEffect.FlashColor(0.1f, Color.red);
+        }
+        if (damageType != DamageType.OverTime)
+        {
+            noControlTime = healthSystem.invulnerabilityTime * 0.4f;
+        }
     }
 
     void FixedUpdate()
@@ -259,7 +267,7 @@ public class Submarine : MonoBehaviour
             damage *= criticalMultiplier;
         }
 
-        healthSystem.DealDamage(damage, collision.contacts[0].point, collision.contacts[0].normal);
+        healthSystem.DealDamage(DamageType.Burst, damage, collision.contacts[0].point, collision.contacts[0].normal);
 
         // Check if collision was with another thing with health
     }

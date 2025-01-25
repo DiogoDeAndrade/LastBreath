@@ -2,6 +2,7 @@ using Mono.Cecil;
 using NaughtyAttributes;
 using UnityEditor;
 using UnityEngine;
+using static HealthSystem;
 
 public class Torpedo : MonoBehaviour
 {
@@ -103,7 +104,7 @@ public class Torpedo : MonoBehaviour
         }
 
         var health = collision.GetComponent<HealthSystem>();
-        health?.DealDamage(damage, transform.position, Vector3.zero);
+        health?.DealDamage(DamageType.Burst, damage, transform.position, Vector3.zero);
 
         if (explosionPrefab) Instantiate(explosionPrefab, transform.position, transform.rotation);
 

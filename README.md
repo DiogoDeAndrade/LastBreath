@@ -94,6 +94,7 @@ Players can now move around the map.
 - SoundFX
 - Main menu
 - Character customization
+- New submarine 
 
 ## Art
 
