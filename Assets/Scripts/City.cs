@@ -80,7 +80,7 @@ public class City : MonoBehaviour
     {
         float s = transform.localScale.x;
         transform.ScaleTo(new Vector3(s * 1.1f, s * 1.1f, s * 1.1f), 0.25f).EaseFunction(Ease.Sqrt);
-        bubbleRenderer.color = Color.white;
+        //bubbleRenderer.color = Color.white;
         bubbleRenderer.FadeTo(new Color(1.0f, 1.0f, 1.0f, 0.0f), 0.25f).Done(() => { Debug.Log("Level Over"); }).EaseFunction(Ease.Sqrt);
     }
 }

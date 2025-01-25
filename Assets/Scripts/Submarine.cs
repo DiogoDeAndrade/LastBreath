@@ -1,4 +1,5 @@
 using NaughtyAttributes;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,8 +13,12 @@ public class Submarine : MonoBehaviour
     private float           acceleration = 200.0f; 
     [SerializeField]
     private float           drag = 1.0f;
-    [SerializeField]
+    [SerializeField, Header("Damage")]
     private float           collisionDamagePerSpeed = 0.1f;
+    [SerializeField, Tooltip("Cosine of the angle tolerance for the cockpit (for example, 0.707 would make any damage in a 45 degree angle in front of the ship being critical)")]
+    private float           cockpitDamageThreshould = 0.9f;
+    [SerializeField]
+    private float           criticalMultiplier = 2.0f;
     [SerializeField, Header("Input")] 
     private PlayerInput     playerInput;
     [SerializeField, InputPlayer(nameof(playerInput))] 
@@ -119,21 +124,17 @@ public class Submarine : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         var damage = collision.relativeVelocity.magnitude * collisionDamagePerSpeed;
+
+        // Check if there was a critical hit
+        Vector2 forwardVector = transform.right.xy();
+        Vector2 toDamage = (collision.contacts[0].point - transform.position.xy()).normalized;
+        if (Vector3.Dot(forwardVector, toDamage) > cockpitDamageThreshould)
+        {
+            damage *= criticalMultiplier;
+        }
+
         healthSystem.DealDamage(damage, collision.contacts[0].point, collision.contacts[0].normal);
 
         // Check if collision was with another thing with health
     }
-
-    [Button("Unpair all")]
-    void UnpairAll()
-    {
-        playerInput.user.UnpairDevices();
-    }
-
-    [Button("Pair device")]
-    void PairDevice()
-    {
-        MasterInputManager.SetupInput(_playerId, playerInput);
-    }
-
 }

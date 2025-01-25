@@ -39,11 +39,17 @@ Players can now move around the map.
 
 - Got the damage system and explosions working, with some bugs related to the input system and the debris (probably linked)
 
+### Restart on Saturday (7h)
+
+![Design](Screenshots/screen03.png)
+
+- Fixed the bugs that took me so long yesterday in a few minutes!
+
 ## Todo
 
 - ~~Bug with input and respawns~~
 - ~~Bug with explosion debris not showing up~~
-- Critical damage
+- ~~Critical damage~~
 - Torpedo
 - City requests
 - City upgrades

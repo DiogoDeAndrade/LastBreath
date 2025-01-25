@@ -6237,7 +6237,9 @@ MonoBehaviour:
   maxSpeed: 200
   acceleration: 200
   drag: 1
-  collisionDamagePerSpeed: 0.2
+  collisionDamagePerSpeed: 0.15
+  cockpitDamageThreshould: 0.9
+  criticalMultiplier: 2
   playerInput: {fileID: 7698209387435550969}
   moveControl:
     _type: 3
