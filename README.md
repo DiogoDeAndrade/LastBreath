@@ -5,9 +5,9 @@ Developed for the [Global Game Jam'25] at Lusofona University, with theme "Bubbl
 ## Game
 
 
-## Dev stuff
+## Dev Log
 
-### Initial ideas
+### Initial ideas (Fri 17:00)
   - Bubble Burocracy => "Papers please", but with bubbles. Decide on how to join bubbles together in groups, considering your own thoughts and ideals, etc.
   - Bubble City => A citybuilder on bubbles, player has to create buildings and manager resources, guaranteeing that the weight and balance is kept at an ideal level
   - Last Breath => Competitive multiplayer game, where the player has to help his underwater bubble city to grow, by finding resources and keeping his enemy from getting them.
@@ -15,7 +15,7 @@ Developed for the [Global Game Jam'25] at Lusofona University, with theme "Bubbl
     - Bonus points for example for getting "blonde female bubble with male spiky hair bubble", etc...
   - Bubble Parasite => You are a small bubble that can infect (walk on the surface) of large bubbles, consuming it. There are "protector" bubbles on the surface as well, that are trying to stop you from killing the host. You have to jump ship before the big bubble pops.
 
-### Decisions (1h30)
+### Decisions (Fri 18:30)
   - "Last Breath"
   - Multiplayer, couch competitive
   - Players control a submarine that has to fetch resources for their homebase
@@ -28,18 +28,18 @@ Developed for the [Global Game Jam'25] at Lusofona University, with theme "Bubbl
 
 ![Design](Screenshots/design01.png)
 
-### First prototype - movement (3h)
+### First prototype - movement (Fri 19:30)
 
 ![Design](Screenshots/screen01.png)
 ![Design](Screenshots/screen02.png)
 
 Players can now move around the map.
 
-### Damage system (6h)
+### Damage system (Fri 22:30)
 
 - Got the damage system and explosions working, with some bugs related to the input system and the debris (probably linked)
 
-### Restart on Saturday (7h)
+### Restart on Saturday (Sat 10:00)
 
 ![Design](Screenshots/screen03.png)
 
@@ -47,7 +47,15 @@ Players can now move around the map.
 
 ### Torpedos (Sat 12:30)
 
+![Design](Screenshots/screen04.png)
+
 - Torpedos done, including a homing one which is pretty cool, some fun to be had already
+
+### Reload/Repair (Sat 13:30)
+
+![Design](Screenshots/screen05.png)
+
+- Reload and repair at cities done
 
 ## Todo
 
@@ -55,8 +63,8 @@ Players can now move around the map.
 - ~~Bug with explosion debris not showing up~~
 - ~~Critical damage~~
 - ~~Torpedo~~
-- City Reload
-- City Repair
+- ~~City Reload~~
+- ~~City Repair~~
 - Resource Spawns
 - City requests
 - Powerups

@@ -1913,6 +1913,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5666158758741769182, guid: 9c4874523163f4d4eb917b95209c4950, type: 3}
+      propertyPath: reloadSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666158758741769182, guid: 9c4874523163f4d4eb917b95209c4950, type: 3}
+      propertyPath: useScaleOnRadius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666158758741769182, guid: 9c4874523163f4d4eb917b95209c4950, type: 3}
       propertyPath: bubbleGradient.atime0
       value: 0
       objectReference: {fileID: 0}

@@ -1,5 +1,6 @@
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class City : MonoBehaviour
 {
@@ -19,6 +20,25 @@ public class City : MonoBehaviour
     private float       startOxygen = 500;
     [SerializeField]
     private float       oxygenLossPerSecond = 10;
+    [SerializeField, Header("Reload & Repair")]
+    private bool        useScaleOnRadius = false;
+    [SerializeField]
+    private Transform   reloadPivot;
+    [SerializeField]
+    private float       reloadRadius = 50.0f;
+    [SerializeField]
+    private float       reloadTime = 1.0f;
+    [SerializeField]
+    private float       reloadOxygenDrain = 0.0f;
+    [SerializeField]
+    private Transform   repairPivot;
+    [SerializeField]
+    private float       repairRadius = 50.0f;
+    [SerializeField]
+    private float       repairSpeed = 25.0f;
+    [SerializeField]
+    private float       repairOxygenDrain = 0.0f;
+
     [SerializeField, Header("Visuals")]
     private SpriteRenderer  bubbleRenderer;
     [SerializeField]
@@ -27,6 +47,7 @@ public class City : MonoBehaviour
     float       penaltyTimer = 0.0f;
     Submarine   player;
     float       oxygen;
+    float       ammoReload;
 
     void Start()
     {
@@ -63,6 +84,39 @@ public class City : MonoBehaviour
                     penaltyTimer = penaltyDuration;
                 }
             }
+            else
+            {
+                if ((reloadPivot) && (player.ammo < player.maxAmmo))
+                {
+                    float d = Vector3.Distance(reloadPivot.position, player.transform.position);
+                    if (d < AdjustRadius(reloadRadius))
+                    {
+                        ammoReload += Time.deltaTime;
+
+                        ChangeOxygen(-reloadOxygenDrain * Time.deltaTime);
+                        if (ammoReload > reloadTime)
+                        {
+                            player.AddAmmo(1);
+                            ammoReload -= reloadTime;
+                        }
+                    }
+                }
+                var healthSystem = player.GetComponent<HealthSystem>();
+                if ((repairPivot) && (healthSystem.health < healthSystem.maxHealth))
+                {
+                    float d = Vector3.Distance(repairPivot.position, player.transform.position);
+                    if (d < AdjustRadius(repairRadius))
+                    {
+                        ChangeOxygen(-repairOxygenDrain * Time.deltaTime);
+                        healthSystem.Heal(Time.deltaTime * repairSpeed, false);
+                        if (ammoReload > reloadTime)
+                        {
+                            player.AddAmmo(1);
+                            ammoReload -= reloadTime;
+                        }
+                    }
+                }
+            }
         }
         else
         {
@@ -82,5 +136,28 @@ public class City : MonoBehaviour
         transform.ScaleTo(new Vector3(s * 1.1f, s * 1.1f, s * 1.1f), 0.25f).EaseFunction(Ease.Sqrt);
         //bubbleRenderer.color = Color.white;
         bubbleRenderer.FadeTo(new Color(1.0f, 1.0f, 1.0f, 0.0f), 0.25f).Done(() => { Debug.Log("Level Over"); }).EaseFunction(Ease.Sqrt);
+    }
+
+    float AdjustRadius(float r)
+    {
+        if (useScaleOnRadius) return r * transform.localScale.x;
+
+        return r;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (reloadPivot)
+        {
+            float r = AdjustRadius(reloadRadius);
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawWireSphere(reloadPivot.position, r);
+        }
+        if (repairPivot)
+        {
+            float r = AdjustRadius(repairRadius);
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(repairPivot.position, r);
+        }
     }
 }

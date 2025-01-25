@@ -141,6 +141,15 @@ MonoBehaviour:
   maxOxygen: 1000
   startOxygen: 500
   oxygenLossPerSecond: 10
+  useScaleOnRadius: 0
+  reloadPivot: {fileID: 6021362845102416749}
+  reloadRadius: 200
+  reloadTime: 2
+  reloadOxygenDrain: 50
+  repairPivot: {fileID: 6021362845102416749}
+  repairRadius: 200
+  repairSpeed: 25
+  repairOxygenDrain: 0
   bubbleRenderer: {fileID: 2000768088621893035}
   bubbleGradient:
     serializedVersion: 2

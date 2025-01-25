@@ -1,4 +1,5 @@
 using NaughtyAttributes;
+using System;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -44,11 +45,16 @@ public class Submarine : MonoBehaviour
     private SpriteEffect    spriteEffect;
     private int             _ammo;
     private float           cooldownTimer;
+    private float           noControlTime;
+
+    private Tweener.BaseInterpolator healthGainEffect;
 
     public float normalizedAmmo => _ammo / (float)maxTorpedo;
     public float ammo => _ammo;
+    public float maxAmmo => maxTorpedo;
 
     public int playerId { get { return _playerId; } set { _playerId = value; } }
+
 
     void Start()
     {
@@ -79,9 +85,18 @@ public class Submarine : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         healthSystem = GetComponent<HealthSystem>();
         healthSystem.onHit += HealthSystem_onHit;
+        healthSystem.onHeal += HealthSystem_onHeal;
         healthSystem.onDead += HealthSystem_onDead;
 
         _ammo = maxTorpedo;
+    }
+
+    private void HealthSystem_onHeal(float healthGain)
+    {
+        if ((healthGainEffect == null) || (healthGainEffect.isFinished))
+        {
+            healthGainEffect = spriteEffect.FlashColor(0.5f, Color.green);
+        }
     }
 
     private void HealthSystem_onDead()
@@ -101,8 +116,12 @@ public class Submarine : MonoBehaviour
 
     private void HealthSystem_onHit(float damage, Vector3 damagePosition, Vector3 damageNormal)
     {
-        rb.linearVelocity = damageNormal * maxSpeed * 0.5f;
+        if (damageNormal.magnitude > 0)
+        {
+            rb.linearVelocity = damageNormal * maxSpeed * 0.5f;
+        }
         spriteEffect.FlashColor(0.1f, Color.red);
+        noControlTime = healthSystem.invulnerabilityTime * 0.5f;
     }
 
     void FixedUpdate()
@@ -111,7 +130,8 @@ public class Submarine : MonoBehaviour
 
         velocity = velocity - velocity * drag * Time.fixedDeltaTime;
 
-        if (!healthSystem.isInvulnerable)
+        if (noControlTime > 0) noControlTime -= Time.fixedDeltaTime;
+        else
         {
             velocity = velocity + movementVector * acceleration * Time.fixedDeltaTime;
         }
@@ -172,5 +192,11 @@ public class Submarine : MonoBehaviour
 
         var torpedo = Instantiate(torpedoPrefab, shootPoint.position, shootPoint.rotation);
         torpedo.SetPlayerId(playerId);
+    }
+
+    public void AddAmmo(int delta)
+    {
+        _ammo += delta;
+        if (_ammo > maxTorpedo) _ammo = maxTorpedo;
     }
 }

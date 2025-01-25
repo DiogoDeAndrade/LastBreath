@@ -96,6 +96,11 @@ public class Torpedo : MonoBehaviour
         {
             if (submarine.playerId == _playerId) return;            
         }
+        var torpedo = collision.GetComponent<Torpedo>();
+        if (torpedo != null)
+        {
+            if (torpedo._playerId == _playerId) return;
+        }
 
         var health = collision.GetComponent<HealthSystem>();
         health?.DealDamage(damage, transform.position, Vector3.zero);
