@@ -257,6 +257,15 @@ public class Submarine : MonoBehaviour
         {
             rope.enabled = false;
         }
+
+        if (inventoryType != null)
+        {
+            float hr = inventoryType.healthRegen * Time.deltaTime;
+            if (hr > 0.0f)
+            {
+                healthSystem.Heal(hr, false);
+            }
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -286,6 +295,11 @@ public class Submarine : MonoBehaviour
 
         var torpedo = Instantiate(torpedoPrefab, shootPoint.position, shootPoint.rotation);
         torpedo.SetPlayerId(playerId);
+        var rb = torpedo.GetComponent<Rigidbody2D>();
+        if (rb)
+        {
+            rb.linearVelocity = this.rb.linearVelocity;
+        }
     }
 
     public void AddAmmo(int delta)

@@ -17,6 +17,11 @@ public class CityUI : MonoBehaviour
 
     void Update()
     {
+        if (city.isDead)
+        {
+            canvasGroup.FadeOut(0.5f);
+            return;
+        }
         if (city.isPlayerDead)
         {
             canvasGroup.FadeIn(0.5f);

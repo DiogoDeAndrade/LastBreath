@@ -9,6 +9,7 @@ public class ResourceData : ScriptableObject
     public Sprite nodeImage;
     public Sprite resourceImage;
     public float  valueMultiplier = 1.0f;
+    public float healthRegen = 0.0f;
 }
 
 #if UNITY_6000_0_OR_NEWER

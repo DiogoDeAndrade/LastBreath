@@ -504,8 +504,8 @@ MonoBehaviour:
   useScaleOnRadius: 0
   reloadPivot: {fileID: 6021362845102416749}
   reloadRadius: 200
-  reloadTime: 2
-  reloadOxygenDrain: 50
+  reloadTime: 0.5
+  reloadOxygenDrain: 25
   repairPivot: {fileID: 6021362845102416749}
   repairRadius: 200
   repairSpeed: 25

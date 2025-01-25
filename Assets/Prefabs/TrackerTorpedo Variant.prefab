@@ -22,11 +22,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5113020608957904864, guid: 469f1a67c9f5f444ea2405113e95a258, type: 3}
       propertyPath: maxSpeed
-      value: 150
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 5113020608957904864, guid: 469f1a67c9f5f444ea2405113e95a258, type: 3}
       propertyPath: acceleration
-      value: 150
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 5113020608957904864, guid: 469f1a67c9f5f444ea2405113e95a258, type: 3}
       propertyPath: rotationSpeed
@@ -35,6 +35,10 @@ PrefabInstance:
     - target: {fileID: 5113020608957904864, guid: 469f1a67c9f5f444ea2405113e95a258, type: 3}
       propertyPath: angularTolerance
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5113020608957904864, guid: 469f1a67c9f5f444ea2405113e95a258, type: 3}
+      propertyPath: alsoTrackTorpedoes
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7014500302478795428, guid: 469f1a67c9f5f444ea2405113e95a258, type: 3}
       propertyPath: m_LocalPosition.x

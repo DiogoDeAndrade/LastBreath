@@ -75,6 +75,10 @@ Players can now move around the map.
 
 - Cities now request resources and we have to go get them
 
+### Main game loop working (Sat 20:00)
+
+- The game loop is fully working, going to finish it off, instead of adding more stuff
+
 ## Todo
 
 - ~~Bug with input and respawns~~
@@ -86,15 +90,16 @@ Players can now move around the map.
 - ~~Resource spawns~~
 - ~~Resource gathering~~
 - ~~City requests~~
-- Powerups
+- Resource modifiers
 - More resource types
-- City upgrades
 - City graphics
 - End conditions
 - SoundFX
 - Main menu
 - Character customization
 - New submarine 
+- Powerups
+- City upgrades
 
 ## Art
 

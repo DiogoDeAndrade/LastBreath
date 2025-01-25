@@ -1,6 +1,7 @@
 using Mono.Cecil;
 using NaughtyAttributes;
 using UnityEditor;
+using UnityEditor.Hardware;
 using UnityEngine;
 using static HealthSystem;
 
@@ -16,6 +17,8 @@ public class Torpedo : MonoBehaviour
     private float       damage = 50.0f;
     [SerializeField] 
     private bool        tracker;
+    [SerializeField, ShowIf(nameof(tracker))] 
+    private bool        alsoTrackTorpedoes;
     [SerializeField, ShowIf(nameof(tracker))]
     private Transform   trackPoint;
     [SerializeField, ShowIf(nameof(tracker))]
@@ -67,21 +70,38 @@ public class Torpedo : MonoBehaviour
                 {
                     if (sub.playerId != _playerId)
                     {
-                        // Check angle
-                        var toSub = (sub.transform.position - trackPoint.position).normalized;
-                        float angle = Vector2.Angle(trackPoint.right, toSub);
-                        if (angle < angularTolerance)
+                        if (Track(sub.transform)) return;
+                    }
+                }
+                if (alsoTrackTorpedoes)
+                {
+                    var torpedo = overlap.GetComponent<Torpedo>();
+                    if (torpedo != null)
+                    {
+                        if (torpedo._playerId != _playerId)
                         {
-                            // Follow this
-                            var direction = Quaternion.LookRotation(Vector3.forward, toSub.PerpendicularXY());
-                            transform.rotation = Quaternion.RotateTowards(transform.rotation, direction, rotationSpeed * Time.deltaTime);
-
-                            return;
+                            if (Track(torpedo.transform)) return;
                         }
                     }
                 }
             }
         }
+    }
+
+    bool Track(Transform target)
+    {
+        var toSub = (target.position - trackPoint.position).normalized;
+        float angle = Vector2.Angle(trackPoint.right, toSub);
+        if (angle < angularTolerance)
+        {
+            // Follow this
+            var direction = Quaternion.LookRotation(Vector3.forward, toSub.PerpendicularXY());
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, direction, rotationSpeed * Time.deltaTime);
+
+            return true;
+        }
+
+        return false;
     }
 
     public void SetPlayerId(int playerId)
