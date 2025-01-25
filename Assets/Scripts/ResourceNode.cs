@@ -27,10 +27,12 @@ public class ResourceNode : MonoBehaviour
     private ResourceData                type;
     private SpriteRenderer              spriteRenderer;
     private Tweener.BaseInterpolator    scaleEffect;
+    private Vector3                     originalScale;
 
     void Start()
     {
         chargeTimer = 0;
+        originalScale = transform.localScale;
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         SelectType();
@@ -58,7 +60,7 @@ public class ResourceNode : MonoBehaviour
                 chargeTimer = chargeTime;
                 if (!unlimitedCharges) nCharges--;
 
-                transform.ScaleTo(Vector3.one, 0.2f).EaseFunction(Ease.OutBack);
+                transform.ScaleTo(originalScale, 0.2f).EaseFunction(Ease.OutBack);
             }
             else
             {

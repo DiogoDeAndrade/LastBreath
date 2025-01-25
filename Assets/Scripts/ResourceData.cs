@@ -8,6 +8,7 @@ public class ResourceData : ScriptableObject
     public Color  displayColor = Color.white;
     public Sprite nodeImage;
     public Sprite resourceImage;
+    public float  valueMultiplier = 1.0f;
 }
 
 #if UNITY_6000_0_OR_NEWER

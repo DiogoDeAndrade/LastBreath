@@ -320,7 +320,7 @@ public class Submarine : MonoBehaviour
             Gizmos.DrawWireSphere(gatherPivot.position, gatherRadius);
         }
     }
-    private void DropAll(bool atBase)
+    public void DropAll(bool atBase)
     {
         if (inventoryType == null) return;
 

@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    // Concept:
+    // Phase 1: Cities have different requests, and conflict is kept to a minimum
+    // Phase 2: Cities have the same request
+    public enum Phase { Phase1, Phase2 };
+
+
     [Serializable]
     public class PlayerData
     {
@@ -15,6 +21,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int                _numPlayers = 1;
     [SerializeField] private List<PlayerData>   _playerData;
+
+    private float playTime = 0.0f;
 
     static GameManager _Instance;
 
@@ -63,6 +71,18 @@ public class GameManager : MonoBehaviour
         }
 
         _playerData[playerId] = pd;
+    }
+
+    private void Update()
+    {
+        playTime += Time.deltaTime;
+    }
+
+    public static Phase GetPhase()
+    {
+        if (Instance.playTime < 30.0f) return Phase.Phase1;
+
+        return Phase.Phase2;
     }
 
     public int numPlayers

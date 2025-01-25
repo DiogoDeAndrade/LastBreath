@@ -1,4 +1,5 @@
 using NaughtyAttributes;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -38,20 +39,32 @@ public class City : MonoBehaviour
     private float       repairSpeed = 25.0f;
     [SerializeField]
     private float       repairOxygenDrain = 0.0f;
+    [SerializeField]
+    private Transform   gatherPivot;
+    [SerializeField]
+    private float       gatherRadius = 50.0f;
+    [SerializeField]
+    private float       oxygenPerResource = 50.0f;
 
     [SerializeField, Header("Visuals")]
     private SpriteRenderer  bubbleRenderer;
     [SerializeField]
     private Gradient    bubbleGradient;
+    [SerializeField]
+    private RequestUI   requestUI;
 
-    float       penaltyTimer = 0.0f;
-    Submarine   player;
-    float       oxygen;
-    float       ammoReload;
+    float           penaltyTimer = 0.0f;
+    Submarine       player;
+    float           oxygen;
+    float           ammoReload;
+    ResourceData    requestedItem;
+    int             requestedQuantity;
+    float           timeOfNewRequest;
 
     void Start()
     {
         oxygen = startOxygen;
+        timeOfNewRequest = 5.0f;
     }
 
     void Update()
@@ -62,6 +75,7 @@ public class City : MonoBehaviour
             if (oxygen <= 0.0f)
             {
                 PopBubble();
+                requestUI.UpdateUI(null, 0);
             }
 
             float t = oxygen / maxOxygen;
@@ -116,6 +130,42 @@ public class City : MonoBehaviour
                         }
                     }
                 }
+                if ((gatherPivot) && (player.item != null))
+                {
+                    float d = Vector3.Distance(gatherPivot.position, player.transform.position);
+                    if (d < AdjustRadius(gatherRadius))
+                    {
+                        float oxygenCount = 0.0f;
+                        if (player.item == requestedItem)
+                        {
+                            if (player.itemCount >= requestedQuantity)
+                            {
+                                oxygenCount = player.item.valueMultiplier * oxygenPerResource * (requestedQuantity * 2.0f + (player.itemCount - requestedQuantity));
+
+                                CancelAllRequests();
+                            }
+                        }
+                        else
+                        {
+                            oxygenCount = oxygenPerResource * player.itemCount * player.item.valueMultiplier;
+                        }
+                        if (oxygenCount > 0.0f)
+                        {
+                            ChangeOxygen(oxygenCount);
+
+                            player.DropAll(true);
+                        }
+                    }
+                }
+            }
+
+            if (timeOfNewRequest > 0)
+            {
+                timeOfNewRequest -= Time.deltaTime;
+                if (timeOfNewRequest <= 0.0f)
+                {
+                    NewRequest();
+                }
             }
         }
         else
@@ -143,6 +193,100 @@ public class City : MonoBehaviour
         if (useScaleOnRadius) return r * transform.localScale.x;
 
         return r;
+    }
+
+    void CancelAllRequests()
+    {
+        if (GameManager.GetPhase() == GameManager.Phase.Phase1)
+        {
+            CancelRequest();
+        }
+        else
+        {
+            var cities = FindObjectsByType<City>(FindObjectsSortMode.None);
+            foreach (var city in cities)
+            {
+                city.CancelRequest();
+            }
+        }
+    }
+
+    void CancelRequest()
+    {
+        requestedItem = null;
+        requestedQuantity = 0;
+        timeOfNewRequest = 4.0f;
+
+        UpdateRequestUI();
+    }
+
+    void NewRequest()
+    {
+        var resources = FindObjectsByType<Resource>(FindObjectsSortMode.InstanceID);
+        Dictionary<ResourceData, int> resourceTypeCount = new();
+        foreach (var resource in resources)
+        {
+            if (resourceTypeCount.ContainsKey(resource.data))
+            {
+                resourceTypeCount[resource.data]++;
+            }
+            else
+            {
+                resourceTypeCount[resource.data] = 1;
+            }
+        }
+
+        if (GameManager.GetPhase() == GameManager.Phase.Phase1)
+        {
+            // Exclude all resources that have less than 2 available
+            List<ResourceData> toRemove = new();
+            foreach ((var key, var count) in resourceTypeCount)
+            {
+                if (count < 2) toRemove.Add(key);
+            }
+            foreach (var resource in toRemove)
+            {
+                resourceTypeCount.Remove(resource);
+            }
+        }
+        var keys = new List<ResourceData>(resourceTypeCount.Keys);
+        if (keys.Count > 0)
+        {
+            requestedItem = keys.Random();
+            if (GameManager.GetPhase() == GameManager.Phase.Phase1)
+                requestedQuantity = Mathf.FloorToInt(resourceTypeCount[requestedItem] * 0.5f);
+            else
+            {
+                requestedQuantity = Mathf.FloorToInt(Random.Range(1, Mathf.Min(4, resourceTypeCount[requestedItem])));
+
+                // Only propagate in Phase 2
+                var cities = FindObjectsByType<City>(FindObjectsSortMode.None);
+                foreach (var city in cities)
+                {
+                    if (city == this) continue;
+                    if (city.oxygen <= 0) continue;
+
+                    city.requestedItem = requestedItem;
+                    city.requestedQuantity = requestedQuantity;
+                    city.timeOfNewRequest = 0;
+
+                    city.UpdateRequestUI();
+                }
+            }
+
+            timeOfNewRequest = 0;
+
+            UpdateRequestUI();
+        }
+        else
+        {
+            timeOfNewRequest = 2.0f;
+        }
+    }
+
+    void UpdateRequestUI()
+    {
+        requestUI.UpdateUI(requestedItem, requestedQuantity);
     }
 
     private void OnDrawGizmosSelected()

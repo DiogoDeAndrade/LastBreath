@@ -69,6 +69,12 @@ Players can now move around the map.
 
 - Resources can now be gathered and there's an inventory system in place
 
+### City requests (Sat 18:10)
+
+![Design](Screenshots/screen08.png)
+
+- Cities now request resources and we have to go get them
+
 ## Todo
 
 - ~~Bug with input and respawns~~
@@ -79,9 +85,11 @@ Players can now move around the map.
 - ~~City Repair~~
 - ~~Resource spawns~~
 - ~~Resource gathering~~
-- City requests
+- ~~City requests~~
 - Powerups
+- More resource types
 - City upgrades
+- City graphics
 - End conditions
 - SoundFX
 - Main menu
