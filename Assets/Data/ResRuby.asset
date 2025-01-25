@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea38383d92d52284c8041d32cbca1418, type: 3}
+  m_Name: ResRuby
+  m_EditorClassIdentifier: 
+  displayName: Ruby
+  nodeImage: {fileID: 21300000, guid: 76bf2fb5a36b3044d8e6fc4d14594e53, type: 3}
+  resourceImage: {fileID: 21300000, guid: 0f328dd28af8fc844bf3f57278422085, type: 3}

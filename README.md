@@ -57,6 +57,12 @@ Players can now move around the map.
 
 - Reload and repair at cities done
 
+### Resource spawning (Sat 15:00)
+
+![Design](Screenshots/screen06.png)
+
+- Resource system in place (spawns)
+
 ## Todo
 
 - ~~Bug with input and respawns~~
@@ -65,7 +71,8 @@ Players can now move around the map.
 - ~~Torpedo~~
 - ~~City Reload~~
 - ~~City Repair~~
-- Resource Spawns
+- Resource spawns
+- Resource gathering
 - City requests
 - Powerups
 - City upgrades
