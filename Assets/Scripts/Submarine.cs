@@ -1,6 +1,6 @@
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Users;
 
 public class Submarine : MonoBehaviour
 {
@@ -123,4 +123,17 @@ public class Submarine : MonoBehaviour
 
         // Check if collision was with another thing with health
     }
+
+    [Button("Unpair all")]
+    void UnpairAll()
+    {
+        playerInput.user.UnpairDevices();
+    }
+
+    [Button("Pair device")]
+    void PairDevice()
+    {
+        MasterInputManager.SetupInput(_playerId, playerInput);
+    }
+
 }

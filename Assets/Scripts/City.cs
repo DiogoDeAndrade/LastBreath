@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using UnityEngine;
 
 public class City : MonoBehaviour
@@ -18,6 +19,10 @@ public class City : MonoBehaviour
     private float       startOxygen = 500;
     [SerializeField]
     private float       oxygenLossPerSecond = 10;
+    [SerializeField, Header("Visuals")]
+    private SpriteRenderer  bubbleRenderer;
+    [SerializeField]
+    private Gradient    bubbleGradient;
 
     float       penaltyTimer = 0.0f;
     Submarine   player;
@@ -33,9 +38,17 @@ public class City : MonoBehaviour
         if (oxygen > 0)
         {
             ChangeOxygen(-oxygenLossPerSecond * Time.deltaTime);
+            if (oxygen <= 0.0f)
+            {
+                PopBubble();
+            }
 
-            float s = Mathf.Lerp(sizeRange.x, sizeRange.y, oxygen / maxOxygen);
+            float t = oxygen / maxOxygen;
+            float s = Mathf.Lerp(sizeRange.x, sizeRange.y, t);
             transform.localScale = new Vector3(s, s, s);
+
+            bubbleRenderer.color = bubbleGradient.Evaluate(t);
+
             if (player == null)
             {
                 if (penaltyTimer > 0.0f) penaltyTimer -= Time.deltaTime;
@@ -48,10 +61,23 @@ public class City : MonoBehaviour
                 }
             }
         }
+        else
+        {
+
+        }
     }
 
     public void ChangeOxygen(float delta)
     {
         oxygen = Mathf.Clamp(oxygen + delta, 0.0f, maxOxygen);
+    }
+
+    [Button("Pop bubble")]
+    public void PopBubble()
+    {
+        float s = transform.localScale.x;
+        transform.ScaleTo(new Vector3(s * 1.1f, s * 1.1f, s * 1.1f), 0.25f).EaseFunction(Ease.Sqrt);
+        bubbleRenderer.color = Color.white;
+        bubbleRenderer.FadeTo(new Color(1.0f, 1.0f, 1.0f, 0.0f), 0.25f).Done(() => { Debug.Log("Level Over"); }).EaseFunction(Ease.Sqrt);
     }
 }

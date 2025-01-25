@@ -506,6 +506,11 @@ Transform:
   - {fileID: 2113282171}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1435498757 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2000768088621893035, guid: 9c4874523163f4d4eb917b95209c4950, type: 3}
+  m_PrefabInstance: {fileID: 2191864920897491252}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1916557393
 GameObject:
   m_ObjectHideFlags: 0
@@ -1712,6 +1717,82 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5666158758741769182, guid: 9c4874523163f4d4eb917b95209c4950, type: 3}
+      propertyPath: bubbleRenderer
+      value: 
+      objectReference: {fileID: 1435498757}
+    - target: {fileID: 5666158758741769182, guid: 9c4874523163f4d4eb917b95209c4950, type: 3}
+      propertyPath: bubbleGradient.ctime1
+      value: 6554
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666158758741769182, guid: 9c4874523163f4d4eb917b95209c4950, type: 3}
+      propertyPath: bubbleGradient.ctime2
+      value: 13107
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666158758741769182, guid: 9c4874523163f4d4eb917b95209c4950, type: 3}
+      propertyPath: bubbleGradient.ctime3
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666158758741769182, guid: 9c4874523163f4d4eb917b95209c4950, type: 3}
+      propertyPath: bubbleGradient.key0.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666158758741769182, guid: 9c4874523163f4d4eb917b95209c4950, type: 3}
+      propertyPath: bubbleGradient.key0.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666158758741769182, guid: 9c4874523163f4d4eb917b95209c4950, type: 3}
+      propertyPath: bubbleGradient.key0.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666158758741769182, guid: 9c4874523163f4d4eb917b95209c4950, type: 3}
+      propertyPath: bubbleGradient.key1.b
+      value: 0.022472408
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666158758741769182, guid: 9c4874523163f4d4eb917b95209c4950, type: 3}
+      propertyPath: bubbleGradient.key1.g
+      value: 0.93066347
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666158758741769182, guid: 9c4874523163f4d4eb917b95209c4950, type: 3}
+      propertyPath: bubbleGradient.key1.r
+      value: 0.9528302
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666158758741769182, guid: 9c4874523163f4d4eb917b95209c4950, type: 3}
+      propertyPath: bubbleGradient.key2.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666158758741769182, guid: 9c4874523163f4d4eb917b95209c4950, type: 3}
+      propertyPath: bubbleGradient.key2.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666158758741769182, guid: 9c4874523163f4d4eb917b95209c4950, type: 3}
+      propertyPath: bubbleGradient.key2.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666158758741769182, guid: 9c4874523163f4d4eb917b95209c4950, type: 3}
+      propertyPath: bubbleGradient.key3.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666158758741769182, guid: 9c4874523163f4d4eb917b95209c4950, type: 3}
+      propertyPath: bubbleGradient.key3.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666158758741769182, guid: 9c4874523163f4d4eb917b95209c4950, type: 3}
+      propertyPath: bubbleGradient.key3.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666158758741769182, guid: 9c4874523163f4d4eb917b95209c4950, type: 3}
+      propertyPath: bubbleGradient.m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666158758741769182, guid: 9c4874523163f4d4eb917b95209c4950, type: 3}
+      propertyPath: bubbleGradient.m_ColorSpace
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666158758741769182, guid: 9c4874523163f4d4eb917b95209c4950, type: 3}
+      propertyPath: bubbleGradient.m_NumColorKeys
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6021362845102416749, guid: 9c4874523163f4d4eb917b95209c4950, type: 3}
       propertyPath: m_LocalPosition.x
       value: -600

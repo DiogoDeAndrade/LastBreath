@@ -137,10 +137,41 @@ MonoBehaviour:
   playerPrefab: {fileID: 5439900134263999799, guid: 58f09f2a75c312d4b8195618ef1e5577, type: 3}
   spawnPoint: {fileID: 1937450992151209987}
   penaltyDuration: 10
-  sizeRange: {x: 0.75, y: 1.25}
+  sizeRange: {x: 0.5, y: 1.25}
   maxOxygen: 1000
   startOxygen: 500
   oxygenLossPerSecond: 10
+  bubbleRenderer: {fileID: 2000768088621893035}
+  bubbleGradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 0, b: 0, a: 1}
+    key1: {r: 0.9528302, g: 0.93066347, b: 0.022472408, a: 1}
+    key2: {r: 1, g: 1, b: 1, a: 0}
+    key3: {r: 1, g: 1, b: 1, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 6554
+    ctime2: 13107
+    ctime3: 65535
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 2
+    m_ColorSpace: 0
+    m_NumColorKeys: 4
+    m_NumAlphaKeys: 2
 --- !u!1 &8681502281685935467
 GameObject:
   m_ObjectHideFlags: 0
