@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using Mono.Cecil;
 using System.Runtime.CompilerServices;
+using System;
 
 public class ResourceNode : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class ResourceNode : MonoBehaviour
     private bool                randomizeOnEachSpawn;
     [SerializeField]
     private Resource            resourcePrefab;
+    [SerializeField]
+    private Transform           spawnPoint;
 
     private float                       chargeTimer;
     private Resource                    resource;
@@ -49,8 +52,9 @@ public class ResourceNode : MonoBehaviour
             if (chargeTimer <= 0.0f)
             {
                 if (randomizeOnEachSpawn) SelectType();
-                resource = Instantiate(resourcePrefab, transform.position, transform.rotation, transform);
+                resource = Instantiate(resourcePrefab, spawnPoint.position, spawnPoint.rotation, transform);
                 resource.SetType(type);
+                resource.SetNode(this);
                 chargeTimer = chargeTime;
                 if (!unlimitedCharges) nCharges--;
 
@@ -64,5 +68,10 @@ public class ResourceNode : MonoBehaviour
                 }
             }
         }
+    }
+
+    internal void Release()
+    {
+        resource = null;
     }
 }

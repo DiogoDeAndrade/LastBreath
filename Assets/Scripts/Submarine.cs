@@ -32,12 +32,26 @@ public class Submarine : MonoBehaviour
     private Transform       shootPoint;
     [SerializeField]
     private Torpedo         torpedoPrefab;
+    [SerializeField, Header("Gathering")]
+    private float           gatherRadius;
+    [SerializeField]
+    private Transform       gatherPivot;
+    [SerializeField]
+    private LayerMask       gatherMask;
+    [SerializeField]
+    private LineRenderer    rope;
+    [SerializeField]
+    private Resource        resourcePrefab;
     [SerializeField, Header("Input")] 
     private PlayerInput     playerInput;
     [SerializeField, InputPlayer(nameof(playerInput))] 
     private InputControl    moveControl;
     [SerializeField, InputPlayer(nameof(playerInput)), InputButton]
     private InputControl    shootControl;
+    [SerializeField, InputPlayer(nameof(playerInput)), InputButton]
+    private InputControl    gatherControl;
+    [SerializeField, InputPlayer(nameof(playerInput)), InputButton]
+    private InputControl    dropControl;
 
     private Vector2         movementVector;
     private Rigidbody2D     rb;
@@ -46,6 +60,12 @@ public class Submarine : MonoBehaviour
     private int             _ammo;
     private float           cooldownTimer;
     private float           noControlTime;
+    private Resource        grabResource;
+    private float           grabT;
+    private bool            grabGoingOut;
+    private Vector3         grabOriginalPosition;
+    private ResourceData    inventoryType;
+    private int             inventoryQuantity;
 
     private Tweener.BaseInterpolator healthGainEffect;
 
@@ -53,7 +73,9 @@ public class Submarine : MonoBehaviour
     public float ammo => _ammo;
     public float maxAmmo => maxTorpedo;
 
-    public int playerId { get { return _playerId; } set { _playerId = value; } }
+    public int          playerId { get { return _playerId; } set { _playerId = value; } }
+    public ResourceData item => inventoryType;
+    public int          itemCount => inventoryQuantity;
 
 
     void Start()
@@ -81,6 +103,8 @@ public class Submarine : MonoBehaviour
         MasterInputManager.SetupInput(_playerId, playerInput);
         moveControl.playerInput = playerInput;
         shootControl.playerInput = playerInput;
+        gatherControl.playerInput = playerInput;
+        dropControl.playerInput = playerInput;
 
         rb = GetComponent<Rigidbody2D>();
         healthSystem = GetComponent<HealthSystem>();
@@ -110,6 +134,13 @@ public class Submarine : MonoBehaviour
         collider.enabled = false;
         var spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.enabled = false;
+
+        DropAll(false);
+        if (grabResource)
+        {
+            grabResource.RandomThrow();
+            grabResource = null;
+        }
 
         Destroy(gameObject);
     }
@@ -163,6 +194,57 @@ public class Submarine : MonoBehaviour
             Shoot();
         }
         if (cooldownTimer > 0) cooldownTimer -= Time.deltaTime;
+
+        if (gatherControl.IsDown())
+        {
+            Gather();
+        }
+
+        if (dropControl.IsDown())
+        {
+            DropAll(false);
+        }
+
+        if (grabResource)
+        {
+            float grabSpeed = 5.0f;
+
+            rope.enabled = true;
+
+            rope.useWorldSpace = true;
+            if (grabGoingOut)
+            {
+                grabT = Mathf.Clamp01(grabT + Time.deltaTime * grabSpeed);
+                rope.SetPositions(new Vector3[2] { gatherPivot.position, Vector3.Lerp(gatherPivot.position, grabResource.transform.position, grabT) });
+
+                if (grabT >= 1.0f)
+                {
+                    grabT = 0.0f;
+                    grabGoingOut = false;
+                    grabOriginalPosition = grabResource.transform.position;
+                }
+            }
+            else
+            {
+                grabT = Mathf.Clamp01(grabT + Time.deltaTime * grabSpeed);
+                grabResource.transform.position = Vector3.Lerp(grabOriginalPosition, gatherPivot.position, Ease.Sqr(grabT));
+                rope.SetPositions(new Vector3[2] { gatherPivot.position, grabResource.transform.position });
+
+                if (grabT >= 1.0f)
+                {
+                    // Done, gathered
+                    inventoryType = grabResource.data;
+                    inventoryQuantity++;
+
+                    Destroy(grabResource.gameObject);
+                    grabResource = null;
+                }
+            }
+        }
+        else
+        {
+            rope.enabled = false;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -198,5 +280,61 @@ public class Submarine : MonoBehaviour
     {
         _ammo += delta;
         if (_ammo > maxTorpedo) _ammo = maxTorpedo;
+    }
+
+    void Gather()
+    {
+        var colliders = Physics2D.OverlapCircleAll(gatherPivot.position, gatherRadius, gatherMask);
+        foreach (var collider in colliders)
+        {
+            var resource = collider.GetComponent<Resource>();
+            if (resource)
+            {
+                if (CanGrab(resource.data))
+                {
+                    grabResource = resource;
+                    grabResource.Grab();
+                    grabGoingOut = true;
+                    grabT = 0.0f;
+                    return;
+                }
+            }
+        }
+    }
+
+    bool CanGrab(ResourceData data)
+    {
+        // Can't grab if still grabbing
+        if (grabResource != null) return false;
+        // Can't grab if already have an item of a different type
+        if ((inventoryType != null) && (inventoryType != data)) return false;
+
+        return true;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (gatherPivot)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(gatherPivot.position, gatherRadius);
+        }
+    }
+    private void DropAll(bool atBase)
+    {
+        if (inventoryType == null) return;
+
+        if (!atBase)
+        {
+            for (int i = 0; i < inventoryQuantity; i++)
+            {
+                var res = Instantiate(resourcePrefab, transform.position, transform.rotation);
+                res.SetType(inventoryType);
+                res.RandomThrow();
+            }
+        }
+
+        inventoryType = null;
+        inventoryQuantity = 0;
     }
 }

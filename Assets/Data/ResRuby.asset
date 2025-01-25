@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: ResRuby
   m_EditorClassIdentifier: 
   displayName: Ruby
+  displayColor: {r: 0.8117648, g: 0.28235295, b: 0.29411766, a: 1}
   nodeImage: {fileID: 21300000, guid: 76bf2fb5a36b3044d8e6fc4d14594e53, type: 3}
   resourceImage: {fileID: 21300000, guid: 0f328dd28af8fc844bf3f57278422085, type: 3}

@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: ResJade
   m_EditorClassIdentifier: 
   displayName: Jade
+  displayColor: {r: 0.24313727, g: 0.6, b: 0.15294118, a: 1}
   nodeImage: {fileID: 21300000, guid: 193595f92e5964f469c0184b72012989, type: 3}
   resourceImage: {fileID: 21300000, guid: c8de54304952e424eaf2c39cf471400d, type: 3}

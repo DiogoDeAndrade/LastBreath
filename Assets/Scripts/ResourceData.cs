@@ -5,6 +5,7 @@ using UnityEngine;
 public class ResourceData : ScriptableObject
 {
     public string displayName;
+    public Color  displayColor = Color.white;
     public Sprite nodeImage;
     public Sprite resourceImage;
 }

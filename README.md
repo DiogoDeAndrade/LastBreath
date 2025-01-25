@@ -63,6 +63,12 @@ Players can now move around the map.
 
 - Resource system in place (spawns)
 
+### Resource gathering (Sat 16:40)
+
+![Design](Screenshots/screen07.png)
+
+- Resources can now be gathered and there's an inventory system in place
+
 ## Todo
 
 - ~~Bug with input and respawns~~
@@ -71,8 +77,8 @@ Players can now move around the map.
 - ~~Torpedo~~
 - ~~City Reload~~
 - ~~City Repair~~
-- Resource spawns
-- Resource gathering
+- ~~Resource spawns~~
+- ~~Resource gathering~~
 - City requests
 - Powerups
 - City upgrades
