@@ -51,7 +51,10 @@ public class City : MonoBehaviour
 
             if (player == null)
             {
-                if (penaltyTimer > 0.0f) penaltyTimer -= Time.deltaTime;
+                if (penaltyTimer > 0.0f)
+                {
+                    penaltyTimer -= Time.deltaTime;
+                }
                 if (penaltyTimer <= 0.0f)
                 {
                     player = Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);

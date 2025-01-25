@@ -10,7 +10,7 @@ public class Debries : MonoBehaviour
     float       sleepTimer;
     Rigidbody2D rb;
 
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.linearVelocity = (transform.position - explosionCenter.position).normalized * speed;

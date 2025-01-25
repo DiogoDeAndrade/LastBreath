@@ -42,7 +42,7 @@ Players can now move around the map.
 ## Todo
 
 - ~~Bug with input and respawns~~
-- Bug with explosion debris not showing up
+- ~~Bug with explosion debris not showing up~~
 - Critical damage
 - Torpedo
 - City requests
