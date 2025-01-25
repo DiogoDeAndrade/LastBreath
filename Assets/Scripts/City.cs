@@ -51,7 +51,7 @@ public class City : MonoBehaviour
     [SerializeField]
     private Gradient    bubbleGradient;
     [SerializeField]
-    private RequestUI   requestUI;
+    private CityUI   requestUI;
 
     float           penaltyTimer = 0.0f;
     Submarine       player;
@@ -60,6 +60,13 @@ public class City : MonoBehaviour
     ResourceData    requestedItem;
     int             requestedQuantity;
     float           timeOfNewRequest;
+
+    public bool isPlayerDead => player == null;
+    public float timeToRespawn => penaltyTimer;
+    internal bool isDead => oxygen <= 0.0f;
+
+    public ResourceData requestItem => requestedItem;
+    public int          requestCount => requestedQuantity;
 
     void Start()
     {
@@ -72,11 +79,6 @@ public class City : MonoBehaviour
         if (oxygen > 0)
         {
             ChangeOxygen(-oxygenLossPerSecond * Time.deltaTime);
-            if (oxygen <= 0.0f)
-            {
-                PopBubble();
-                requestUI.UpdateUI(null, 0);
-            }
 
             float t = oxygen / maxOxygen;
             float s = Mathf.Lerp(sizeRange.x, sizeRange.y, t);
@@ -167,6 +169,11 @@ public class City : MonoBehaviour
                     NewRequest();
                 }
             }
+
+            if (oxygen <= 0.0f)
+            {
+                PopBubble();
+            }
         }
         else
         {
@@ -216,8 +223,6 @@ public class City : MonoBehaviour
         requestedItem = null;
         requestedQuantity = 0;
         timeOfNewRequest = 4.0f;
-
-        UpdateRequestUI();
     }
 
     void NewRequest()
@@ -269,24 +274,15 @@ public class City : MonoBehaviour
                     city.requestedItem = requestedItem;
                     city.requestedQuantity = requestedQuantity;
                     city.timeOfNewRequest = 0;
-
-                    city.UpdateRequestUI();
                 }
             }
 
             timeOfNewRequest = 0;
-
-            UpdateRequestUI();
         }
         else
         {
             timeOfNewRequest = 2.0f;
         }
-    }
-
-    void UpdateRequestUI()
-    {
-        requestUI.UpdateUI(requestedItem, requestedQuantity);
     }
 
     private void OnDrawGizmosSelected()

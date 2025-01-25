@@ -67,6 +67,7 @@ public class Submarine : MonoBehaviour
     private Vector3         grabOriginalPosition;
     private ResourceData    inventoryType;
     private int             inventoryQuantity;
+    private Vector2         prevVelocity;
 
     private Tweener.BaseInterpolator healthGainEffect;
     private Tweener.BaseInterpolator hitFlash;
@@ -151,7 +152,10 @@ public class Submarine : MonoBehaviour
     {
         if (damageNormal.magnitude > 0)
         {
-            rb.linearVelocity = damageNormal * maxSpeed * 0.5f;
+            rb.linearVelocity = Vector2.Reflect(prevVelocity, damageNormal);
+            Debug.Log($"New velocity = {rb.linearVelocity}, normal = {damageNormal}");
+
+            transform.rotation = Quaternion.LookRotation(Vector3.forward, rb.linearVelocity.Perpendicular());
         }
         if ((hitFlash == null) || (hitFlash.isFinished))
         {
@@ -159,7 +163,7 @@ public class Submarine : MonoBehaviour
         }
         if (damageType != DamageType.OverTime)
         {
-            noControlTime = healthSystem.invulnerabilityTime * 0.4f;
+            noControlTime = healthSystem.invulnerabilityTime * 0.5f;
         }
     }
 
@@ -177,7 +181,7 @@ public class Submarine : MonoBehaviour
         
         velocity = velocity.normalized * Mathf.Clamp(velocity.magnitude, 0, maxSpeed);
 
-        rb.linearVelocity = velocity;
+        rb.linearVelocity = prevVelocity = velocity;
     }
 
     private void Update()
