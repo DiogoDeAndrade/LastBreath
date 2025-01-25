@@ -25,6 +25,7 @@ public class Resource : MonoBehaviour
     public void SetNode(ResourceNode node)
     {
         resourceNode = node;
+        transform.localScale = Vector3.zero;
     }
 
     public void Grab()
@@ -37,6 +38,7 @@ public class Resource : MonoBehaviour
             resourceNode.Release();
             resourceNode = null;
             transform.SetParent(null);
+            transform.localScale = Vector3.one;
         }
     }
 

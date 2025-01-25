@@ -12,7 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea38383d92d52284c8041d32cbca1418, type: 3}
   m_Name: ResSeaweed
   m_EditorClassIdentifier: 
-  displayName: Jade
+  displayName: Seaweed
+  displayCombatText: Health!
   displayColor: {r: 0.24313727, g: 0.6, b: 0.15294118, a: 1}
   nodeImage: {fileID: 21300000, guid: 193595f92e5964f469c0184b72012989, type: 3}
   resourceImage: {fileID: 21300000, guid: c8de54304952e424eaf2c39cf471400d, type: 3}
+  valueMultiplier: 1
+  healthRegen: 10
+  speedModifier: 1
+  weaponSpeedModifier: 1
+  speedAura: 1
+  speedAuraRadius: 200
+  speedAuraColor: {r: 1, g: 1, b: 1, a: 1}

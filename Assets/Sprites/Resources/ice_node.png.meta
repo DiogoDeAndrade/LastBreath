@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e7498482bc3d8394b842e8a587e07883
+guid: 40f4b0c8cfd92054ebe97d50c3820a97
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2376145196101976775
-    second: torpedo_0
+      213: 3458973746736109580
+    second: ice_node_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -48,9 +48,9 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 1
   spriteExtrude: 1
-  spriteMeshType: 0
-  alignment: 9
-  spritePivot: {x: 0.05, y: 0.5}
+  spriteMeshType: 1
+  alignment: 7
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 1
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: torpedo_0
+      name: ice_node_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1
-        width: 15
-        height: 6
+        x: 3
+        y: 0
+        width: 28
+        height: 30
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 93d3793988c360fd0800000000000000
-      internalID: -2376145196101976775
+      spriteID: c089b95db4eb00030800000000000000
+      internalID: 3458973746736109580
       vertices: []
       indices: 
       edges: []
@@ -126,7 +126,7 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    internalID: 0
     vertices: []
     indices: 
     edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      torpedo_0: -2376145196101976775
+      ice_node_0: 3458973746736109580
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

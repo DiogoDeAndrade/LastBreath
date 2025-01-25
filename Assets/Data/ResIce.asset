@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea38383d92d52284c8041d32cbca1418, type: 3}
-  m_Name: ResRuby
+  m_Name: ResIce
   m_EditorClassIdentifier: 
-  displayName: Ruby
-  displayCombatText: Turbo Torpedo!
-  displayColor: {r: 0.8117648, g: 0.28235295, b: 0.29411766, a: 1}
-  nodeImage: {fileID: 21300000, guid: 76bf2fb5a36b3044d8e6fc4d14594e53, type: 3}
-  resourceImage: {fileID: 21300000, guid: 0f328dd28af8fc844bf3f57278422085, type: 3}
+  displayName: Ice
+  displayCombatText: Slow Aura!
+  displayColor: {r: 0.47450984, g: 0.61960787, b: 0.8745099, a: 1}
+  nodeImage: {fileID: 21300000, guid: 40f4b0c8cfd92054ebe97d50c3820a97, type: 3}
+  resourceImage: {fileID: 21300000, guid: 62217062c8daa5b49a9885bae077f51e, type: 3}
   valueMultiplier: 1
   healthRegen: 0
   speedModifier: 1
-  weaponSpeedModifier: 1.5
-  speedAura: 1
+  weaponSpeedModifier: 1
+  speedAura: 0.4
   speedAuraRadius: 200
-  speedAuraColor: {r: 1, g: 1, b: 1, a: 1}
+  speedAuraColor: {r: 0.69882524, g: 0.97257656, b: 0.9811321, a: 1}

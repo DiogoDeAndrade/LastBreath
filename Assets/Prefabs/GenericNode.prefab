@@ -141,6 +141,10 @@ MonoBehaviour:
       weight: 50
     - value: {fileID: 11400000, guid: ebbefa5aaf73b7743b4f2aa0433c6efe, type: 2}
       weight: 50
+    - value: {fileID: 11400000, guid: 0a7dd1955b5fde44581c42d22ef735bd, type: 2}
+      weight: 50
+    - value: {fileID: 11400000, guid: 7a13d0a292afe52488c7a45534c53b21, type: 2}
+      weight: 30
     withReplacement: 0
   randomizeOnEachSpawn: 1
   resourcePrefab: {fileID: 4485897042003630804, guid: 498e2c7b013986b429c8d0c70e17d99e, type: 3}

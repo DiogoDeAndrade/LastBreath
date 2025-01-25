@@ -79,6 +79,13 @@ Players can now move around the map.
 
 - The game loop is fully working, going to finish it off, instead of adding more stuff
 
+### Resource modifiers (Sat 22:15)
+
+![Design](Screenshots/screen09.png)
+
+- Added resource modifiers - when you carry the resources, you are subject to some effects
+- Added new resource types
+
 ## Todo
 
 - ~~Bug with input and respawns~~
@@ -90,9 +97,10 @@ Players can now move around the map.
 - ~~Resource spawns~~
 - ~~Resource gathering~~
 - ~~City requests~~
-- Resource modifiers
-- More resource types
+- ~~Resource modifiers~~
+- ~~More resource types~~
 - City graphics
+- Screen shake
 - End conditions
 - SoundFX
 - Main menu

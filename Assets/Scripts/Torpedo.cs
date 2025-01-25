@@ -33,10 +33,30 @@ public class Torpedo : MonoBehaviour
     private int         _playerId;
     private Rigidbody2D rb;
     private float       timer;
+    private float       _speedModifier = 1.0f;
+    private float       _damageModifier = 1.0f;
+
+    public float speedModifier
+    {
+        get { return _speedModifier; }
+        set { _speedModifier = value; }
+    }
+
+    public float damageModifier
+    {
+        get { return _damageModifier; }
+        set { _damageModifier = value; }
+    }
+
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        if (_speedModifier != 1.0f)
+        {
+            var effect = GetComponent<SpriteEffect>();
+            if (effect) effect.SetOutline(1.0f, Color.red);
+        }
 
         timer = 0.0f;
     }
@@ -54,7 +74,10 @@ public class Torpedo : MonoBehaviour
         var velocity = rb.linearVelocity;
         var speed = velocity.magnitude;
 
-        velocity = transform.right * Mathf.Clamp(speed + acceleration * Time.fixedDeltaTime, 0.0f, maxSpeed);
+        float ms = maxSpeed;
+        ms *= Submarine.GetAura(transform.position, _playerId);
+
+        velocity = transform.right * Mathf.Clamp(speed + acceleration * Time.fixedDeltaTime, 0.0f, ms) * _speedModifier;
         rb.linearVelocity = velocity;
     }
 
@@ -96,7 +119,7 @@ public class Torpedo : MonoBehaviour
         {
             // Follow this
             var direction = Quaternion.LookRotation(Vector3.forward, toSub.PerpendicularXY());
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, direction, rotationSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, direction, _speedModifier * rotationSpeed * Time.deltaTime);
 
             return true;
         }
@@ -124,7 +147,7 @@ public class Torpedo : MonoBehaviour
         }
 
         var health = collision.GetComponent<HealthSystem>();
-        health?.DealDamage(DamageType.Burst, damage, transform.position, Vector3.zero);
+        health?.DealDamage(DamageType.Burst, damage * _damageModifier, transform.position, Vector3.zero);
 
         if (explosionPrefab) Instantiate(explosionPrefab, transform.position, transform.rotation);
 

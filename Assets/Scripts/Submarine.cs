@@ -1,9 +1,6 @@
-using NaughtyAttributes;
-using System;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static HealthSystem;
+using UnityEngine.Rendering.Universal;
 
 public class Submarine : MonoBehaviour
 {
@@ -43,6 +40,8 @@ public class Submarine : MonoBehaviour
     private LineRenderer    rope;
     [SerializeField]
     private Resource        resourcePrefab;
+    [SerializeField, Header("Aura")]
+    private Light2D         auraLight;
     [SerializeField, Header("Input")] 
     private PlayerInput     playerInput;
     [SerializeField, InputPlayer(nameof(playerInput))] 
@@ -148,12 +147,11 @@ public class Submarine : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void HealthSystem_onHit(DamageType damageType, float damage, Vector3 damagePosition, Vector3 damageNormal)
+    private void HealthSystem_onHit(HealthSystem.DamageType damageType, float damage, Vector3 damagePosition, Vector3 damageNormal)
     {
         if (damageNormal.magnitude > 0)
         {
             rb.linearVelocity = Vector2.Reflect(prevVelocity, damageNormal);
-            Debug.Log($"New velocity = {rb.linearVelocity}, normal = {damageNormal}");
 
             transform.rotation = Quaternion.LookRotation(Vector3.forward, rb.linearVelocity.Perpendicular());
         }
@@ -161,7 +159,7 @@ public class Submarine : MonoBehaviour
         {
             hitFlash = spriteEffect.FlashColor(0.1f, Color.red);
         }
-        if (damageType != DamageType.OverTime)
+        if (damageType != HealthSystem.DamageType.OverTime)
         {
             noControlTime = healthSystem.invulnerabilityTime * 0.5f;
         }
@@ -178,8 +176,11 @@ public class Submarine : MonoBehaviour
         {
             velocity = velocity + movementVector * acceleration * Time.fixedDeltaTime;
         }
-        
-        velocity = velocity.normalized * Mathf.Clamp(velocity.magnitude, 0, maxSpeed);
+
+        float ms = maxSpeed;
+        if (inventoryType) ms *= inventoryType.speedModifier;
+        ms *= GetAura(transform.position, playerId);
+        velocity = velocity.normalized * Mathf.Clamp(velocity.magnitude, 0, ms);
 
         rb.linearVelocity = prevVelocity = velocity;
     }
@@ -250,6 +251,20 @@ public class Submarine : MonoBehaviour
 
                     Destroy(grabResource.gameObject);
                     grabResource = null;
+
+                    if (inventoryQuantity == 1)
+                    {
+                        if (!string.IsNullOrEmpty(inventoryType.displayCombatText))
+                        {
+                            CombatTextManager.SpawnText(gameObject,
+                                                        inventoryType.displayCombatText,
+                                                        inventoryType.displayColor,
+                                                        inventoryType.displayColor.ChangeAlpha(0.0f),
+                                                        1.0f,
+                                                        1.0f);
+                        }
+                    }
+
                 }
             }
         }
@@ -265,6 +280,26 @@ public class Submarine : MonoBehaviour
             {
                 healthSystem.Heal(hr, false);
             }
+            else if (hr < 0.0f)
+            {
+                healthSystem.DealDamage(HealthSystem.DamageType.OverTime, Mathf.Abs(hr), transform.position, Vector3.zero);
+            }
+
+            if (inventoryType.speedAura != 1.0f)
+            {
+                auraLight.enabled = true;
+                auraLight.color = inventoryType.speedAuraColor;
+                auraLight.pointLightInnerRadius = inventoryType.speedAuraRadius * 0.5f;
+                auraLight.pointLightOuterRadius = inventoryType.speedAuraRadius;
+            }
+            else
+            {
+                auraLight.enabled = false;
+            }
+        }
+        else
+        {
+            auraLight.enabled = false;
         }
     }
 
@@ -280,7 +315,7 @@ public class Submarine : MonoBehaviour
             damage *= criticalMultiplier;
         }
 
-        healthSystem.DealDamage(DamageType.Burst, damage, collision.contacts[0].point, collision.contacts[0].normal);
+        healthSystem.DealDamage(HealthSystem.DamageType.Burst, damage, collision.contacts[0].point, collision.contacts[0].normal);
 
         // Check if collision was with another thing with health
     }
@@ -295,6 +330,7 @@ public class Submarine : MonoBehaviour
 
         var torpedo = Instantiate(torpedoPrefab, shootPoint.position, shootPoint.rotation);
         torpedo.SetPlayerId(playerId);
+        torpedo.speedModifier = (inventoryType) ? (inventoryType.weaponSpeedModifier) : (1.0f);
         var rb = torpedo.GetComponent<Rigidbody2D>();
         if (rb)
         {
@@ -362,5 +398,29 @@ public class Submarine : MonoBehaviour
 
         inventoryType = null;
         inventoryQuantity = 0;
+    }
+
+    public static float GetAura(Vector3 position, int playerId)
+    {
+        float speed = 1.0f;
+
+        var players = FindObjectsByType<Submarine>(FindObjectsSortMode.None);
+        foreach (var player in players)
+        {
+            if (player.playerId == playerId) continue;
+
+            if (player.inventoryType)
+            {
+                // Check distance
+                float distance = Vector3.Distance(position, player.transform.position);
+
+                if (distance < player.inventoryType.speedAuraRadius)
+                {
+                    speed *= player.inventoryType.speedAura;
+                }
+            }
+        }
+
+        return speed;
     }
 }

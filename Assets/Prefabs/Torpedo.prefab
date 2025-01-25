@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 7014500302478795428}
   - component: {fileID: 2405705035869205509}
   - component: {fileID: 6066637390496093680}
-  - component: {fileID: 5113020608957904864}
   - component: {fileID: 4212686664873384536}
+  - component: {fileID: 3722463758159727859}
+  - component: {fileID: 5113020608957904864}
   m_Layer: 0
   m_Name: Torpedo
   m_TagString: Untagged
@@ -60,7 +61,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 19d0aae2b125306439101204002324a6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -119,28 +120,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &5113020608957904864
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2606005527734810573}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c5b6150407cf88449bc4dcfeddba43f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxSpeed: 250
-  acceleration: 250
-  duration: 10
-  damage: 50
-  tracker: 0
-  trackPoint: {fileID: 453090873970044773}
-  angularTolerance: 45
-  rangeTolerance: 100
-  rotationSpeed: 360
-  explosionPrefab: {fileID: 8294285090635143417, guid: 063a999e28a630341b086e3025aeed4d, type: 3}
 --- !u!61 &4212686664873384536
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -187,6 +166,47 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 14, y: 4}
   m_EdgeRadius: 0
+--- !u!114 &3722463758159727859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2606005527734810573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fdf1d1ec10f329499fc8ba5a84b6392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effects: 0
+  palette: {fileID: 0}
+  inverseFactor: 0
+  flashColor: {r: 1, g: 1, b: 1, a: 0}
+  outlineWidth: 1
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!114 &5113020608957904864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2606005527734810573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c5b6150407cf88449bc4dcfeddba43f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 250
+  acceleration: 250
+  duration: 10
+  damage: 50
+  tracker: 0
+  alsoTrackTorpedoes: 0
+  trackPoint: {fileID: 453090873970044773}
+  angularTolerance: 45
+  rangeTolerance: 100
+  rotationSpeed: 360
+  explosionPrefab: {fileID: 8294285090635143417, guid: 063a999e28a630341b086e3025aeed4d, type: 3}
 --- !u!1 &5500554503368013734
 GameObject:
   m_ObjectHideFlags: 0
