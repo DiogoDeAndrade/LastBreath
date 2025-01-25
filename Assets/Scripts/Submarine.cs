@@ -19,19 +19,34 @@ public class Submarine : MonoBehaviour
     private float           cockpitDamageThreshould = 0.9f;
     [SerializeField]
     private float           criticalMultiplier = 2.0f;
-    [SerializeField, Header("Input")] 
-    private PlayerInput     playerInput;
-    [SerializeField, InputPlayer(nameof(playerInput))] 
-    private InputControl    moveControl;
     [SerializeField]
     private GameObject      explosionObject;
     [SerializeField]
     private GameObject[]    debries;
+    [SerializeField, Header("Torpedo")]
+    private int             maxTorpedo = 3;
+    [SerializeField]
+    private float           shootCooldown = 0.5f;
+    [SerializeField]
+    private Transform       shootPoint;
+    [SerializeField]
+    private Torpedo         torpedoPrefab;
+    [SerializeField, Header("Input")] 
+    private PlayerInput     playerInput;
+    [SerializeField, InputPlayer(nameof(playerInput))] 
+    private InputControl    moveControl;
+    [SerializeField, InputPlayer(nameof(playerInput)), InputButton]
+    private InputControl    shootControl;
 
     private Vector2         movementVector;
     private Rigidbody2D     rb;
     private HealthSystem    healthSystem;
     private SpriteEffect    spriteEffect;
+    private int             _ammo;
+    private float           cooldownTimer;
+
+    public float normalizedAmmo => _ammo / (float)maxTorpedo;
+    public float ammo => _ammo;
 
     public int playerId { get { return _playerId; } set { _playerId = value; } }
 
@@ -59,11 +74,14 @@ public class Submarine : MonoBehaviour
 
         MasterInputManager.SetupInput(_playerId, playerInput);
         moveControl.playerInput = playerInput;
+        shootControl.playerInput = playerInput;
 
         rb = GetComponent<Rigidbody2D>();
         healthSystem = GetComponent<HealthSystem>();
         healthSystem.onHit += HealthSystem_onHit;
         healthSystem.onDead += HealthSystem_onDead;
+
+        _ammo = maxTorpedo;
     }
 
     private void HealthSystem_onDead()
@@ -119,6 +137,12 @@ public class Submarine : MonoBehaviour
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Time.deltaTime * 720.0f);
             }
         }
+
+        if (shootControl.IsDown())
+        {
+            Shoot();
+        }
+        if (cooldownTimer > 0) cooldownTimer -= Time.deltaTime;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -136,5 +160,17 @@ public class Submarine : MonoBehaviour
         healthSystem.DealDamage(damage, collision.contacts[0].point, collision.contacts[0].normal);
 
         // Check if collision was with another thing with health
+    }
+
+    void Shoot()
+    {
+        if (_ammo <= 0) return;
+        if (cooldownTimer > 0) return;
+
+        _ammo--;
+        cooldownTimer = shootCooldown;
+
+        var torpedo = Instantiate(torpedoPrefab, shootPoint.position, shootPoint.rotation);
+        torpedo.SetPlayerId(playerId);
     }
 }

@@ -45,15 +45,24 @@ Players can now move around the map.
 
 - Fixed the bugs that took me so long yesterday in a few minutes!
 
+### Torpedos (Sat 12:30)
+
+- Torpedos done, including a homing one which is pretty cool, some fun to be had already
+
 ## Todo
 
 - ~~Bug with input and respawns~~
 - ~~Bug with explosion debris not showing up~~
 - ~~Critical damage~~
-- Torpedo
+- ~~Torpedo~~
+- City Reload
+- City Repair
+- Resource Spawns
 - City requests
+- Powerups
 - City upgrades
 - End conditions
+- SoundFX
 - Main menu
 - Character customization
 
