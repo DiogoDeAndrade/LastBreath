@@ -29,7 +29,7 @@ public class CityUI : MonoBehaviour
                 image.gameObject.SetActive(false);
                 text.color = new Color(0.1f, 0.7f, 0.1f, 1.0f);
 
-                int seconds = 1 + Mathf.FloorToInt(remainingTime) % 60;
+                int seconds = Mathf.FloorToInt(remainingTime) % 60;
                 text.text = $"{seconds.ToString("D2")}s";
             }
             return;

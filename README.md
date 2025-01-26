@@ -96,6 +96,10 @@ Players can now move around the map.
 
 - Got city graphics in, and a city revive mechanics (I know, I said feature lock...)
 
+### End conditions (Sun 11:15)
+
+- End conditions are now checked, game now can go back to main menu (if there is one), winner is announced
+
 ## Todo
 
 - ~~Bug with input and respawns~~
@@ -111,7 +115,7 @@ Players can now move around the map.
 - ~~More resource types~~
 - ~~City graphics~~
 - Screen shake
-- End conditions
+- ~~End conditions~~
 - Main menu
 - Character customization
 - SoundFX
@@ -121,6 +125,7 @@ Players can now move around the map.
 
 ## Art
 
+- Font [Optimus](https://www.dafont.com/pt/optimus.font) by [Pixel Sagas](https://www.dafont.com/pt/pixel-sagas.d32), free for non-commercial use.
 - Everything else done by [Diogo de Andrade], licensed through the [CC0] license.
 
 ## Sound

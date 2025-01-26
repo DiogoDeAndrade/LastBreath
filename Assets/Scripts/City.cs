@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 public class City : MonoBehaviour
 {
     [SerializeField] 
-    private int         playerId;
+    public int          playerId;
     [SerializeField, Header("Player Spawn")]
     private Submarine   playerPrefab;
     [SerializeField] 
@@ -201,7 +201,7 @@ public class City : MonoBehaviour
             _isReviving = false;
 
             // City is dead, let's get it back to life!
-            if ((revivePivot) && (reviveTime > 0))
+            if ((revivePivot) && (reviveTime > 0) && (player))
             {
                 float d = Vector3.Distance(revivePivot.position, player.transform.position);
                 if (d < AdjustRadius(reviveRadius))
@@ -253,7 +253,7 @@ public class City : MonoBehaviour
     {
         float s = bubbleRenderer.transform.localScale.x;
         bubbleRenderer.transform.ScaleTo(new Vector3(s * 2.1f, s * 2.1f, s * 2.1f), 0.25f).EaseFunction(Ease.Sqrt);
-        bubbleRenderer.FadeTo(new Color(1.0f, 1.0f, 1.0f, 0.0f), 0.25f).Done(() => { Debug.Log("Level Over"); }).EaseFunction(Ease.Sqrt);
+        bubbleRenderer.FadeTo(new Color(1.0f, 1.0f, 1.0f, 0.0f), 0.25f).EaseFunction(Ease.Sqrt);
     }
 
     float AdjustRadius(float r)

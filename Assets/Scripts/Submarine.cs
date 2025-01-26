@@ -1,3 +1,5 @@
+using System;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.Universal;
@@ -422,5 +424,15 @@ public class Submarine : MonoBehaviour
         }
 
         return speed;
+    }
+
+    internal InputControl GetAttackControl()
+    {
+        return shootControl;
+    }
+
+    internal InputControl GetGatherControl()
+    {
+        return gatherControl;
     }
 }
