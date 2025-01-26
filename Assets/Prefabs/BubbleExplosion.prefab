@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5359930692942667801}
   - component: {fileID: 5912457690498666069}
   - component: {fileID: 3070355499742780833}
+  - component: {fileID: 8908302596439063224}
   m_Layer: 0
   m_Name: BubbleExplosion
   m_TagString: Untagged
@@ -4891,3 +4892,20 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &8908302596439063224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8294285090635143417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9be0ec98bae1deb47b42b9400df96be7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trigger: 0
+  channel: 1
+  sound: {fileID: 8300000, guid: 3ecca9a2af0d153479fb10302f8d6246, type: 3}
+  volume: {x: 1, y: 1}
+  pitch: {x: 0.85303867, y: 1.1364641}

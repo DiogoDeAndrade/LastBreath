@@ -367,8 +367,8 @@ MonoBehaviour:
     keyPositive: 275
     keyNegative: 276
     inputAction: Attack
-  moveSnd: {fileID: 0}
-  selectSnd: {fileID: 0}
+  moveSnd: {fileID: 8300000, guid: 34613125421c21b4592e539801c94af8, type: 3}
+  selectSnd: {fileID: 8300000, guid: 884b9176429277e40b79f09d08d76676, type: 3}
   initialControl: {fileID: 827205145}
   playButton: {fileID: 827205145}
   creditsButton: {fileID: 99038435}
@@ -1050,6 +1050,7 @@ GameObject:
   - component: {fileID: 1666650594}
   - component: {fileID: 1666650593}
   - component: {fileID: 1666650592}
+  - component: {fileID: 1666650595}
   m_Layer: 0
   m_Name: BubbleBurst
   m_TagString: Untagged
@@ -2081,7 +2082,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 30
+        scalar: 50
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -5924,12 +5925,26 @@ Transform:
   m_GameObject: {fileID: 1666650591}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 280, y: -182, z: 0}
+  m_LocalPosition: {x: 280, y: -211, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &1666650595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1666650591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6779ba54e108c944b9b64231117691a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: {x: 1, y: 7.5082874}
+  xCoord: {x: -260, y: 260}
 --- !u!1 &1679557728
 GameObject:
   m_ObjectHideFlags: 0
@@ -11379,6 +11394,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoundManager
       objectReference: {fileID: 0}
+    - target: {fileID: 4803186802883323916, guid: ffe4b548126647f418f8f581318f0d8b, type: 3}
+      propertyPath: startMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 3b6db256e02efb74f9d6cf13a742f6e6, type: 3}
     - target: {fileID: 9062741671449663517, guid: ffe4b548126647f418f8f581318f0d8b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

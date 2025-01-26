@@ -13,6 +13,18 @@ Art
 
 Sound
 
+<size=60%>Game Start Sound by plasterbrain, [CC0] license.
+<size=60%>Synthetic Submarine Rotor by urbanmatter, [CC-BY 3.0] license.
+<size=60%>Depth Charges Kaboom SFX by Renovatio871, [CC0] license.
+<size=60%>S21-24 Underwater metal clanking by craigsmith, [CC0] license.
+<size=60%>SFX Electric ACtuator Under Load 1 by mpuffenbarger, [CC0] license.
+<size=60%>metal store rideau métallique #2 by arnaud coutancier, [CC-BY-NC 3.0] license.
+<size=60%>m4a1 or m16 reload sound by GFL7, [CC0] license.
+<size=60%>SONAR_830Hz_synthesized by MURAY, [CC0] license.
+<size=60%>Geiger Counter Hotspot (Extreme 2) by cookies+policy, [CC0] license.
+<size=60%>8 morse channels simultaneously 230805 21018.3kHz by klankbeeld, [CC-BY 4.0] license.
+<size=60%>item_respawn by Silencer1337, [CC0] license.
+<size=60%>150209 Trevor Webb Air Cyclinder by Bleachbear, [CC-BY-NC 3.0] license.
 <size=60%>Songs AI generated using Suno
 <size=60%>Everything else done by Diogo de Andrade, CC0 license
 

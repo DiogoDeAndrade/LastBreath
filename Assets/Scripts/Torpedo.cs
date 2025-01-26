@@ -26,6 +26,8 @@ public class Torpedo : MonoBehaviour
     private float       rangeTolerance = 100.0f;
     [SerializeField, ShowIf(nameof(tracker))]
     private float       rotationSpeed = 360.0f;
+    [SerializeField]
+    private AudioClip   sonarSnd;
     [SerializeField] 
     private GameObject  explosionPrefab;
 
@@ -34,6 +36,7 @@ public class Torpedo : MonoBehaviour
     private float       timer;
     private float       _speedModifier = 1.0f;
     private float       _damageModifier = 1.0f;
+    private bool        targetAcquired;
 
     public float speedModifier
     {
@@ -92,7 +95,15 @@ public class Torpedo : MonoBehaviour
                 {
                     if (sub.playerId != _playerId)
                     {
-                        if (Track(sub.transform)) return;
+                        if (Track(sub.transform))
+                        {
+                            if (!targetAcquired)
+                            {
+                                SoundManager.PlaySound(SoundType.PrimaryFX, sonarSnd);
+                                targetAcquired = true;
+                            }
+                            return;
+                        }
                     }
                 }
                 if (alsoTrackTorpedoes)
@@ -102,11 +113,20 @@ public class Torpedo : MonoBehaviour
                     {
                         if (torpedo._playerId != _playerId)
                         {
-                            if (Track(torpedo.transform)) return;
+                            if (Track(torpedo.transform))
+                            {
+                                if (!targetAcquired)
+                                {
+                                    SoundManager.PlaySound(SoundType.PrimaryFX, sonarSnd);
+                                    targetAcquired = true;
+                                }
+                                return;
+                            }
                         }
                     }
                 }
             }
+            targetAcquired = false;
         }
     }
 

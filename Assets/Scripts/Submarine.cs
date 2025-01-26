@@ -44,6 +44,16 @@ public class Submarine : MonoBehaviour
     private Resource        resourcePrefab;
     [SerializeField, Header("Aura")]
     private Light2D         auraLight;
+    [SerializeField, Header("Sound")]
+    private AudioClip       torpedoLaunchSnd;
+    [SerializeField]
+    private AudioClip       hitSnd;
+    [SerializeField]
+    private AudioClip       startGrabSnd;
+    [SerializeField]
+    private AudioClip       endGrabSnd;
+    [SerializeField]
+    private AudioSource     engineAudioSrc;
     [SerializeField, Header("Input")] 
     private PlayerInput     playerInput;
     [SerializeField, InputPlayer(nameof(playerInput))] 
@@ -156,6 +166,11 @@ public class Submarine : MonoBehaviour
             rb.linearVelocity = Vector2.Reflect(prevVelocity, damageNormal);
 
             transform.rotation = Quaternion.LookRotation(Vector3.forward, rb.linearVelocity.Perpendicular());
+
+            if (hitSnd)
+            {
+                SoundManager.PlaySound(SoundType.PrimaryFX, hitSnd, 1.0f, UnityEngine.Random.Range(0.9f, 1.1f));
+            }
         }
         if ((hitFlash == null) || (hitFlash.isFinished))
         {
@@ -189,6 +204,13 @@ public class Submarine : MonoBehaviour
 
     private void Update()
     {
+        if (engineAudioSrc)
+        {
+            float normalizedSpeed = Mathf.Clamp01(rb.linearVelocity.magnitude / maxSpeed);
+            engineAudioSrc.volume = 0.5f * Mathf.Clamp01(normalizedSpeed * 10.0f);
+            engineAudioSrc.pitch = 0.5f + 0.5f * normalizedSpeed;
+        }
+
         movementVector = moveControl.GetAxis2();
 
         if (!healthSystem.isInvulnerable)
@@ -248,6 +270,8 @@ public class Submarine : MonoBehaviour
                 if (grabT >= 1.0f)
                 {
                     // Done, gathered
+                    if (endGrabSnd) SoundManager.PlaySound(SoundType.PrimaryFX, endGrabSnd, 1.0f, 1.0f);
+
                     inventoryType = grabResource.data;
                     inventoryQuantity++;
 
@@ -338,6 +362,7 @@ public class Submarine : MonoBehaviour
         {
             rb.linearVelocity = this.rb.linearVelocity;
         }
+        if (torpedoLaunchSnd) SoundManager.PlaySound(SoundType.PrimaryFX, torpedoLaunchSnd, 1.0f, UnityEngine.Random.Range(0.75f, 1.0f));
     }
 
     public void AddAmmo(int delta)
@@ -360,6 +385,8 @@ public class Submarine : MonoBehaviour
                     grabResource.Grab();
                     grabGoingOut = true;
                     grabT = 0.0f;
+
+                    if (startGrabSnd) SoundManager.PlaySound(SoundType.PrimaryFX, startGrabSnd, 1.0f, 1.0f);
                     return;
                 }
             }

@@ -232,8 +232,8 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 224092039
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!114 &4506597425251269376
 MonoBehaviour:
@@ -604,6 +604,13 @@ MonoBehaviour:
   reviveRadius: 200
   reviveTime: 10
   oxygenPerResource: 100
+  reloadSnd: {fileID: 8300000, guid: 4545afc3be752984c951ce6785522ff5, type: 3}
+  requestSnd: {fileID: 8300000, guid: 981b099b7889c354f96a7e4c728aca92, type: 3}
+  respawnSnd: {fileID: 8300000, guid: 35590c514e692284588f7184bbb21d96, type: 3}
+  airDropSnd: {fileID: 8300000, guid: 8759a832dcb46ea489158e83609d9ba8, type: 3}
+  requestSuccessSnd: {fileID: 8300000, guid: 94c4c214af8ca334cb0a62b3fc7fd95f, type: 3}
+  breakerSnd: {fileID: 8300000, guid: 74d4147e5f6179a4db842bed091a6101, type: 3}
+  invBreakerSnd: {fileID: 8300000, guid: 4c2f0d584e790874aaf99b5b4de4bde5, type: 3}
   bubbleRenderer: {fileID: 2000768088621893035}
   bubbleGradient:
     serializedVersion: 2

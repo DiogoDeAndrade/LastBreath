@@ -25,6 +25,10 @@ PrefabInstance:
       value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 5113020608957904864, guid: 469f1a67c9f5f444ea2405113e95a258, type: 3}
+      propertyPath: sonarSnd
+      value: 
+      objectReference: {fileID: 8300000, guid: 291c63bbd9d721942b3e0e84b6586194, type: 3}
+    - target: {fileID: 5113020608957904864, guid: 469f1a67c9f5f444ea2405113e95a258, type: 3}
       propertyPath: acceleration
       value: 300
       objectReference: {fileID: 0}

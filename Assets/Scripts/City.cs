@@ -51,7 +51,20 @@ public class City : MonoBehaviour
     private float       reviveTime = 10.0f;
     [SerializeField]
     private float       oxygenPerResource = 50.0f;
-
+    [SerializeField, Header("Audio")]
+    private AudioClip   reloadSnd;
+    [SerializeField]
+    private AudioClip   requestSnd;
+    [SerializeField]
+    private AudioClip   respawnSnd;
+    [SerializeField]
+    private AudioClip   airDropSnd;
+    [SerializeField]
+    private AudioClip   requestSuccessSnd;
+    [SerializeField]
+    private AudioClip   breakerSnd;
+    [SerializeField]
+    private AudioClip   invBreakerSnd;
     [SerializeField, Header("Visuals")]
     private SpriteRenderer  bubbleRenderer;
     [SerializeField]
@@ -75,6 +88,7 @@ public class City : MonoBehaviour
     Sprite          liveCitySprite;
     float           cityLightsBlinkTimer;
     bool            _isReviving;
+    bool            firstSpawn = true;
 
     public bool isPlayerDead => player == null;
     public float timeToRespawn => penaltyTimer;
@@ -113,6 +127,15 @@ public class City : MonoBehaviour
                     player.playerId = playerId;
                     player.name = $"Player {playerId}";
                     penaltyTimer = penaltyDuration;
+
+                    if (firstSpawn)
+                    {
+                        firstSpawn = false;
+                    }
+                    else
+                    {
+                        if (respawnSnd) SoundManager.PlaySound(SoundType.PrimaryFX, respawnSnd, 1.0f, 1.0f);
+                    }
                 }
             }
             else
@@ -129,6 +152,8 @@ public class City : MonoBehaviour
                         {
                             player.AddAmmo(1);
                             ammoReload -= reloadTime;
+
+                            if (reloadSnd) SoundManager.PlaySound(SoundType.PrimaryFX, reloadSnd, 1.0f, 1.0f);
                         }
                     }
                 }
@@ -159,16 +184,20 @@ public class City : MonoBehaviour
                             {
                                 oxygenCount = player.item.valueMultiplier * oxygenPerResource * (requestedQuantity * 2.0f + (player.itemCount - requestedQuantity));
 
+                                if (requestSuccessSnd) SoundManager.PlaySound(SoundType.PrimaryFX, requestSuccessSnd, 0.5f);
+
                                 CancelAllRequests();
                             }
                         }
                         else
                         {
                             oxygenCount = oxygenPerResource * player.itemCount * player.item.valueMultiplier;
+
+                            if (airDropSnd) SoundManager.PlaySound(SoundType.PrimaryFX, airDropSnd);
                         }
                         if (oxygenCount > 0.0f)
                         {
-                            ChangeOxygen(oxygenCount);
+                            ChangeOxygen(oxygenCount);                            
 
                             player.DropAll(true);
                         }
@@ -188,6 +217,8 @@ public class City : MonoBehaviour
             if (oxygen <= 0.0f)
             {
                 PopBubble();
+
+                if (breakerSnd) SoundManager.PlaySound(SoundType.PrimaryFX, breakerSnd);
             }
             else
             {
@@ -213,6 +244,8 @@ public class City : MonoBehaviour
                     {
                         // Bring it back to life!
                         oxygen = startOxygen;
+                        if (airDropSnd) SoundManager.PlaySound(SoundType.PrimaryFX, airDropSnd);
+                        if (invBreakerSnd) SoundManager.PlaySound(SoundType.PrimaryFX, invBreakerSnd);
                     }
                     else
                     {
@@ -339,6 +372,8 @@ public class City : MonoBehaviour
             }
 
             timeOfNewRequest = 0;
+
+            if (requestSnd) SoundManager.PlaySound(SoundType.PrimaryFX, requestSnd, 1.0f, 1.0f);
         }
         else
         {
