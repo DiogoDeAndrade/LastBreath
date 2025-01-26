@@ -18,7 +18,7 @@ MonoBehaviour:
   nodeImage: {fileID: 21300000, guid: 193595f92e5964f469c0184b72012989, type: 3}
   resourceImage: {fileID: 21300000, guid: c8de54304952e424eaf2c39cf471400d, type: 3}
   valueMultiplier: 1
-  healthRegen: 10
+  healthRegen: 7
   speedModifier: 1
   weaponSpeedModifier: 1
   speedAura: 1

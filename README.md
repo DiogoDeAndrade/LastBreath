@@ -30,8 +30,8 @@ Developed for the [Global Game Jam'25] at Lusofona University, with theme "Bubbl
 
 ### First prototype - movement (Fri 19:30)
 
-![Design](Screenshots/screen01.png)
-![Design](Screenshots/screen02.png)
+![DevShot](Screenshots/screen01.png)
+![DevShot](Screenshots/screen02.png)
 
 Players can now move around the map.
 
@@ -41,37 +41,37 @@ Players can now move around the map.
 
 ### Restart on Saturday (Sat 10:00)
 
-![Design](Screenshots/screen03.png)
+![DevShot](Screenshots/screen03.png)
 
 - Fixed the bugs that took me so long yesterday in a few minutes!
 
 ### Torpedos (Sat 12:30)
 
-![Design](Screenshots/screen04.png)
+![DevShot](Screenshots/screen04.png)
 
 - Torpedos done, including a homing one which is pretty cool, some fun to be had already
 
 ### Reload/Repair (Sat 13:30)
 
-![Design](Screenshots/screen05.png)
+![DevShot](Screenshots/screen05.png)
 
 - Reload and repair at cities done
 
 ### Resource spawning (Sat 15:00)
 
-![Design](Screenshots/screen06.png)
+![DevShot](Screenshots/screen06.png)
 
 - Resource system in place (spawns)
 
 ### Resource gathering (Sat 16:40)
 
-![Design](Screenshots/screen07.png)
+![DevShot](Screenshots/screen07.png)
 
 - Resources can now be gathered and there's an inventory system in place
 
 ### City requests (Sat 18:10)
 
-![Design](Screenshots/screen08.png)
+![DevShot](Screenshots/screen08.png)
 
 - Cities now request resources and we have to go get them
 
@@ -81,10 +81,20 @@ Players can now move around the map.
 
 ### Resource modifiers (Sat 22:15)
 
-![Design](Screenshots/screen09.png)
+![DevShot](Screenshots/screen09.png)
 
 - Added resource modifiers - when you carry the resources, you are subject to some effects
 - Added new resource types
+
+### Back to work (Sun 09:45)
+
+- Going back to work, to finish and polish existing stuff, we're feature locked
+
+### Big city lights (Sun 10:45)
+
+![DevShot](Screenshots/screen10.png)
+
+- Got city graphics in, and a city revive mechanics (I know, I said feature lock...)
 
 ## Todo
 
@@ -99,12 +109,12 @@ Players can now move around the map.
 - ~~City requests~~
 - ~~Resource modifiers~~
 - ~~More resource types~~
-- City graphics
+- ~~City graphics~~
 - Screen shake
 - End conditions
-- SoundFX
 - Main menu
 - Character customization
+- SoundFX
 - New submarine 
 - Powerups
 - City upgrades

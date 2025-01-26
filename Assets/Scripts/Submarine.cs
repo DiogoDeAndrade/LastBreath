@@ -275,7 +275,7 @@ public class Submarine : MonoBehaviour
 
         if (inventoryType != null)
         {
-            float hr = inventoryType.healthRegen * Time.deltaTime;
+            float hr = inventoryQuantity * inventoryType.healthRegen * Time.deltaTime;
             if (hr > 0.0f)
             {
                 healthSystem.Heal(hr, false);

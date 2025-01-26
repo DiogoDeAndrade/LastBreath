@@ -1,10 +1,22 @@
 fileFormatVersion: 2
-guid: 0898323894bf01e499115fb9c9114d43
+guid: 87ab8a8fcc1cc8a45a7901f2638da8fe
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5001428730923334541
-    second: underwater_gradient_0
+      213: -3588608733825491896
+    second: city_dead_0
+  - first:
+      213: -4082202986551574843
+    second: city_dead_1
+  - first:
+      213: 75466034433600609
+    second: city_dead_2
+  - first:
+      213: 3974441328394374132
+    second: city_dead_3
+  - first:
+      213: -6656080465931135189
+    second: city_dead_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +49,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -48,7 +60,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 1
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 1
@@ -100,13 +112,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: underwater_gradient_0
+      name: city_dead_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 32
+        x: 119
+        y: 247
+        width: 24
+        height: 7
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +127,96 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 374c1e3611b579ab0800000000000000
-      internalID: -5001428730923334541
+      spriteID: 84c977eae53b23ec0800000000000000
+      internalID: -3588608733825491896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: city_dead_1
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 247
+        width: 20
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5cefd8d130a1957c0800000000000000
+      internalID: -4082202986551574843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: city_dead_2
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 247
+        width: 88
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16ca50f55fb1c0100800000000000000
+      internalID: 75466034433600609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: city_dead_3
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 247
+        width: 120
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fb0497a45d082730800000000000000
+      internalID: 3974441328394374132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: city_dead_4
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 247
+        width: 20
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2712c7e41ad0a3a0800000000000000
+      internalID: -6656080465931135189
       vertices: []
       indices: 
       edges: []
@@ -135,7 +235,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      underwater_gradient_0: -5001428730923334541
+      city_dead_0: -3588608733825491896
+      city_dead_1: -4082202986551574843
+      city_dead_2: 75466034433600609
+      city_dead_3: 3974441328394374132
+      city_dead_4: -6656080465931135189
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

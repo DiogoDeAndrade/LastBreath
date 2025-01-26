@@ -44,26 +44,43 @@ public class City : MonoBehaviour
     [SerializeField]
     private float       gatherRadius = 50.0f;
     [SerializeField]
+    private Transform   revivePivot;
+    [SerializeField]
+    private float       reviveRadius= 50.0f;
+    [SerializeField]
+    private float       reviveTime = 10.0f;
+    [SerializeField]
     private float       oxygenPerResource = 50.0f;
 
     [SerializeField, Header("Visuals")]
     private SpriteRenderer  bubbleRenderer;
     [SerializeField]
-    private Gradient    bubbleGradient;
+    private Gradient        bubbleGradient;
     [SerializeField]
-    private CityUI   requestUI;
+    private SpriteRenderer  cityRenderer;
+    [SerializeField]
+    private Sprite          deadCitySprite;
+    [SerializeField]
+    private CityUI      requestUI;
 
     float           penaltyTimer = 0.0f;
     Submarine       player;
     float           oxygen;
     float           ammoReload;
+    float           reviveTimer;
     ResourceData    requestedItem;
     int             requestedQuantity;
     float           timeOfNewRequest;
+    Material        cityMaterial;
+    Sprite          liveCitySprite;
+    float           cityLightsBlinkTimer;
+    bool            _isReviving;
 
     public bool isPlayerDead => player == null;
     public float timeToRespawn => penaltyTimer;
-    internal bool isDead => oxygen <= 0.0f;
+    public bool isDead => oxygen <= 0.0f;
+    public float remainingTimeToRevive => (reviveTime > 0) ? (reviveTime - reviveTimer) : (0);
+    public bool isReviving => _isReviving;
 
     public ResourceData requestItem => requestedItem;
     public int          requestCount => requestedQuantity;
@@ -72,6 +89,10 @@ public class City : MonoBehaviour
     {
         oxygen = startOxygen;
         timeOfNewRequest = 5.0f;
+        cityMaterial = new Material(cityRenderer.material);
+        cityRenderer.material = cityMaterial;
+        cityMaterial.SetColor("_EmissiveColor", new Color(3.0f, 3.0f, 3.0f, 1.0f));
+        liveCitySprite = cityRenderer.sprite;
     }
 
     void Update()
@@ -79,12 +100,6 @@ public class City : MonoBehaviour
         if (oxygen > 0)
         {
             ChangeOxygen(-oxygenLossPerSecond * Time.deltaTime);
-
-            float t = oxygen / maxOxygen;
-            float s = Mathf.Lerp(sizeRange.x, sizeRange.y, t);
-            transform.localScale = new Vector3(s, s, s);
-
-            bubbleRenderer.color = bubbleGradient.Evaluate(t);
 
             if (player == null)
             {
@@ -174,10 +189,57 @@ public class City : MonoBehaviour
             {
                 PopBubble();
             }
+            else
+            {
+                reviveTimer = 0;
+            }
+
+            UpdateBubbleGfx();
         }
         else
         {
+            _isReviving = false;
 
+            // City is dead, let's get it back to life!
+            if ((revivePivot) && (reviveTime > 0))
+            {
+                float d = Vector3.Distance(revivePivot.position, player.transform.position);
+                if (d < AdjustRadius(reviveRadius))
+                {
+                    _isReviving = true;
+
+                    reviveTimer += Time.deltaTime;
+                    if (reviveTimer > reviveTime)
+                    {
+                        // Bring it back to life!
+                        oxygen = startOxygen;
+                    }
+                    else
+                    {
+                        cityLightsBlinkTimer -= Time.deltaTime;
+                        if (cityLightsBlinkTimer < 0.0f)
+                        {
+                            if (Random.Range(0, 100) < 75)
+                            {
+                                cityRenderer.sprite = deadCitySprite;
+                            }
+                            else
+                            {
+                                cityRenderer.sprite = liveCitySprite;
+                            }
+                            cityLightsBlinkTimer = Random.Range(0.25f, 0.75f);
+                        }
+                    }
+                }
+                else
+                {
+                    cityRenderer.sprite = deadCitySprite;
+                }
+            }
+            else
+            {
+                cityRenderer.sprite = deadCitySprite;
+            }
         }
     }
 
@@ -189,15 +251,14 @@ public class City : MonoBehaviour
     [Button("Pop bubble")]
     public void PopBubble()
     {
-        float s = transform.localScale.x;
-        transform.ScaleTo(new Vector3(s * 1.1f, s * 1.1f, s * 1.1f), 0.25f).EaseFunction(Ease.Sqrt);
-        //bubbleRenderer.color = Color.white;
+        float s = bubbleRenderer.transform.localScale.x;
+        bubbleRenderer.transform.ScaleTo(new Vector3(s * 2.1f, s * 2.1f, s * 2.1f), 0.25f).EaseFunction(Ease.Sqrt);
         bubbleRenderer.FadeTo(new Color(1.0f, 1.0f, 1.0f, 0.0f), 0.25f).Done(() => { Debug.Log("Level Over"); }).EaseFunction(Ease.Sqrt);
     }
 
     float AdjustRadius(float r)
     {
-        if (useScaleOnRadius) return r * transform.localScale.x;
+        if (useScaleOnRadius) return r * bubbleRenderer.transform.localScale.x;
 
         return r;
     }
@@ -285,6 +346,26 @@ public class City : MonoBehaviour
         }
     }
 
+    void UpdateBubbleGfx()
+    {
+        float t = oxygen / maxOxygen;
+        float s = Mathf.Lerp(sizeRange.x, sizeRange.y, t);
+        bubbleRenderer.transform.localScale = new Vector3(s, s, s);
+
+        bubbleRenderer.color = bubbleGradient.Evaluate(t);
+
+        if (t < 0.1f)
+        {
+            cityMaterial.SetColor("_EmissiveColor", new Color(0.0f, 0.0f, 0.0f, 1.0f));
+            cityRenderer.sprite = deadCitySprite;
+        }
+        else
+        {
+            cityMaterial.SetColor("_EmissiveColor", Color.Lerp(new Color(0.0f, 0.0f, 0.0f, 1.0f), new Color(3.0f, 3.0f, 3.0f, 1.0f), (s - 0.65f) / 0.2f));
+            cityRenderer.sprite = liveCitySprite;
+        }
+    }
+
     private void OnDrawGizmosSelected()
     {
         if (reloadPivot)
@@ -299,5 +380,25 @@ public class City : MonoBehaviour
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(repairPivot.position, r);
         }
+        if (gatherPivot)
+        {
+            float r = AdjustRadius(gatherRadius);
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(gatherPivot.position, r);
+        }
+        if (revivePivot)
+        {
+            float r = AdjustRadius(reviveRadius);
+            Gizmos.color = Color.magenta;
+            Gizmos.DrawWireSphere(revivePivot.position, r);
+        }
+    }
+
+    [Button("Kill")]
+    void Kill()
+    {
+        ChangeOxygen(-maxOxygen * 2.0f);
+        UpdateBubbleGfx();
+        PopBubble();
     }
 }

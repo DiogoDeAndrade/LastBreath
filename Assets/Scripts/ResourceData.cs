@@ -19,7 +19,6 @@ public class ResourceData : ScriptableObject
     public float speedAuraRadius = 200.0f;
     [ShowIf(nameof(hasSpeedAura))]
     public Color speedAuraColor = Color.white;
-
     bool hasSpeedAura => speedAura != 1.0f;
 }
 
