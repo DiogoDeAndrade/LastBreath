@@ -1,5 +1,7 @@
 # BUBBLE
 
+![Title](Screenshots/title.png)
+
 Developed for the [Global Game Jam'25] at Lusofona University, with theme "Bubble".
 
 ## Game
@@ -100,6 +102,10 @@ Players can now move around the map.
 
 - End conditions are now checked, game now can go back to main menu (if there is one), winner is announced
 
+### Title screen (Sun 12:15)
+
+- Title screen done, now moving on to customization
+
 ## Todo
 
 - ~~Bug with input and respawns~~
@@ -116,16 +122,23 @@ Players can now move around the map.
 - ~~City graphics~~
 - Screen shake
 - ~~End conditions~~
-- Main menu
+- ~~Main menu~~
 - Character customization
 - SoundFX
 - New submarine 
+
+## Future
+- Remove AI stuff
+- Extra player count (>2)
+- Single player mode (AI bots)
 - Powerups
 - City upgrades
 
 ## Art
 
+- [UI Pack Sci-Fi](https://kenney.nl/assets/ui-pack-sci-fi) by [Kenney](https://kenney.nl), licensed through the [CC0] license.
 - Font [Optimus](https://www.dafont.com/pt/optimus.font) by [Pixel Sagas](https://www.dafont.com/pt/pixel-sagas.d32), free for non-commercial use.
+- Logo created using Dall-E
 - Everything else done by [Diogo de Andrade], licensed through the [CC0] license.
 
 ## Sound
