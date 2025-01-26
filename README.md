@@ -106,6 +106,12 @@ Players can now move around the map.
 
 - Title screen done, now moving on to customization
 
+### Customizer screen (Sun 12:45)
+
+![DevShot](Screenshots/screen11.png)
+
+- Sub customization done (code was basically ripped from Space Race: https://github.com/DiogoDeAndrade/SpaceRace)
+
 ## Todo
 
 - ~~Bug with input and respawns~~
@@ -123,7 +129,7 @@ Players can now move around the map.
 - Screen shake
 - ~~End conditions~~
 - ~~Main menu~~
-- Character customization
+- ~~Character customization~~
 - SoundFX
 - New submarine 
 
