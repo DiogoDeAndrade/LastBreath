@@ -6,6 +6,27 @@ Developed for the [Global Game Jam'25] at Lusofona University, with theme "Bubbl
 
 ## Game
 
+In "Last Breath", humanity has gone underwater after an ecological disaster, but its tendencies followed.
+Fight for resources to keep your city afloat, killing and stealing to maintain supremacy.
+
+This is a two-player couch game where the players have to gather resources to supply air to their underwater city.
+
+The game can be played with two gamepads or one gamepad and keyboard.
+
+Controls:
+
+|Control|Gamepad|Keyboard|
+|:----:|:----:|:----:|
+|Move	|Left analog|	WASD/Cursors|
+|Fire Torpedos	|West button	|Ctrl|
+|Gather Resources	|South button	|Space|
+|Drop Resources|	East button|	C|
+
+You can only carry one type of resource at a time, but no limit in the quantity you can carry. All resources have effects while being carried.
+
+When you get destroyed, you'll respawn at your base after a bit. When your base runs out of oxygen, you can't respawn. If it runs out of oxygen, you can try to restore it, by spending some time at the base.
+
+Game ends when one city is out of oxygen, and the associated player is dead.
 
 ## Dev Log
 

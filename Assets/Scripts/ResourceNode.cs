@@ -1,9 +1,5 @@
 using NaughtyAttributes;
 using UnityEngine;
-using System.Collections.Generic;
-using Mono.Cecil;
-using System.Runtime.CompilerServices;
-using System;
 
 public class ResourceNode : MonoBehaviour
 {

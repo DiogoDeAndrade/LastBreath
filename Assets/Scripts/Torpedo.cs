@@ -1,9 +1,8 @@
-using Mono.Cecil;
 using NaughtyAttributes;
-using UnityEditor;
-using UnityEditor.Hardware;
 using UnityEngine;
-using static HealthSystem;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class Torpedo : MonoBehaviour
 {
@@ -147,13 +146,14 @@ public class Torpedo : MonoBehaviour
         }
 
         var health = collision.GetComponent<HealthSystem>();
-        health?.DealDamage(DamageType.Burst, damage * _damageModifier, transform.position, Vector3.zero);
+        health?.DealDamage(HealthSystem.DamageType.Burst, damage * _damageModifier, transform.position, Vector3.zero);
 
         if (explosionPrefab) Instantiate(explosionPrefab, transform.position, transform.rotation);
 
         Destroy(gameObject);
     }
 
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         if ((tracker) && (trackPoint != null))
@@ -162,4 +162,5 @@ public class Torpedo : MonoBehaviour
             Handles.DrawSolidArc(trackPoint.position, Vector3.forward, transform.right.RotateZ(-angularTolerance), angularTolerance * 2.0f, rangeTolerance);
         }
     }
+#endif
 }
