@@ -47,16 +47,19 @@ public class SubCustomization : MonoBehaviour
         var modifiedPalette = originalPalette.Clone();
 
         Color.RGBToHSV(hullColor, out float h, out float s, out float v);
-        modifiedPalette.SetColor(3, Color.HSVToRGB(h, s, v * 0.75f));
-        modifiedPalette.SetColor(4, Color.HSVToRGB(h, s, v));
+        modifiedPalette.SetColor("Hull0", Color.HSVToRGB(h, s, v * 0.5f));
+        modifiedPalette.SetColor("Hull1", Color.HSVToRGB(h, s, v * 0.75f));
+        modifiedPalette.SetColor("Hull2", Color.HSVToRGB(h, s, v));
 
         Color.RGBToHSV(stripecolor, out h, out s, out v);
-        modifiedPalette.SetColor(5, Color.HSVToRGB(h, s, v * 0.75f));
-        modifiedPalette.SetColor(6, Color.HSVToRGB(h, s, v));
+        modifiedPalette.SetColor("Stripe0", Color.HSVToRGB(h, s, v * 0.5f));
+        modifiedPalette.SetColor("Stripe1", Color.HSVToRGB(h, s, v * 0.75f));
+        modifiedPalette.SetColor("Stripe2", Color.HSVToRGB(h, s, v));
 
         Color.RGBToHSV(cockpitColor, out h, out s, out v);
-        modifiedPalette.SetColor(7, Color.HSVToRGB(h, s, v * 0.75f));
-        modifiedPalette.SetColor(8, Color.HSVToRGB(h, s, v));
+        modifiedPalette.SetColor("Cockpit0", Color.HSVToRGB(h, s, v * 0.5f));
+        modifiedPalette.SetColor("Cockpit1", Color.HSVToRGB(h, s, v * 0.75f));
+        modifiedPalette.SetColor("Cockpit2", Color.HSVToRGB(h, s, v));
 
         modifiedPalette.RefreshCache();
 

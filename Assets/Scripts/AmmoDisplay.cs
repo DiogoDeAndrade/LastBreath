@@ -12,6 +12,8 @@ public class AmmoDisplay : ResourceBar
 
     protected override float GetResourceCount()
     {
-        return submarine.ammo;
+        if (LevelManager.weaponsFree) return submarine.ammo;
+
+        return 0;
     }
 }

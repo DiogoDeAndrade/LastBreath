@@ -298,17 +298,17 @@ public class City : MonoBehaviour
 
     void CancelAllRequests()
     {
-        if (GameManager.GetPhase() == GameManager.Phase.Phase1)
-        {
-            CancelRequest();
-        }
-        else
+        if (LevelManager.shouldCancelAllRequests)
         {
             var cities = FindObjectsByType<City>(FindObjectsSortMode.None);
             foreach (var city in cities)
             {
                 city.CancelRequest();
             }
+        }
+        else
+        {
+            CancelRequest();
         }
     }
 
@@ -335,7 +335,7 @@ public class City : MonoBehaviour
             }
         }
 
-        if (GameManager.GetPhase() == GameManager.Phase.Phase1)
+        if (!LevelManager.shouldCompeteForResources)
         {
             // Exclude all resources that have less than 2 available
             List<ResourceData> toRemove = new();
@@ -352,7 +352,7 @@ public class City : MonoBehaviour
         if (keys.Count > 0)
         {
             requestedItem = keys.Random();
-            if (GameManager.GetPhase() == GameManager.Phase.Phase1)
+            if (!LevelManager.shouldCompeteForResources)
                 requestedQuantity = Mathf.FloorToInt(resourceTypeCount[requestedItem] * 0.5f);
             else
             {

@@ -6,21 +6,40 @@ using NaughtyAttributes;
 public class LevelManager : MonoBehaviour
 {
     enum GameState { Ongoing, GameOver };
-
+    // Concept:
+    // Phase 1: Cities have different requests, and conflict is kept to a minimum, no torpedos
+    // Phase 2: Cities have the same request, no torpedos
+    // Phase 3: Weapons free
     [SerializeField] 
-    private CanvasGroup        gameOverCanvas;
+    private CanvasGroup     gameOverCanvas;
     [SerializeField] 
-    private TextMeshProUGUI    gameOverText;
+    private TextMeshProUGUI gameOverText;
     [SerializeField, Scene] 
     private string titleScene;
 
     private City[]      cities;
     private GameState   state = GameState.Ongoing;
     private int         winnerId;
+    private int         _phase;
+    private float       matchDuration;
+
+    private static LevelManager Instance;
 
     void Start()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         cities = FindObjectsByType<City>(FindObjectsSortMode.None);
+        _phase = 0;
+        matchDuration = 0;
     }
 
     void Update()
@@ -47,6 +66,17 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
+            // Phases
+            matchDuration += Time.deltaTime;
+
+            switch (_phase)
+            {
+                case 0: if (matchDuration > 30.0f) _phase = 1; break;
+                case 1: if (matchDuration > 75.0f) _phase = 2; break;
+                case 2: break;
+            }
+
+            // Win condition
             int alive = 0;
             foreach (var city in cities)
             {
@@ -98,4 +128,13 @@ public class LevelManager : MonoBehaviour
             });
         }
     }
+
+    // When we sort a request, should we clear all requests on all cities?
+    public static bool shouldCancelAllRequests => Instance._phase > 0;
+    // Should we force competition or not (divide requests by two)
+    public static bool shouldCompeteForResources => Instance._phase > 0;
+    // Can we shoot
+    public static bool weaponsFree => Instance._phase > 1;
+    // What's the phase?
+    public static int phase => Instance._phase;
 }

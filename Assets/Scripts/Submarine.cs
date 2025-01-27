@@ -226,10 +226,14 @@ public class Submarine : MonoBehaviour
             }
         }
 
-        if (shootControl.IsDown())
+        if (LevelManager.weaponsFree)
         {
-            Shoot();
+            if (shootControl.IsDown())
+            {
+                Shoot();
+            }
         }
+
         if (cooldownTimer > 0) cooldownTimer -= Time.deltaTime;
 
         if (gatherControl.IsDown())
