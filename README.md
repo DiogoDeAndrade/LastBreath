@@ -32,13 +32,13 @@ Game ends when one city is out of oxygen, and the associated player is dead.
 - New sub type sprite
 - Change logo/name
 - Cave tileset
-- Improve endgame - reduce impact of not-quest resources
-- Add UI for air on city
 - Abyss level (a lot of darkness)
 - Gamma control
+- Algae
 
 ## Future
 - Distortion effect
+- Blue gradient
 - Remove AI stuff (music)
 - Extra player count (>2)
 - Single player mode (AI bots)
