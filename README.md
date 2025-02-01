@@ -31,7 +31,6 @@ Game ends when one city is out of oxygen, and the associated player is dead.
 ## February Objectives
 - New sub type sprite
 - Change logo/name
-- Cave tileset
 - Abyss level (a lot of darkness)
 - Gamma control
 - Algae
