@@ -74,7 +74,5 @@ crashlytics-build.properties
 /[Aa]ssets/IgnoreThis*
 
 # Other stuff
-LastBreath/*
-LastBreath.zip
-LastBreath_Source.zip
+LastBreath*
 Builds/*

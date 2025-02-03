@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4212686664873384536}
   - component: {fileID: 3722463758159727859}
   - component: {fileID: 5113020608957904864}
+  - component: {fileID: 6573723777566648191}
   m_Layer: 0
   m_Name: Torpedo
   m_TagString: Untagged
@@ -206,7 +207,23 @@ MonoBehaviour:
   angularTolerance: 45
   rangeTolerance: 100
   rotationSpeed: 360
+  sonarSnd: {fileID: 0}
   explosionPrefab: {fileID: 8294285090635143417, guid: 063a999e28a630341b086e3025aeed4d, type: 3}
+--- !u!114 &6573723777566648191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2606005527734810573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b792fc07bd9288d49995e58f3aecb37a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trigger: 0
+  time: 0.05
+  strength: 3
 --- !u!1 &5500554503368013734
 GameObject:
   m_ObjectHideFlags: 0
