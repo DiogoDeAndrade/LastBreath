@@ -10,3 +10,11 @@
 - Added phase display
 - Phase 1 and 2 now don't allow for torpedos
 - New phase 3, same as 2 but with weapons
+- Screen shake
+
+## Version 1.2 (...)
+
+- Oxygen bars
+- Changed ammount of near resources
+- Reduce value of not-quest resources
+- New tileset

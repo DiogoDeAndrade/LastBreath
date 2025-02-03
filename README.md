@@ -28,10 +28,17 @@ When you get destroyed, you'll respawn at your base after a bit. When your base 
 
 Game ends when one city is out of oxygen, and the associated player is dead.
 
+## February Objectives
+- New sub type sprite
+- Change logo/name
+- Abyss level (a lot of darkness)
+- Gamma control
+- Algae
+
 ## Future
-- Cave tileset
 - Distortion effect
-- Remove AI stuff (logo and music)
+- Blue gradient
+- Remove AI stuff (music)
 - Extra player count (>2)
 - Single player mode (AI bots)
 - Powerups

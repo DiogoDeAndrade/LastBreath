@@ -96,6 +96,9 @@ public class City : MonoBehaviour
     public float remainingTimeToRevive => (reviveTime > 0) ? (reviveTime - reviveTimer) : (0);
     public bool isReviving => _isReviving;
 
+    public float oxygenPercentage => oxygen / maxOxygen;
+    public float oxygenCount => oxygen;
+
     public ResourceData requestItem => requestedItem;
     public int          requestCount => requestedQuantity;
 
