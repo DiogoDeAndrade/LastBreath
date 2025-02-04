@@ -6,10 +6,8 @@ using NaughtyAttributes;
 public class LevelManager : MonoBehaviour
 {
     enum GameState { Ongoing, GameOver };
-    // Concept:
-    // Phase 1: Cities have different requests, and conflict is kept to a minimum, no torpedos
-    // Phase 2: Cities have the same request, no torpedos
-    // Phase 3: Weapons free
+    [SerializeField]
+    private int             startPhase = 0;
     [SerializeField] 
     private CanvasGroup     gameOverCanvas;
     [SerializeField] 
@@ -38,7 +36,11 @@ public class LevelManager : MonoBehaviour
         }
 
         cities = FindObjectsByType<City>(FindObjectsSortMode.None);
+#if UNITY_EDITOR
+        _phase = startPhase;
+#else
         _phase = 0;
+#endif
         matchDuration = 0;
     }
 
@@ -112,6 +114,11 @@ public class LevelManager : MonoBehaviour
         foreach (var city in cities)
         {
             if (!city.isDead) return city.playerId;
+        }
+
+        foreach (var city in cities)
+        {
+            if (!city.isPlayerDead) return city.playerId;
         }
 
         return -1;

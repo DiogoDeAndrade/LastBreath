@@ -171,6 +171,8 @@ public class Submarine : MonoBehaviour
             {
                 SoundManager.PlaySound(SoundType.PrimaryFX, hitSnd, 1.0f, UnityEngine.Random.Range(0.9f, 1.1f));
             }
+
+            CameraShake2d.Shake(2, 0.05f);
         }
         if ((hitFlash == null) || (hitFlash.isFinished))
         {
