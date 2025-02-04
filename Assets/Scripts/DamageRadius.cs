@@ -18,7 +18,7 @@ public class DamageRadius : MonoBehaviour
             var hs = obj.GetComponent<HealthSystem>();
             if (hs != null)
             {
-                hs.DealDamage(DamageType.OverTime, damage * Time.deltaTime, transform.position, Vector3.zero);
+                hs.DealDamage(DamageType.OverTime, damage * Time.deltaTime, transform.position, Vector3.zero, gameObject);
                 volume = 1.0f;
             }
         }

@@ -167,7 +167,7 @@ public class City : MonoBehaviour
                     if (d < AdjustRadius(repairRadius))
                     {
                         ChangeOxygen(-repairOxygenDrain * Time.deltaTime);
-                        healthSystem.Heal(Time.deltaTime * repairSpeed, false);
+                        healthSystem.Heal(Time.deltaTime * repairSpeed, false, gameObject);
                         if (ammoReload > reloadTime)
                         {
                             player.AddAmmo(1);

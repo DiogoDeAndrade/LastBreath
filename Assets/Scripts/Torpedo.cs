@@ -166,7 +166,7 @@ public class Torpedo : MonoBehaviour
         }
 
         var health = collision.GetComponent<HealthSystem>();
-        health?.DealDamage(HealthSystem.DamageType.Burst, damage * _damageModifier, transform.position, Vector3.zero);
+        health?.DealDamage(HealthSystem.DamageType.Burst, damage * _damageModifier, transform.position, Vector3.zero, gameObject);
 
         if (explosionPrefab) Instantiate(explosionPrefab, transform.position, transform.rotation);
 

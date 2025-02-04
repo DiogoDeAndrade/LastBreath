@@ -129,7 +129,7 @@ public class Submarine : MonoBehaviour
         _ammo = maxTorpedo;
     }
 
-    private void HealthSystem_onHeal(float healthGain)
+    private void HealthSystem_onHeal(float healthGain, GameObject sourceHeal)
     {
         if ((healthGainEffect == null) || (healthGainEffect.isFinished))
         {
@@ -137,7 +137,7 @@ public class Submarine : MonoBehaviour
         }
     }
 
-    private void HealthSystem_onDead()
+    private void HealthSystem_onDead(GameObject sourceDamage)
     {
         if (explosionObject) Instantiate(explosionObject, transform.position, transform.rotation);
         foreach (var d in debries)
@@ -159,7 +159,7 @@ public class Submarine : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void HealthSystem_onHit(HealthSystem.DamageType damageType, float damage, Vector3 damagePosition, Vector3 damageNormal)
+    private void HealthSystem_onHit(HealthSystem.DamageType damageType, float damage, Vector3 damagePosition, Vector3 damageNormal, GameObject sourceDamage)
     {
         if (damageNormal.magnitude > 0)
         {
@@ -308,11 +308,11 @@ public class Submarine : MonoBehaviour
             float hr = inventoryQuantity * inventoryType.healthRegen * Time.deltaTime;
             if (hr > 0.0f)
             {
-                healthSystem.Heal(hr, false);
+                healthSystem.Heal(hr, false, gameObject);
             }
             else if (hr < 0.0f)
             {
-                healthSystem.DealDamage(HealthSystem.DamageType.OverTime, Mathf.Abs(hr), transform.position, Vector3.zero);
+                healthSystem.DealDamage(HealthSystem.DamageType.OverTime, Mathf.Abs(hr), transform.position, Vector3.zero, gameObject);
             }
 
             if (inventoryType.speedAura != 1.0f)
@@ -345,7 +345,7 @@ public class Submarine : MonoBehaviour
             damage *= criticalMultiplier;
         }
 
-        healthSystem.DealDamage(HealthSystem.DamageType.Burst, damage, collision.contacts[0].point, collision.contacts[0].normal);
+        healthSystem.DealDamage(HealthSystem.DamageType.Burst, damage, collision.contacts[0].point, collision.contacts[0].normal, collision.gameObject);
 
         // Check if collision was with another thing with health
     }
