@@ -19,3 +19,7 @@
 - Reduce value of not-quest resources
 - New tileset
 - Godrays test
+- Darkness environment
+- Multiscreen levels
+- New level: The Deep
+- New level: Abyss Hunter

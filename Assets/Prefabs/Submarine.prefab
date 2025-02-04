@@ -6583,6 +6583,7 @@ GameObject:
   - component: {fileID: 2645738645552758782}
   - component: {fileID: 363153333838478154}
   - component: {fileID: 7977455445788643665}
+  - component: {fileID: 8434464912798688565}
   - component: {fileID: 9048505709935316563}
   - component: {fileID: 5644607448924605011}
   - component: {fileID: 7698209387435550969}
@@ -6743,6 +6744,19 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -1.7}
   m_Size: {x: 27.8, y: 17.9}
   m_Direction: 1
+--- !u!114 &8434464912798688565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9078551628919542819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc938798f9cbdba48b70a952094371e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hypertag: {fileID: 11400000, guid: 3305d6d690ea5cb4da99325357c76667, type: 2}
 --- !u!114 &9048505709935316563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6846,7 +6860,7 @@ MonoBehaviour:
   rope: {fileID: 4045145932812807902}
   resourcePrefab: {fileID: 4485897042003630804, guid: 498e2c7b013986b429c8d0c70e17d99e, type: 3}
   auraLight: {fileID: 5893614407962664610}
-  subLight: {fileID: 0}
+  subLight: {fileID: 509250413973021082}
   torpedoLaunchSnd: {fileID: 8300000, guid: 63a52006bf76cd04084903f9572644d8, type: 3}
   hitSnd: {fileID: 8300000, guid: 6937eb951d04a734786e0d86cef88b08, type: 3}
   startGrabSnd: {fileID: 8300000, guid: a731bb7605f844848b179c417502a535, type: 3}

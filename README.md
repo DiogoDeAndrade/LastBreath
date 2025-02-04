@@ -33,8 +33,8 @@ Game ends when one city is out of oxygen, and the associated player is dead.
 - Change logo
 - Abyss level (a lot of darkness)
   - Light rotate slower than the player (might look weird)
-  - Tiles missing from tilemap
-  - Extra large screen
+- Simple enemies (drop resources)
+- Machine gun
 - Gamma control
 - Algae
 
