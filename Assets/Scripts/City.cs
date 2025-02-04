@@ -1,6 +1,7 @@
 using NaughtyAttributes;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UIElements;
 
 public class City : MonoBehaviour
@@ -89,6 +90,7 @@ public class City : MonoBehaviour
     float           cityLightsBlinkTimer;
     bool            _isReviving;
     bool            firstSpawn = true;
+    Light2D         cityLight;
 
     public bool isPlayerDead => player == null;
     public float timeToRespawn => penaltyTimer;
@@ -110,6 +112,19 @@ public class City : MonoBehaviour
         cityRenderer.material = cityMaterial;
         cityMaterial.SetColor("_EmissiveColor", new Color(3.0f, 3.0f, 3.0f, 1.0f));
         liveCitySprite = cityRenderer.sprite;
+        cityLight = GetComponentInChildren<Light2D>();
+        UpdateCityLight();
+    }
+
+    void UpdateCityLight()
+    {
+        if (cityLight)
+        {
+            float cityLightIntensity = LevelManager.cityLightIntensity;
+            if (cityRenderer.sprite == deadCitySprite) cityLightIntensity = 0.0f;
+            cityLight.enabled = (cityLightIntensity > 0);
+            cityLight.intensity = cityLightIntensity;
+        }
     }
 
     void Update()
@@ -277,6 +292,8 @@ public class City : MonoBehaviour
                 cityRenderer.sprite = deadCitySprite;
             }
         }
+
+        UpdateCityLight();
     }
 
     public void ChangeOxygen(float delta)

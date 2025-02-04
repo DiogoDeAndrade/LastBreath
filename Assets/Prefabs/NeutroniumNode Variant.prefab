@@ -178,7 +178,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.173
   m_Color: {r: 0.105427615, g: 0.8867924, b: 0.04601282, a: 1}
-  m_Intensity: 6
+  m_Intensity: 3
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
   m_ApplyToSortingLayers: 875f5b0def34fc7c00000000c5e6c4ef
@@ -313,6 +313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 75
+  hemisphere: 1
   damage: 10
   layers:
     serializedVersion: 2

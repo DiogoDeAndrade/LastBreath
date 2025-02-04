@@ -42,8 +42,11 @@ public class Submarine : MonoBehaviour
     private LineRenderer    rope;
     [SerializeField]
     private Resource        resourcePrefab;
-    [SerializeField, Header("Aura")]
+    [SerializeField, Header("Lights")]
     private Light2D         auraLight;
+    [SerializeField]
+    private Light2D         subLight;
+
     [SerializeField, Header("Sound")]
     private AudioClip       torpedoLaunchSnd;
     [SerializeField]
@@ -112,6 +115,13 @@ public class Submarine : MonoBehaviour
                 var effect = d.GetComponent<SpriteEffect>();
                 effect?.SetRemap(spriteEffect.GetRemap());
             }
+            if (subLight)
+            {
+                Color.RGBToHSV(pd.hullColor, out float h, out float s, out float v);
+                s *= 0.5f;
+                v = 0.8f;
+                subLight.color = pd.hullColor;// Color.HSVToRGB(h, s, v);
+            }
         }
 
         MasterInputManager.SetupInput(_playerId, playerInput);
@@ -127,6 +137,13 @@ public class Submarine : MonoBehaviour
         healthSystem.onDead += HealthSystem_onDead;
 
         _ammo = maxTorpedo;
+
+        if (subLight)
+        {
+            var playerLightIntensity = LevelManager.playerLightIntensity;
+            subLight.enabled = playerLightIntensity > 0.0f;
+            subLight.intensity = playerLightIntensity;
+        }
     }
 
     private void HealthSystem_onHeal(float healthGain, GameObject sourceHeal)

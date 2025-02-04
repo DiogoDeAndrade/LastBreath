@@ -2,18 +2,26 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using NaughtyAttributes;
+using UnityEngine.Rendering.Universal;
 
 public class LevelManager : MonoBehaviour
 {
     enum GameState { Ongoing, GameOver };
+
+    [SerializeField, Header("Environment")]
+    private float           globalLight = 1.0f;
     [SerializeField]
+    private float           cityLight = 0.0f;
+    [SerializeField]
+    private float           playerLight = 0.0f;
+    [SerializeField, Header("Game Flow")]
     private int             startPhase = 0;
-    [SerializeField] 
+    [SerializeField]
     private CanvasGroup     gameOverCanvas;
     [SerializeField] 
     private TextMeshProUGUI gameOverText;
     [SerializeField, Scene] 
-    private string titleScene;
+    private string          titleScene;
 
     private City[]      cities;
     private GameState   state = GameState.Ongoing;
@@ -23,7 +31,10 @@ public class LevelManager : MonoBehaviour
 
     private static LevelManager Instance;
 
-    void Start()
+    public static float cityLightIntensity => Instance.cityLight;
+    public static float playerLightIntensity => Instance.playerLight;
+
+    void Awake()
     {
         if (Instance == null)
         {
@@ -34,14 +45,29 @@ public class LevelManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+    }
 
+    private void Start()
+    {
         cities = FindObjectsByType<City>(FindObjectsSortMode.None);
+
 #if UNITY_EDITOR
         _phase = startPhase;
 #else
         _phase = 0;
 #endif
         matchDuration = 0;
+
+        // Find global light
+        var lights = FindObjectsByType<Light2D>(FindObjectsSortMode.None);
+        foreach (var light in lights)
+        {
+            if (light.lightType == Light2D.LightType.Global)
+            {
+                light.intensity = globalLight;
+                if (globalLight <= 0.0f) light.enabled = false;
+            }
+        }
     }
 
     void Update()

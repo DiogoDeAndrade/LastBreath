@@ -32,7 +32,10 @@ Game ends when one city is out of oxygen, and the associated player is dead.
 - New sub type sprite
 - Change logo
 - Abyss level (a lot of darkness)
-- Gamma controlgit statugit
+  - Light rotate slower than the player (might look weird)
+  - Tiles missing from tilemap
+  - Extra large screen
+- Gamma control
 - Algae
 
 ## Future
