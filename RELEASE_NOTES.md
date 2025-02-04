@@ -18,3 +18,4 @@
 - Changed ammount of near resources
 - Reduce value of not-quest resources
 - New tileset
+- Godrays test

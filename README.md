@@ -30,9 +30,9 @@ Game ends when one city is out of oxygen, and the associated player is dead.
 
 ## February Objectives
 - New sub type sprite
-- Change logo/name
+- Change logo
 - Abyss level (a lot of darkness)
-- Gamma control
+- Gamma controlgit statugit
 - Algae
 
 ## Future
