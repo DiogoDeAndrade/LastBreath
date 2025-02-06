@@ -23,3 +23,4 @@
 - Multiscreen levels
 - New level: The Deep
 - New level: Abyss Hunter
+- Gamma control

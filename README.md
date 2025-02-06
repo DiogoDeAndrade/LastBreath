@@ -35,7 +35,6 @@ Game ends when one city is out of oxygen, and the associated player is dead.
   - Light rotate slower than the player (might look weird)
 - Simple enemies (drop resources)
 - Machine gun
-- Gamma control
 - Algae
 
 ## Future
