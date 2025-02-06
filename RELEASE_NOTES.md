@@ -24,3 +24,5 @@
 - New level: The Deep
 - New level: Abyss Hunter
 - Gamma control
+- Change logo
+- Removed all AI art

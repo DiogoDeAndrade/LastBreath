@@ -8,7 +8,6 @@ Special Thanks
 Art
 <size=60%>UI Pack Sci-Fi by Kenney, licensed through the [CC0] license.
 <size=60%>Font Optimus by Pixel Sagas, free for non-commercial use.
-<size=60%>Logo is AI generated using Dall-E
 <size=60%>Everything else done by Diogo de Andrade, CC0 license
 
 Sound

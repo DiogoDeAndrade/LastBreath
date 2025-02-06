@@ -30,7 +30,6 @@ Game ends when one city is out of oxygen, and the associated player is dead.
 
 ## February Objectives
 - New sub type sprite
-- Change logo
 - Abyss level (a lot of darkness)
   - Light rotate slower than the player (might look weird)
 - Simple enemies (drop resources)
@@ -50,7 +49,6 @@ Game ends when one city is out of oxygen, and the associated player is dead.
 
 - [UI Pack Sci-Fi](https://kenney.nl/assets/ui-pack-sci-fi) by [Kenney](https://kenney.nl), licensed through the [CC0] license.
 - Font [Optimus](https://www.dafont.com/pt/optimus.font) by [Pixel Sagas](https://www.dafont.com/pt/pixel-sagas.d32), free for non-commercial use.
-- Logo created using Dall-E
 - Everything else done by [Diogo de Andrade], licensed through the [CC0] license.
 
 ## Sound
