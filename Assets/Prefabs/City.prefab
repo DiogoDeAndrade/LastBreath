@@ -973,6 +973,7 @@ MonoBehaviour:
   playerPrefab: {fileID: 5439900134263999799, guid: 58f09f2a75c312d4b8195618ef1e5577, type: 3}
   spawnPoint: {fileID: 1937450992151209987}
   penaltyDuration: 6
+  playerPinPrefab: {fileID: 3701197676147247219, guid: 71e66fa2a38b6344da8a0fef256afcda, type: 3}
   sizeRange: {x: 0.5, y: 1.25}
   maxOxygen: 1000
   startOxygen: 500

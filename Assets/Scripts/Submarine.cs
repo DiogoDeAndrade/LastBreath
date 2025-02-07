@@ -68,20 +68,21 @@ public class Submarine : MonoBehaviour
     [SerializeField, InputPlayer(nameof(playerInput)), InputButton]
     private InputControl    dropControl;
 
-    private Vector2         movementVector;
-    private Rigidbody2D     rb;
-    private HealthSystem    healthSystem;
-    private SpriteEffect    spriteEffect;
-    private int             _ammo;
-    private float           cooldownTimer;
-    private float           noControlTime;
-    private Resource        grabResource;
-    private float           grabT;
-    private bool            grabGoingOut;
-    private Vector3         grabOriginalPosition;
-    private ResourceData    inventoryType;
-    private int             inventoryQuantity;
-    private Vector2         prevVelocity;
+    private Vector2             movementVector;
+    private Rigidbody2D         rb;
+    private HealthSystem        healthSystem;
+    private SpriteEffect        spriteEffect;
+    private CameraFollowTarget  cameraFollowTarget;
+    private int                 _ammo;
+    private float               cooldownTimer;
+    private float               noControlTime;
+    private Resource            grabResource;
+    private float               grabT;
+    private bool                grabGoingOut;
+    private Vector3             grabOriginalPosition;
+    private ResourceData        inventoryType;
+    private int                 inventoryQuantity;
+    private Vector2             prevVelocity;
 
     private Tweener.BaseInterpolator healthGainEffect;
     private Tweener.BaseInterpolator hitFlash;
@@ -102,6 +103,8 @@ public class Submarine : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
+        cameraFollowTarget = GetComponent<CameraFollowTarget>();
 
         var pd = GameManager.Instance.GetPlayerData(_playerId);
 
@@ -173,6 +176,14 @@ public class Submarine : MonoBehaviour
             grabResource = null;
         }
 
+        // Notify city
+        var cities = FindObjectsByType<City>(FindObjectsSortMode.None);
+        foreach (var c in cities)
+        {
+            if (c.playerId == playerId)
+                c.NotifyPlayerDeath(this);
+        }
+
         Destroy(gameObject);
     }
 
@@ -199,6 +210,8 @@ public class Submarine : MonoBehaviour
         {
             noControlTime = healthSystem.invulnerabilityTime * 0.5f;
         }
+
+        cameraFollowTarget?.FreezeFollow(0.5f);
     }
 
     void FixedUpdate()
