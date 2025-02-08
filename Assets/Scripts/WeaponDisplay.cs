@@ -1,18 +1,18 @@
 using UnityEngine;
 
-public class AmmoDisplay : ResourceBar
+public class WeaponDisplay : ResourceBar
 {
     [Header("Ammo Source")]
-    public Submarine submarine;
+    public Weapon weapon;
 
     protected override float GetNormalizedResource()
     {
-        return submarine.normalizedAmmo;
+        return weapon.normalizedAmmo;
     }
 
     protected override float GetResourceCount()
     {
-        if (LevelManager.weaponsFree) return submarine.ammo;
+        if (LevelManager.weaponsFree) return weapon.ammo;
 
         return 0;
     }

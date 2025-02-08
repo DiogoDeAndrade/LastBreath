@@ -177,20 +177,27 @@ public class City : MonoBehaviour
             }
             else
             {
-                if ((reloadPivot) && (player.ammo < player.maxAmmo))
+                if (reloadPivot)
                 {
                     float d = Vector3.Distance(reloadPivot.position, player.transform.position);
                     if (d < AdjustRadius(reloadRadius))
                     {
-                        ammoReload += Time.deltaTime;
-
-                        ChangeOxygen(-reloadOxygenDrain * Time.deltaTime);
-                        if (ammoReload > reloadTime)
+                        for (int i = 0; i < Weapon.MaxWeapon; i++)
                         {
-                            player.AddAmmo(1);
-                            ammoReload -= reloadTime;
+                            var weapon = player.GetWeapon(i);
+                            if ((weapon) && (weapon.ammo < weapon.maxAmmo))
+                            {
+                                ammoReload += Time.deltaTime;
 
-                            if (reloadSnd) SoundManager.PlaySound(SoundType.PrimaryFX, reloadSnd, 1.0f, 1.0f);
+                                ChangeOxygen(-reloadOxygenDrain * Time.deltaTime);
+                                if (ammoReload > reloadTime)
+                                {
+                                    weapon.AddAmmo(1);
+                                    ammoReload -= reloadTime;
+
+                                    if (reloadSnd) SoundManager.PlaySound(SoundType.PrimaryFX, reloadSnd, 1.0f, 1.0f);
+                                }
+                            }
                         }
                     }
                 }
@@ -202,11 +209,6 @@ public class City : MonoBehaviour
                     {
                         ChangeOxygen(-repairOxygenDrain * Time.deltaTime);
                         healthSystem.Heal(Time.deltaTime * repairSpeed, false, gameObject);
-                        if (ammoReload > reloadTime)
-                        {
-                            player.AddAmmo(1);
-                            ammoReload -= reloadTime;
-                        }
                     }
                 }
                 if ((gatherPivot) && (player.item != null))

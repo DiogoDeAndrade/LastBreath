@@ -35,11 +35,9 @@ Game ends when one city is out of oxygen, and the associated player is dead.
 - Simple enemies (drop resources)
   - Octopus type of thing
   - Shark thing
-- New weapon system
 - Machine gun
 - Algae
 - Swap buttons for menus
-- Slow down/Accelerate resource consumption per level
 - Submarine light POI system 
 
 ## Future

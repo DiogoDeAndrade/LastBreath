@@ -1,5 +1,3 @@
-using System;
-using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.Universal;
@@ -24,14 +22,8 @@ public class Submarine : MonoBehaviour
     private GameObject      explosionObject;
     [SerializeField]
     private GameObject[]    debries;
-    [SerializeField, Header("Torpedo")]
-    private int             maxTorpedo = 3;
-    [SerializeField]
-    private float           shootCooldown = 0.5f;
-    [SerializeField]
-    private Transform       shootPoint;
-    [SerializeField]
-    private Torpedo         torpedoPrefab;
+    [SerializeField, Header("UI")]
+    private RectTransform   uiWeaponContainer;
     [SerializeField, Header("Gathering")]
     private float           gatherRadius;
     [SerializeField]
@@ -48,8 +40,6 @@ public class Submarine : MonoBehaviour
     private Light2D         subLight;
 
     [SerializeField, Header("Sound")]
-    private AudioClip       torpedoLaunchSnd;
-    [SerializeField]
     private AudioClip       hitSnd;
     [SerializeField]
     private AudioClip       startGrabSnd;
@@ -62,7 +52,9 @@ public class Submarine : MonoBehaviour
     [SerializeField, InputPlayer(nameof(playerInput))] 
     private InputControl    moveControl;
     [SerializeField, InputPlayer(nameof(playerInput)), InputButton]
-    private InputControl    shootControl;
+    private InputControl    primaryFire;
+    [SerializeField, InputPlayer(nameof(playerInput)), InputButton]
+    private InputControl    secondaryFire;
     [SerializeField, InputPlayer(nameof(playerInput)), InputButton]
     private InputControl    gatherControl;
     [SerializeField, InputPlayer(nameof(playerInput)), InputButton]
@@ -73,7 +65,6 @@ public class Submarine : MonoBehaviour
     private HealthSystem        healthSystem;
     private SpriteEffect        spriteEffect;
     private CameraFollowTarget  cameraFollowTarget;
-    private int                 _ammo;
     private float               cooldownTimer;
     private float               noControlTime;
     private Resource            grabResource;
@@ -83,13 +74,10 @@ public class Submarine : MonoBehaviour
     private ResourceData        inventoryType;
     private int                 inventoryQuantity;
     private Vector2             prevVelocity;
+    private Weapon[]            weapons;
 
     private Tweener.BaseInterpolator healthGainEffect;
     private Tweener.BaseInterpolator hitFlash;
-
-    public float normalizedAmmo => _ammo / (float)maxTorpedo;
-    public float ammo => _ammo;
-    public float maxAmmo => maxTorpedo;
 
     public int          playerId { get { return _playerId; } set { _playerId = value; } }
     public ResourceData item => inventoryType;
@@ -129,7 +117,8 @@ public class Submarine : MonoBehaviour
 
         MasterInputManager.SetupInput(_playerId, playerInput);
         moveControl.playerInput = playerInput;
-        shootControl.playerInput = playerInput;
+        primaryFire.playerInput = playerInput;
+        secondaryFire.playerInput = playerInput;
         gatherControl.playerInput = playerInput;
         dropControl.playerInput = playerInput;
 
@@ -139,13 +128,19 @@ public class Submarine : MonoBehaviour
         healthSystem.onHeal += HealthSystem_onHeal;
         healthSystem.onDead += HealthSystem_onDead;
 
-        _ammo = maxTorpedo;
-
         if (subLight)
         {
             var playerLightIntensity = LevelManager.playerLightIntensity;
             subLight.enabled = playerLightIntensity > 0.0f;
             subLight.intensity = playerLightIntensity;
+        }
+
+        weapons = new Weapon[Weapon.MaxWeapon];
+        var childWeapons = GetComponentsInChildren<Weapon>();
+        foreach (var w in childWeapons)
+        {
+            weapons[w.slot - 1] = w;
+            w.Init(this, uiWeaponContainer);
         }
     }
 
@@ -260,9 +255,13 @@ public class Submarine : MonoBehaviour
 
         if (LevelManager.weaponsFree)
         {
-            if (shootControl.IsDown())
+            if (primaryFire.IsPressed())
             {
-                Shoot();
+                weapons[0]?.Shoot((inventoryType) ? (inventoryType.weaponSpeedModifier) : (1.0f));
+            }
+            if (secondaryFire.IsDown())
+            {
+                weapons[1]?.Shoot((inventoryType) ? (inventoryType.weaponSpeedModifier) : (1.0f));
             }
         }
 
@@ -382,29 +381,9 @@ public class Submarine : MonoBehaviour
         // Check if collision was with another thing with health
     }
 
-    void Shoot()
+    public Weapon GetWeapon(int i)
     {
-        if (_ammo <= 0) return;
-        if (cooldownTimer > 0) return;
-
-        _ammo--;
-        cooldownTimer = shootCooldown;
-
-        var torpedo = Instantiate(torpedoPrefab, shootPoint.position, shootPoint.rotation);
-        torpedo.SetPlayerId(playerId);
-        torpedo.speedModifier = (inventoryType) ? (inventoryType.weaponSpeedModifier) : (1.0f);
-        var rb = torpedo.GetComponent<Rigidbody2D>();
-        if (rb)
-        {
-            rb.linearVelocity = this.rb.linearVelocity;
-        }
-        if (torpedoLaunchSnd) SoundManager.PlaySound(SoundType.PrimaryFX, torpedoLaunchSnd, 1.0f, UnityEngine.Random.Range(0.75f, 1.0f));
-    }
-
-    public void AddAmmo(int delta)
-    {
-        _ammo += delta;
-        if (_ammo > maxTorpedo) _ammo = maxTorpedo;
+        return weapons[i];
     }
 
     void Gather()
@@ -491,7 +470,7 @@ public class Submarine : MonoBehaviour
 
     internal InputControl GetAttackControl()
     {
-        return shootControl;
+        return secondaryFire;
     }
 
     internal InputControl GetGatherControl()

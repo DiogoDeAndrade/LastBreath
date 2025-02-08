@@ -1,35 +1,37 @@
 using NaughtyAttributes;
 using UnityEngine;
+using System.Collections.Generic;
+using UnityEditor.Hardware;
+
+
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
-public class Torpedo : MonoBehaviour
+public class Projectile : MonoBehaviour
 {
     [SerializeField] 
-    private float       maxSpeed = 250.0f;
+    private float           maxSpeed = 250.0f;
     [SerializeField] 
-    private float       acceleration = 250.0f;
+    private float           acceleration = 250.0f;
     [SerializeField] 
-    private float       duration = 10.0f;
+    private float           duration = 10.0f;
     [SerializeField] 
-    private float       damage = 50.0f;
+    private float           damage = 50.0f;
     [SerializeField] 
-    private bool        tracker;
-    [SerializeField, ShowIf(nameof(tracker))] 
-    private bool        alsoTrackTorpedoes;
-    [SerializeField, ShowIf(nameof(tracker))]
-    private Transform   trackPoint;
-    [SerializeField, ShowIf(nameof(tracker))]
-    private float       angularTolerance = 45.0f;
-    [SerializeField, ShowIf(nameof(tracker))]
-    private float       rangeTolerance = 100.0f;
-    [SerializeField, ShowIf(nameof(tracker))]
-    private float       rotationSpeed = 360.0f;
-    [SerializeField]
-    private AudioClip   sonarSnd;
+    private List<Hypertag>  trackingTags;
+    [SerializeField, ShowIf(nameof(isTracker))]
+    private Transform       trackPoint;
+    [SerializeField, ShowIf(nameof(isTracker))]
+    private float           angularTolerance = 45.0f;
+    [SerializeField, ShowIf(nameof(isTracker))]
+    private float           rangeTolerance = 100.0f;
+    [SerializeField, ShowIf(nameof(isTracker))]
+    private float           rotationSpeed = 360.0f;
+    [SerializeField, ShowIf(nameof(isTracker))]
+    private AudioClip       sonarSnd;
     [SerializeField] 
-    private GameObject  explosionPrefab;
+    private GameObject      explosionPrefab;
 
     private int         _playerId;
     private Rigidbody2D rb;
@@ -37,6 +39,8 @@ public class Torpedo : MonoBehaviour
     private float       _speedModifier = 1.0f;
     private float       _damageModifier = 1.0f;
     private bool        targetAcquired;
+
+    bool isTracker => trackingTags.Count > 0;
 
     public float speedModifier
     {
@@ -85,45 +89,30 @@ public class Torpedo : MonoBehaviour
 
     private void Update()
     {
-        if ((tracker) && (trackPoint != null))
+        if ((isTracker) && (trackPoint != null))
         {
             var overlaps = Physics2D.OverlapCircleAll(trackPoint.position, rangeTolerance);
             foreach (var overlap in overlaps)
             {
+                var htag = overlap.GetComponent<HypertaggedObject>();
+                if (htag == null) continue;
+                if (!htag.HasAnyHypertag(trackingTags)) continue;
+
+                Transform validTarget = overlap.transform;
+
                 var sub = overlap.GetComponent<Submarine>();
-                if (sub != null)
+                if ((sub) && (sub.playerId == _playerId)) continue;
+                var projectile = overlap.GetComponent<Projectile>();
+                if ((projectile) && (projectile._playerId == _playerId)) continue;
+
+                if (Track(validTarget))
                 {
-                    if (sub.playerId != _playerId)
+                    if (!targetAcquired)
                     {
-                        if (Track(sub.transform))
-                        {
-                            if (!targetAcquired)
-                            {
-                                SoundManager.PlaySound(SoundType.PrimaryFX, sonarSnd);
-                                targetAcquired = true;
-                            }
-                            return;
-                        }
+                        SoundManager.PlaySound(SoundType.PrimaryFX, sonarSnd);
+                        targetAcquired = true;
                     }
-                }
-                if (alsoTrackTorpedoes)
-                {
-                    var torpedo = overlap.GetComponent<Torpedo>();
-                    if (torpedo != null)
-                    {
-                        if (torpedo._playerId != _playerId)
-                        {
-                            if (Track(torpedo.transform))
-                            {
-                                if (!targetAcquired)
-                                {
-                                    SoundManager.PlaySound(SoundType.PrimaryFX, sonarSnd);
-                                    targetAcquired = true;
-                                }
-                                return;
-                            }
-                        }
-                    }
+                    return;
                 }
             }
             targetAcquired = false;
@@ -159,7 +148,7 @@ public class Torpedo : MonoBehaviour
         {
             if (submarine.playerId == _playerId) return;            
         }
-        var torpedo = collision.GetComponent<Torpedo>();
+        var torpedo = collision.GetComponent<Projectile>();
         if (torpedo != null)
         {
             if (torpedo._playerId == _playerId) return;
@@ -176,7 +165,7 @@ public class Torpedo : MonoBehaviour
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
-        if ((tracker) && (trackPoint != null))
+        if ((isTracker) && (trackPoint != null))
         {
             Handles.color = new Color(1.0f, 1.0f, 0.0f, 0.1f);
             Handles.DrawSolidArc(trackPoint.position, Vector3.forward, transform.right.RotateZ(-angularTolerance), angularTolerance * 2.0f, rangeTolerance);

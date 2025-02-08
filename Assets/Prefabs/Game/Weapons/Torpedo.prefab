@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2405705035869205509}
   - component: {fileID: 6066637390496093680}
   - component: {fileID: 4212686664873384536}
+  - component: {fileID: 4497087794680085339}
   - component: {fileID: 3722463758159727859}
   - component: {fileID: 5113020608957904864}
   - component: {fileID: 6573723777566648191}
@@ -167,6 +168,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 14, y: 4}
   m_EdgeRadius: 0
+--- !u!114 &4497087794680085339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2606005527734810573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc938798f9cbdba48b70a952094371e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hypertag: {fileID: 11400000, guid: 70af72d36312d5a43ada4b4a3ec3ef38, type: 2}
 --- !u!114 &3722463758159727859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,13 +215,12 @@ MonoBehaviour:
   acceleration: 250
   duration: 10
   damage: 50
-  tracker: 0
-  alsoTrackTorpedoes: 0
+  trackingTags: []
   trackPoint: {fileID: 453090873970044773}
-  angularTolerance: 45
+  angularTolerance: 30
   rangeTolerance: 100
-  rotationSpeed: 360
-  sonarSnd: {fileID: 0}
+  rotationSpeed: 180
+  sonarSnd: {fileID: 8300000, guid: 291c63bbd9d721942b3e0e84b6586194, type: 3}
   explosionPrefab: {fileID: 8294285090635143417, guid: 063a999e28a630341b086e3025aeed4d, type: 3}
 --- !u!114 &6573723777566648191
 MonoBehaviour:
