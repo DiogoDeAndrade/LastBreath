@@ -230,7 +230,7 @@ MonoBehaviour:
     buttonNegative: Left
     keyPositive: 275
     keyNegative: 276
-    inputAction: Attack
+    inputAction: Gather
   moveSnd: {fileID: 8300000, guid: 34613125421c21b4592e539801c94af8, type: 3}
   selectSnd: {fileID: 8300000, guid: 884b9176429277e40b79f09d08d76676, type: 3}
   initialControl: {fileID: 646074140}
@@ -488,7 +488,7 @@ MonoBehaviour:
     buttonNegative: Left
     keyPositive: 275
     keyNegative: 276
-    inputAction: Attack
+    inputAction: Gather
   moveSnd: {fileID: 8300000, guid: 34613125421c21b4592e539801c94af8, type: 3}
   selectSnd: {fileID: 8300000, guid: 884b9176429277e40b79f09d08d76676, type: 3}
   initialControl: {fileID: 827205145}

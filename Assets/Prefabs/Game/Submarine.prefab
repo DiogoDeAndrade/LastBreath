@@ -731,6 +731,7 @@ GameObject:
   m_Component:
   - component: {fileID: 766650968200669203}
   - component: {fileID: 509250413973021082}
+  - component: {fileID: 1687219490047250573}
   m_Layer: 8
   m_Name: SubLight
   m_TagString: Untagged
@@ -805,6 +806,30 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &1687219490047250573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5910666307659831493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1d49e66a04fb06488a7b70c09cf22bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tags:
+  - {fileID: 11400000, guid: c785702bf36a2d94882abb2a5b802261, type: 2}
+  - {fileID: 11400000, guid: 3305d6d690ea5cb4da99325357c76667, type: 2}
+  minRange: 40
+  maxRange: 200
+  angularTolerance: 75
+  maxRotationSpeed: 180
+  checkLOS: 1
+  distanceBias: -10
+  occluderLayers:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &6246437450632397160
 GameObject:
   m_ObjectHideFlags: 0

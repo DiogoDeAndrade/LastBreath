@@ -121,12 +121,12 @@ public class Projectile : MonoBehaviour
 
     bool Track(Transform target)
     {
-        var toSub = (target.position - trackPoint.position).normalized;
-        float angle = Vector2.Angle(trackPoint.right, toSub);
+        var toTarget = (target.position - trackPoint.position).normalized;
+        float angle = Vector2.Angle(trackPoint.right, toTarget);
         if (angle < angularTolerance)
         {
             // Follow this
-            var direction = Quaternion.LookRotation(Vector3.forward, toSub.PerpendicularXY());
+            var direction = Quaternion.LookRotation(Vector3.forward, toTarget.PerpendicularXY());
             transform.rotation = Quaternion.RotateTowards(transform.rotation, direction, _speedModifier * rotationSpeed * Time.deltaTime);
 
             return true;

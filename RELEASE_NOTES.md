@@ -18,7 +18,6 @@
 - Changed ammount of near resources
 - Reduce value of not-quest resources
 - New tileset
-- Godrays test
 - Darkness environment
 - Multiscreen levels
 - New level: The Deep
@@ -26,3 +25,5 @@
 - Gamma control
 - Change logo
 - Removed all AI art
+- Swapped buttons on menus
+

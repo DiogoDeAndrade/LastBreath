@@ -33,12 +33,9 @@ Game ends when one city is out of oxygen, and the associated player is dead.
 - Abyss level (a lot of darkness)
   - Light rotate slower than the player (might look weird)
 - Simple enemies (drop resources)
-  - Octopus type of thing
-  - Shark thing
+  - Dark octopus type of thing (small and large)
 - Machine gun
 - Algae
-- Swap buttons for menus
-- Submarine light POI system 
 
 ## Future
 - Distortion effect
@@ -52,6 +49,7 @@ Game ends when one city is out of oxygen, and the associated player is dead.
 - Underwater volcano
 - Enemies
   - Morey
+  - Shark thing
 
 ## Art
 
