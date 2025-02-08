@@ -136,7 +136,7 @@ public class City : MonoBehaviour
     {
         if (oxygen > 0)
         {
-            ChangeOxygen(-oxygenLossPerSecond * Time.deltaTime);
+            ChangeOxygen(-oxygenLossPerSecond * LevelManager.resourceConsumption * Time.deltaTime);
 
             if (player == null)
             {
@@ -219,7 +219,7 @@ public class City : MonoBehaviour
                         {
                             if (player.itemCount >= requestedQuantity)
                             {
-                                oxygenCount = player.item.valueMultiplier * oxygenPerResource * (requestedQuantity * 2.0f + (player.itemCount - requestedQuantity));
+                                oxygenCount = player.item.valueMultiplier * oxygenPerResource * LevelManager.resourceConsumption * (requestedQuantity * 2.0f + (player.itemCount - requestedQuantity));
 
                                 if (requestSuccessSnd) SoundManager.PlaySound(SoundType.PrimaryFX, requestSuccessSnd, 0.5f);
 
@@ -228,7 +228,7 @@ public class City : MonoBehaviour
                         }
                         else
                         {
-                            oxygenCount = oxygenPerResource * player.itemCount * player.item.valueMultiplier;
+                            oxygenCount = oxygenPerResource * LevelManager.resourceConsumption * player.itemCount * player.item.valueMultiplier;
 
                             if (airDropSnd) SoundManager.PlaySound(SoundType.PrimaryFX, airDropSnd);
                         }

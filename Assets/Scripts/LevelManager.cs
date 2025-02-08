@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using NaughtyAttributes;
 using UnityEngine.Rendering.Universal;
+using System.Runtime.CompilerServices;
 
 public class LevelManager : MonoBehaviour
 {
@@ -14,6 +15,10 @@ public class LevelManager : MonoBehaviour
     private float           cityLight = 0.0f;
     [SerializeField]
     private float           playerLight = 0.0f;
+    [SerializeField, Header("Resources")]
+    private float           _resourceConsumption = 1.0f;
+    [SerializeField]
+    private float           _resourceBonus  = 1.0f;
     [SerializeField, Header("Game Flow")]
     private int             startPhase = 0;
     [SerializeField]
@@ -33,6 +38,9 @@ public class LevelManager : MonoBehaviour
 
     public static float cityLightIntensity => Instance.cityLight;
     public static float playerLightIntensity => Instance.playerLight;
+
+    public static float resourceConsumption => Instance._resourceConsumption;
+    public static float resourceBonus => Instance._resourceBonus;
 
     void Awake()
     {

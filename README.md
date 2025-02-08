@@ -30,15 +30,17 @@ Game ends when one city is out of oxygen, and the associated player is dead.
 
 ## February Objectives
 - New sub type sprite
-- Game icon
 - Abyss level (a lot of darkness)
   - Light rotate slower than the player (might look weird)
 - Simple enemies (drop resources)
   - Octopus type of thing
   - Shark thing
+- New weapon system
 - Machine gun
 - Algae
 - Swap buttons for menus
+- Slow down/Accelerate resource consumption per level
+- Submarine light POI system 
 
 ## Future
 - Distortion effect
