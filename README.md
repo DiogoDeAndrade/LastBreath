@@ -37,6 +37,7 @@ Game ends when one city is out of oxygen, and the associated player is dead.
 - Machine gun
 - Gamma control
 - Algae
+- Swap buttons for menus
 
 ## Future
 - Distortion effect
