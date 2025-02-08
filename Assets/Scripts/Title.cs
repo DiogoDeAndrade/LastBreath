@@ -58,6 +58,7 @@ public class Title : UIGroup
 
     private void StartGame(BaseUIControl control)
     {
+        Debug.Log($"Starting game by pressing {control.name}");
         _uiEnable = false;
         GameManager.Instance.numPlayers = 2;
         

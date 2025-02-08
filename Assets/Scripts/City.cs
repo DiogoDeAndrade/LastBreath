@@ -1,5 +1,6 @@
 using NaughtyAttributes;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UIElements;
@@ -14,6 +15,8 @@ public class City : MonoBehaviour
     private Transform   spawnPoint;
     [SerializeField] 
     private float       penaltyDuration = 10.0f;
+    [SerializeField]
+    private Transform   playerPinPrefab;
     [SerializeField, Header("Progression")]
     private Vector2     sizeRange = Vector2.one;
     [SerializeField]
@@ -91,6 +94,8 @@ public class City : MonoBehaviour
     bool            _isReviving;
     bool            firstSpawn = true;
     Light2D         cityLight;
+    Vector3         lastDeathPos;
+    Transform       playerPin;
 
     public bool isPlayerDead => player == null;
     public float timeToRespawn => penaltyTimer;
@@ -138,6 +143,15 @@ public class City : MonoBehaviour
                 if (penaltyTimer > 0.0f)
                 {
                     penaltyTimer -= Time.deltaTime;
+
+                    if (playerPin)
+                    {
+                        float t = penaltyTimer / penaltyDuration;
+                        if (t < 0.9f)
+                        {
+                            playerPin.transform.position = Vector3.Lerp(spawnPoint.transform.position, lastDeathPos, t / 0.9f);
+                        }
+                    }
                 }
                 if (penaltyTimer <= 0.0f)
                 {
@@ -153,6 +167,11 @@ public class City : MonoBehaviour
                     else
                     {
                         if (respawnSnd) SoundManager.PlaySound(SoundType.PrimaryFX, respawnSnd, 1.0f, 1.0f);
+                    }
+
+                    if (playerPin)
+                    {
+                        Destroy(playerPin.gameObject);
                     }
                 }
             }
@@ -455,5 +474,11 @@ public class City : MonoBehaviour
         ChangeOxygen(-maxOxygen * 2.0f);
         UpdateBubbleGfx();
         PopBubble();
+    }
+
+    internal void NotifyPlayerDeath(Submarine submarine)
+    {
+        playerPin = Instantiate(playerPinPrefab, submarine.transform.position, submarine.transform.rotation);
+        lastDeathPos = submarine.transform.position;
     }
 }

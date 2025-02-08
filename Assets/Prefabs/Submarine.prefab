@@ -1,5 +1,64 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &60350591461778649
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4080503265126797599}
+  - component: {fileID: 7617688384316308407}
+  - component: {fileID: 2296247183138751244}
+  m_Layer: 8
+  m_Name: CameraFollow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &4080503265126797599
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60350591461778649}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7999605004592227391}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7617688384316308407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60350591461778649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc938798f9cbdba48b70a952094371e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hypertag: {fileID: 11400000, guid: 744fe16511b4f6d4d9890ef4035ee68e, type: 2}
+--- !u!114 &2296247183138751244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60350591461778649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6d0bb2993d13394282ef567ad6ddf8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  futureTime: 1
 --- !u!1 &609527525854884589
 GameObject:
   m_ObjectHideFlags: 0
@@ -6589,6 +6648,7 @@ GameObject:
   - component: {fileID: 7698209387435550969}
   - component: {fileID: 5439900134263999799}
   - component: {fileID: 2988944142474767809}
+  - component: {fileID: 5871196058865418450}
   m_Layer: 8
   m_Name: Submarine
   m_TagString: Untagged
@@ -6623,6 +6683,7 @@ Transform:
   - {fileID: 9147561622899176629}
   - {fileID: 2675829865153892083}
   - {fileID: 766650968200669203}
+  - {fileID: 4080503265126797599}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2645738645552758782
@@ -6917,6 +6978,20 @@ MonoBehaviour:
   invulnerabilityBlink: 0
   useAnimatorForBlink: 0
   blinkTime: 0.1
+--- !u!114 &5871196058865418450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9078551628919542819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dd6c82d17b0d574b9f5e6f6ec6ebfce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _autoUpdate: 1
+  _fixedUpdate: 1
 --- !u!1001 &411348123126341563
 PrefabInstance:
   m_ObjectHideFlags: 0
