@@ -33,7 +33,12 @@ Game ends when one city is out of oxygen, and the associated player is dead.
 - Abyss level (a lot of darkness)
   - Light rotate slower than the player (might look weird)
 - Simple enemies (drop resources)
-  - Dark octopus type of thing (small and large)
+  - Dark squid type of thing
+    - Locomotion avoidance
+    - Obstacle avoidance/collision
+    - Stun (blue)
+    - Explosion (red)
+    - 
 - Machine gun
 - Algae
 
