@@ -1,14 +1,24 @@
+using Mono.Cecil.Cil;
+using NaughtyAttributes;
+using System.Linq;
 using UnityEngine;
 
 public class SquidLocomotion : Locomotion
 {
-    [SerializeField] private float minDistance = 5.0f;
-    [SerializeField] private float linearSpeed = 200.0f;
-    [SerializeField] private float minVelocity = 20.0f;
-    [SerializeField] private float drag = 0.9f;
-    [SerializeField] private float rotationSpeed = 720.0f;
-    [SerializeField] private float bobAmplitude= 10.0f;
-    [SerializeField] private float bobSpeed = 180.0f;
+    [SerializeField] 
+    private float       minDistance = 5.0f;
+    [SerializeField]    
+    private float       linearSpeed = 200.0f;
+    [SerializeField]    
+    private float       minVelocity = 20.0f;
+    [SerializeField]    
+    private float       drag = 0.9f;
+    [SerializeField]    
+    private float       rotationSpeed = 720.0f;
+    [SerializeField]    
+    private float       bobAmplitude= 10.0f;
+    [SerializeField]    
+    private float       bobSpeed = 180.0f;
 
     float       currentSpeed;
     Animator    animator;
@@ -24,6 +34,11 @@ public class SquidLocomotion : Locomotion
         animator = GetComponent<Animator>();
         animImpulseHash = Animator.StringToHash("Impulse");
         animSwimHash = Animator.StringToHash("Swim");
+
+        if (priorityFromInstanceID)
+        {
+            priority = gameObject.GetInstanceID();
+        }
     }
 
     void FixedUpdate()
@@ -31,7 +46,7 @@ public class SquidLocomotion : Locomotion
         timeSinceLastImpulse += Time.fixedDeltaTime;
 
         // See if we're going anywhere
-        Vector3 toTarget = targetPosition - transform.position;
+        Vector3 toTarget = targetPosition - ((bobbing) ? (bobPos) : (transform.position));
         float   distanceToTarget = toTarget.magnitude;
 
         if (distanceToTarget > minDistance)
@@ -39,30 +54,53 @@ public class SquidLocomotion : Locomotion
             bobbing = false;
 
             currentSpeed = Mathf.Max(0, currentSpeed - (currentSpeed * drag * Time.fixedDeltaTime));
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(Vector3.forward, toTarget.normalized), Time.fixedDeltaTime * rotationSpeed);
 
-            var info = animator.GetCurrentAnimatorStateInfo(0);
-            if (currentSpeed < minVelocity)
+            var targetRotation = Quaternion.LookRotation(Vector3.forward, toTarget.normalized);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Time.fixedDeltaTime * rotationSpeed);
+
+            float angle = Quaternion.Angle(transform.rotation, targetRotation);
+
+            if (Mathf.Abs(angle) < 5)
             {
-                if ((info.shortNameHash == animSwimHash) && (timeSinceLastImpulse < 1.0f))
+                var info = animator.GetCurrentAnimatorStateInfo(0);
+                if (currentSpeed < minVelocity)
                 {
-                    currentSpeed = linearSpeed;
-                }
-                else if (info.shortNameHash != animImpulseHash)
-                {
-                    animator.SetTrigger("Accelerate");
-                    timeSinceLastImpulse = 0;
+                    if ((info.shortNameHash == animSwimHash) && (timeSinceLastImpulse < 1.0f))
+                    {
+                        float maxDistance = linearSpeed / drag;
+
+                        currentSpeed = linearSpeed * Mathf.Clamp01(distanceToTarget / maxDistance);
+                    }
+                    else if (info.shortNameHash != animImpulseHash)
+                    {
+                        animator.SetTrigger("Accelerate");
+                        timeSinceLastImpulse = 0;
+                    }
                 }
             }
 
-            transform.position = transform.position + currentSpeed * transform.up * Time.fixedDeltaTime;
+            if ((currentSpeed < (minVelocity + linearSpeed) * 0.5f) && (timeSinceLastImpulse > 1.0f))
+            {
+                animator.SetTrigger("Idle");
+            }
+
+            if (rb)
+                rb.linearVelocity = currentSpeed * transform.up;
+            else 
+                transform.position = transform.position + currentSpeed * transform.up * Time.fixedDeltaTime;
         }
         else
         {
+            animator.SetTrigger("Idle");
+
             if (distanceToTarget > 1e-3)
             {
-                //transform.position = Vector3.Lerp(transform.position, targetPosition, Time.fixedDeltaTime);
-                transform.position = Vector3.MoveTowards(transform.position, targetPosition, currentSpeed * Time.fixedDeltaTime);
+                Vector2 targetPos = Vector3.MoveTowards(transform.position, targetPosition, currentSpeed * Time.fixedDeltaTime);
+
+                if (rb)
+                    rb.MovePosition(targetPos);
+                else
+                    transform.position = targetPos;
             }
             else
             {
@@ -73,14 +111,53 @@ public class SquidLocomotion : Locomotion
                     bobPos = targetPosition;
                     bobbing = true;
                     bobAngle = 0;
-                    animator.SetTrigger("Idle");
                 }
 
-                transform.position = bobPos + Vector3.up * bobAmplitude * Mathf.Sin(bobAngle * Mathf.Deg2Rad);
+                Vector2 targetPos = bobPos + Vector3.up * bobAmplitude * Mathf.Sin(bobAngle * Mathf.Deg2Rad);
+                if (rb)
+                    rb.MovePosition(targetPos);
+                else
+                    transform.position = targetPos;
+
                 bobAngle += Time.fixedDeltaTime * bobSpeed;
             }
 
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.identity, Time.fixedDeltaTime * rotationSpeed);
+        }
+
+        if (agentAvoidance)
+        {
+            var enemies = HypertaggedObject.GetInRadius<Locomotion>(avoidanceTag, transform.position.xy(), avoidanceRadius * 2.0f);
+            foreach (var enemy in enemies)
+            {
+                if (enemy == transform) continue;
+
+                Vector3 toEnemy = (enemy.transform.position - transform.position).xy0();
+                if (toEnemy.magnitude < avoidanceRadius * 2.0f)
+                {
+                    float toMove = (avoidanceRadius * 2.0f - toEnemy.magnitude);
+
+                    if (avoidancePriority == enemy.avoidancePriority)
+                    {
+                        toMove *= 0.5f;
+                        transform.position -= toEnemy.normalized * toMove;
+                        enemy.transform.position += toEnemy.normalized * toMove;
+                    }
+                    else if (avoidancePriority < enemy.avoidancePriority)
+                    {
+                        transform.position -= toEnemy.normalized * toMove;
+                    }
+                }
+            }
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (agentAvoidance)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(transform.position, avoidanceRadius);
         }
     }
 }

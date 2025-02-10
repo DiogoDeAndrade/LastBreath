@@ -30,15 +30,11 @@ Game ends when one city is out of oxygen, and the associated player is dead.
 
 ## February Objectives
 - New sub type sprite
-- Abyss level (a lot of darkness)
-  - Light rotate slower than the player (might look weird)
 - Simple enemies (drop resources)
   - Dark squid type of thing
-    - Locomotion avoidance
-    - Obstacle avoidance/collision
     - Stun (blue)
     - Explosion (red)
-    - 
+  - Enemy Spawner
 - Machine gun
 - Algae
 
