@@ -1,8 +1,6 @@
 using NaughtyAttributes;
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEditor.Hardware;
-
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -12,7 +10,9 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] 
     private float           maxSpeed = 250.0f;
-    [SerializeField] 
+    [SerializeField]
+    private bool            useAcceleration;
+    [SerializeField, ShowIf(nameof(useAcceleration))] 
     private float           acceleration = 250.0f;
     [SerializeField] 
     private float           duration = 10.0f;
@@ -33,14 +33,17 @@ public class Projectile : MonoBehaviour
     [SerializeField] 
     private GameObject      explosionPrefab;
 
-    private int         _playerId;
-    private Rigidbody2D rb;
-    private float       timer;
-    private float       _speedModifier = 1.0f;
-    private float       _damageModifier = 1.0f;
-    private bool        targetAcquired;
+    private int             _playerId;
+    private Rigidbody2D     rb;
+    private TrailRenderer   trailRenderer;
+    private HealthSystem    healthSystem;
+    private float           timer;
+    private float           _speedModifier = 1.0f;
+    private float           _damageModifier = 1.0f;
+    private bool            targetAcquired;
 
-    bool isTracker => trackingTags.Count > 0;
+    bool isTracker => (trackingTags != null) ? (trackingTags.Count > 0) : (false);
+    bool isDead => ((trailRenderer) && (!trailRenderer.emitting));
 
     public float speedModifier
     {
@@ -63,32 +66,53 @@ public class Projectile : MonoBehaviour
             var effect = GetComponent<SpriteEffect>();
             if (effect) effect.SetOutline(1.0f, Color.red);
         }
+        healthSystem = GetComponent<HealthSystem>();
+        if (healthSystem)
+            healthSystem.onDead += HealthSystem_onDead;
+        trailRenderer = GetComponent<TrailRenderer>();
 
         timer = 0.0f;
     }
 
+    private void HealthSystem_onDead(GameObject damageSource)
+    {
+        SelfDestruct();
+    }
+
     void FixedUpdate()
     {
+        if (isDead) return;
+
         timer += Time.deltaTime;
         if (timer > duration)
         {
-            if (explosionPrefab) Instantiate(explosionPrefab, transform.position, transform.rotation);
+            SelfDestruct();
 
-            Destroy(gameObject);
             return;
         }
-        var velocity = rb.linearVelocity;
-        var speed = velocity.magnitude;
+        if (useAcceleration)
+        {
+            var velocity = rb.linearVelocity;
+            var speed = velocity.magnitude;
 
-        float ms = maxSpeed;
-        ms *= Submarine.GetAura(transform.position, _playerId);
+            float ms = maxSpeed;
+            ms *= Submarine.GetAura(transform.position, _playerId);
 
-        velocity = transform.right * Mathf.Clamp(speed + acceleration * Time.fixedDeltaTime, 0.0f, ms) * _speedModifier;
-        rb.linearVelocity = velocity;
+            velocity = transform.right * Mathf.Clamp(speed + acceleration * Time.fixedDeltaTime, 0.0f, ms) * _speedModifier;
+            rb.linearVelocity = velocity;
+        }
+        else
+        {
+            float ms = maxSpeed;
+            ms *= Submarine.GetAura(transform.position, _playerId);
+            rb.linearVelocity = transform.right * ms * _speedModifier;
+        }
     }
 
     private void Update()
     {
+        if (isDead) return;
+
         if ((isTracker) && (trackPoint != null))
         {
             var overlaps = Physics2D.OverlapCircleAll(trackPoint.position, rangeTolerance);
@@ -142,24 +166,50 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (isDead) return;
+
         // Check collision with player, do nothing to self player
+        float selfDamage = 1000.0f;
+
         var submarine = collision.GetComponent<Submarine>();
         if (submarine != null)
         {
             if (submarine.playerId == _playerId) return;            
         }
-        var torpedo = collision.GetComponent<Projectile>();
-        if (torpedo != null)
+        var projectile = collision.GetComponent<Projectile>();
+        if (projectile != null)
         {
-            if (torpedo._playerId == _playerId) return;
+            if (projectile._playerId == _playerId) return;
+            // Nothing should happen with the projectile hit, the projectil will deal damage to this one instead
+            selfDamage = 0.0f;
         }
 
-        var health = collision.GetComponent<HealthSystem>();
-        health?.DealDamage(HealthSystem.DamageType.Burst, damage * _damageModifier, transform.position, Vector3.zero, gameObject);
+        var otherHealthSystem = collision.GetComponent<HealthSystem>();
+        otherHealthSystem?.DealDamage(HealthSystem.DamageType.Burst, damage * _damageModifier, transform.position, Vector3.zero, gameObject);
+
+        if (healthSystem)
+        {
+            healthSystem.DealDamage(HealthSystem.DamageType.Burst, selfDamage, transform.position, Vector3.zero, collision.gameObject);
+        }
+        else
+        {
+            SelfDestruct();
+        }
+    }
+
+    void SelfDestruct()
+    {
+        float destroyTime = 0.0f;
 
         if (explosionPrefab) Instantiate(explosionPrefab, transform.position, transform.rotation);
+        if (trailRenderer)
+        {
+            trailRenderer.emitting = false;
+            destroyTime = 0.2f;
+        }
 
-        Destroy(gameObject);
+        if (destroyTime > 0) Destroy(gameObject, destroyTime);
+        else Destroy(gameObject);
     }
 
 #if UNITY_EDITOR

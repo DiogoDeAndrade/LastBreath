@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3722463758159727859}
   - component: {fileID: 5113020608957904864}
   - component: {fileID: 6573723777566648191}
+  - component: {fileID: -2391839229530115143}
   m_Layer: 0
   m_Name: Torpedo
   m_TagString: Untagged
@@ -212,6 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 250
+  useAcceleration: 1
   acceleration: 250
   duration: 10
   damage: 50
@@ -237,6 +239,24 @@ MonoBehaviour:
   trigger: 0
   time: 0.05
   strength: 3
+--- !u!114 &-2391839229530115143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2606005527734810573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e46cea9ea2b05fc448e31435254b3fae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  faction: {fileID: 0}
+  maxHealth: 30
+  invulnerabilityTime: 0
+  invulnerabilityBlink: 0
+  useAnimatorForBlink: 1
+  blinkTime: 0.1
 --- !u!1 &5500554503368013734
 GameObject:
   m_ObjectHideFlags: 0

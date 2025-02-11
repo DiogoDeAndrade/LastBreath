@@ -24,6 +24,7 @@ Sound
 <size=60%>8 morse channels simultaneously 230805 21018.3kHz by klankbeeld, [CC-BY 4.0] license.
 <size=60%>item_respawn by Silencer1337, [CC0] license.
 <size=60%>150209 Trevor Webb Air Cyclinder by Bleachbear, [CC-BY-NC 3.0] license.
+<size=60%>Complex Minigun Spin-Up Firing by Hybrid_V, [CC-BY-NC 4.0] license.
 <size=60%>Songs AI generated using Suno
 <size=60%>Everything else done by Diogo de Andrade, CC0 license
 

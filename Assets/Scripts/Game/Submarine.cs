@@ -52,9 +52,7 @@ public class Submarine : MonoBehaviour
     [SerializeField, InputPlayer(nameof(playerInput))] 
     private InputControl    moveControl;
     [SerializeField, InputPlayer(nameof(playerInput)), InputButton]
-    private InputControl    primaryFire;
-    [SerializeField, InputPlayer(nameof(playerInput)), InputButton]
-    private InputControl    secondaryFire;
+    private InputControl[]  fireControl = new InputControl[2];
     [SerializeField, InputPlayer(nameof(playerInput)), InputButton]
     private InputControl    gatherControl;
     [SerializeField, InputPlayer(nameof(playerInput)), InputButton]
@@ -117,8 +115,7 @@ public class Submarine : MonoBehaviour
 
         MasterInputManager.SetupInput(_playerId, playerInput);
         moveControl.playerInput = playerInput;
-        primaryFire.playerInput = playerInput;
-        secondaryFire.playerInput = playerInput;
+        foreach (var f in fireControl) f.playerInput = playerInput;
         gatherControl.playerInput = playerInput;
         dropControl.playerInput = playerInput;
 
@@ -255,13 +252,14 @@ public class Submarine : MonoBehaviour
 
         if (LevelManager.weaponsFree)
         {
-            if (primaryFire.IsPressed())
-            {
-                weapons[0]?.Shoot((inventoryType) ? (inventoryType.weaponSpeedModifier) : (1.0f));
-            }
-            if (secondaryFire.IsDown())
-            {
-                weapons[1]?.Shoot((inventoryType) ? (inventoryType.weaponSpeedModifier) : (1.0f));
+            for (int i = 0; i < fireControl.Length; i++)
+            { 
+                if (weapons[i] == null) continue;
+                if (((weapons[i].canHold) && (fireControl[i].IsPressed())) ||
+                    ((!weapons[i].canHold) && (fireControl[i].IsDown())))
+                {
+                    weapons[i]?.Shoot((inventoryType) ? (inventoryType.weaponSpeedModifier) : (1.0f));
+                }
             }
         }
 
@@ -470,7 +468,7 @@ public class Submarine : MonoBehaviour
 
     internal InputControl GetAttackControl()
     {
-        return secondaryFire;
+        return fireControl[1];
     }
 
     internal InputControl GetGatherControl()

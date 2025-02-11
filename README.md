@@ -34,8 +34,9 @@ Game ends when one city is out of oxygen, and the associated player is dead.
   - Dark squid type of thing
     - Stun (blue)
     - Explosion (red)
+    - Drop system
   - Enemy Spawner
-- Machine gun
+  - Level selector
 - Algae
 
 ## Future
@@ -72,6 +73,7 @@ Game ends when one city is out of oxygen, and the associated player is dead.
 - [8 morse channels simultaneously 230805 21018.3kHz](https://freesound.org/people/klankbeeld/sounds/698986/) by [klankbeeld](https://freesound.org/people/klankbeeld/), licensed through the [CC-BY 4.0] license.
 - [item_respawn](https://freesound.org/people/Silencer1337/sounds/83301/) by [Silencer1337](https://freesound.org/people/Silencer1337/), licensed through the [CC0] license.
 - [150209 Trevor Webb Air Cyclinder](https://freesound.org/people/Bleachbear/sounds/327011/) by [Bleachbear](https://freesound.org/people/Bleachbear/), licensed through the [CC-BY-NC 3.0] license.
+- [Complex Minigun Spin-Up Firing](https://freesound.org/people/Hybrid_V/sounds/320742/) by [Hybrid_V](https://freesound.org/people/Hybrid_V/), licensed through the [CC-BY-NC 4.0] license.
 - Music AI generated with [Suno]
 - Everything else done by [Diogo de Andrade], licensed through the [CC0] license.
 
@@ -91,6 +93,7 @@ Game ends when one city is out of oxygen, and the associated player is dead.
 [CC-BY-NC 3.0]:https://creativecommons.org/licenses/by-nc/3.0/
 [CC-BY-SA 4.0]:http://creativecommons.org/licenses/by-sa/4.0/
 [CC-BY 4.0]:https://creativecommons.org/licenses/by/4.0/
+[CC-BY-NC 4.0]:https://creativecommons.org/licenses/by-nc/4.0/
 [OkapiKit]:https://github.com/VideojogosLusofona/OkapiKit
 [Unity Common]:https://github.com/DiogoDeAndrade/UnityCommon
 [Global Game Jam'25]:https://globalgamejam.org/

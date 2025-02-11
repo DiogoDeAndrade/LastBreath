@@ -26,4 +26,5 @@
 - Change logo
 - Removed all AI art
 - Swapped buttons on menus
+- New weapon: Machine gun
 
