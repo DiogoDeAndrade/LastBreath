@@ -36,7 +36,6 @@ Game ends when one city is out of oxygen, and the associated player is dead.
     - Explosion (red)
     - Drop system
   - Enemy Spawner
-  - Level selector
 - Algae
 
 ## Future
@@ -57,6 +56,7 @@ Game ends when one city is out of oxygen, and the associated player is dead.
 
 - [UI Pack Sci-Fi](https://kenney.nl/assets/ui-pack-sci-fi) by [Kenney](https://kenney.nl), licensed through the [CC0] license.
 - Font [Optimus](https://www.dafont.com/pt/optimus.font) by [Pixel Sagas](https://www.dafont.com/pt/pixel-sagas.d32), free for non-commercial use.
+- Stock photos from [pexels.com](pexels.com), free to use.
 - Everything else done by [Diogo de Andrade], licensed through the [CC0] license.
 
 ## Sound

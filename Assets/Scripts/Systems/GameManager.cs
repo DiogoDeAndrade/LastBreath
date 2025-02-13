@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int                _numPlayers = 2;
     [SerializeField] private List<PlayerData>   _playerData;
+    [SerializeField] private Arena              _selectedLevel;
 
     private float playTime = 0.0f;
 
@@ -78,4 +80,9 @@ public class GameManager : MonoBehaviour
         set { _numPlayers = value; }
     }
 
+    public Arena selectedLevel
+    {
+        get { return _selectedLevel; }
+        set { _selectedLevel = value; }
+    }
 }

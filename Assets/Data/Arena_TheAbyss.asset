@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 545fa9137739b6840a7d226586de8175, type: 3}
+  m_Name: Arena_TheAbyss
+  m_EditorClassIdentifier: 
+  displayName: The Abyss
+  thumbnail: {fileID: 21300000, guid: 6f2664a510fe8a04a98c46d96c6ca26e, type: 3}
+  description: The dark abyss, rich but dangerous
+  playerLimit: {x: 2, y: 2}
+  sceneName: GameScene_TheDeep

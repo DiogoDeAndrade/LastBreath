@@ -32,5 +32,10 @@ Code
 <size=60%>Some code was adapted/refactored from Okapi Kit and UnityCommon library, MIT license
 <size=60%>All remaining game source code by Diogo de Andrade, MIT license
 
+Stock photos
+<size=60%>Stock photos from pexels.com, free to use.
+<size=60%>Coral reef - Lachlan Ross
+<size=60%>Deep Sea - Blaque X
+
 <size=60%>Full game source available at https://github.com/DiogoDeAndrade/Bubble
 <size=60%>with complete credits (links, licences, etc)

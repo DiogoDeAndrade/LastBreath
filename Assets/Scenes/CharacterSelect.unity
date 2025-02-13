@@ -587,7 +587,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64fe2277853542045856728eb05c015f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameScene: GameScene_Shallows
+  gameScene: AreaSelect
   musicClip: {fileID: 8300000, guid: 584a093a3b8c8014085792ee97a9fd20, type: 3}
 --- !u!1001 &984471358
 PrefabInstance:
