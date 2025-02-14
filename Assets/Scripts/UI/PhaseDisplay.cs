@@ -11,7 +11,6 @@ public class PhaseDisplay : MonoBehaviour
     [SerializeField] private TextMeshProUGUI subtitleText;
     [SerializeField] private TextMeshProUGUI descriptionText;
 
-    bool display = false;
     CanvasGroup canvasGroup;
 
     void Start()

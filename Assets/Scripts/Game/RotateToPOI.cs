@@ -11,6 +11,7 @@ public class RotateToPOI : MonoBehaviour
     [SerializeField] private float      maxRange = 200.0f;
     [SerializeField] private float      angularTolerance = 45.0f;
     [SerializeField] private float      maxRotationSpeed = 360.0f;
+    [SerializeField] private bool       checkHealth;
     [SerializeField] private bool       checkLOS;
     [SerializeField, ShowIf(nameof(checkLOS))] private float distanceBias;
     [SerializeField, ShowIf(nameof(checkLOS))] private LayerMask occluderLayers;
@@ -32,6 +33,14 @@ public class RotateToPOI : MonoBehaviour
             if (d < minRange) continue;
             if (d > maxRange) break;
 
+            if (checkHealth)
+            {
+                var hs = obj.GetComponent<HealthSystem>();
+                if (hs)
+                {
+                    if (hs.isDead) continue;
+                }
+            }
             if (checkLOS)
             {
                 var dir = obj.position - transform.position;

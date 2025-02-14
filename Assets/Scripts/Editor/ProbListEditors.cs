@@ -7,3 +7,4 @@ public class ResourceDataProbListDrawer : ProbListPropertyDrawer<ResourceData>
 {
 
 }
+

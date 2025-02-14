@@ -46,56 +46,63 @@ public class SquidLocomotion : Locomotion
         timeSinceLastImpulse += Time.fixedDeltaTime;
 
         // See if we're going anywhere
-        Vector3 toTarget = targetPosition - ((bobbing) ? (bobPos) : (transform.position));
-        float   distanceToTarget = toTarget.magnitude;
+        bool moving = false;
+        float distanceToTarget = 0.0f;
 
-        if (distanceToTarget > minDistance)
+        if (targetPosition.HasValue)
         {
-            bobbing = false;
+            Vector3 toTarget = targetPosition.Value - ((bobbing) ? (bobPos) : (transform.position));
+            distanceToTarget = toTarget.magnitude;
 
-            currentSpeed = Mathf.Max(0, currentSpeed - (currentSpeed * drag * Time.fixedDeltaTime));
-
-            var targetRotation = Quaternion.LookRotation(Vector3.forward, toTarget.normalized);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Time.fixedDeltaTime * rotationSpeed);
-
-            float angle = Quaternion.Angle(transform.rotation, targetRotation);
-
-            if (Mathf.Abs(angle) < 5)
+            if (distanceToTarget > minDistance)
             {
-                var info = animator.GetCurrentAnimatorStateInfo(0);
-                if (currentSpeed < minVelocity)
-                {
-                    if ((info.shortNameHash == animSwimHash) && (timeSinceLastImpulse < 1.0f))
-                    {
-                        float maxDistance = linearSpeed / drag;
+                bobbing = false;
 
-                        currentSpeed = linearSpeed * Mathf.Clamp01(distanceToTarget / maxDistance);
-                    }
-                    else if (info.shortNameHash != animImpulseHash)
+                currentSpeed = Mathf.Max(0, currentSpeed - (currentSpeed * drag * Time.fixedDeltaTime));
+
+                var targetRotation = Quaternion.LookRotation(Vector3.forward, toTarget.normalized);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Time.fixedDeltaTime * rotationSpeed);
+
+                float angle = Quaternion.Angle(transform.rotation, targetRotation);
+
+                if (Mathf.Abs(angle) < 5)
+                {
+                    var info = animator.GetCurrentAnimatorStateInfo(0);
+                    if (currentSpeed < minVelocity)
                     {
-                        animator.SetTrigger("Accelerate");
-                        timeSinceLastImpulse = 0;
+                        if ((info.shortNameHash == animSwimHash) && (timeSinceLastImpulse < 1.0f))
+                        {
+                            float maxDistance = linearSpeed / drag;
+
+                            currentSpeed = linearSpeed * Mathf.Clamp01(distanceToTarget / maxDistance);
+                        }
+                        else if (info.shortNameHash != animImpulseHash)
+                        {
+                            animator.SetTrigger("Accelerate");
+                            timeSinceLastImpulse = 0;
+                        }
                     }
                 }
-            }
 
-            if ((currentSpeed < (minVelocity + linearSpeed) * 0.5f) && (timeSinceLastImpulse > 1.0f))
-            {
-                animator.SetTrigger("Idle");
-            }
+                if ((currentSpeed < (minVelocity + linearSpeed) * 0.5f) && (timeSinceLastImpulse > 1.0f))
+                {
+                    animator.SetTrigger("Idle");
+                }
 
-            if (rb)
-                rb.linearVelocity = currentSpeed * transform.up;
-            else 
-                transform.position = transform.position + currentSpeed * transform.up * Time.fixedDeltaTime;
+                if (rb)
+                    rb.linearVelocity = currentSpeed * transform.up;
+                else
+                    transform.position = transform.position + currentSpeed * transform.up * Time.fixedDeltaTime;
+            }
         }
-        else
+
+        if (!moving)
         {
             animator.SetTrigger("Idle");
 
             if (distanceToTarget > 1e-3)
             {
-                Vector2 targetPos = Vector3.MoveTowards(transform.position, targetPosition, currentSpeed * Time.fixedDeltaTime);
+                Vector2 targetPos = Vector3.MoveTowards(transform.position, targetPosition.Value, currentSpeed * Time.fixedDeltaTime);
 
                 if (rb)
                     rb.MovePosition(targetPos);
@@ -108,7 +115,7 @@ public class SquidLocomotion : Locomotion
 
                 if (!bobbing)
                 {
-                    bobPos = targetPosition;
+                    bobPos = (targetPosition.HasValue) ? (targetPosition.Value) : (transform.position);
                     bobbing = true;
                     bobAngle = 0;
                 }

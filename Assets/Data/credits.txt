@@ -36,6 +36,7 @@ Stock photos
 <size=60%>Stock photos from pexels.com, free to use.
 <size=60%>Coral reef - Lachlan Ross
 <size=60%>Deep Sea - Blaque X
+<size=60%>Jellyfish Underwater - Francesco Ungaro
 
 <size=60%>Full game source available at https://github.com/DiogoDeAndrade/Bubble
 <size=60%>with complete credits (links, licences, etc)

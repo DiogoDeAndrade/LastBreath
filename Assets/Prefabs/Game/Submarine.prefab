@@ -825,6 +825,7 @@ MonoBehaviour:
   maxRange: 200
   angularTolerance: 75
   maxRotationSpeed: 180
+  checkHealth: 0
   checkLOS: 1
   distanceBias: -10
   occluderLayers:
@@ -6874,6 +6875,10 @@ PrefabInstance:
     - target: {fileID: 7947194316798788712, guid: b8b0e69c4d506ea489f624291734675a, type: 3}
       propertyPath: m_PointLightOuterRadius
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8728138184837960414, guid: b8b0e69c4d506ea489f624291734675a, type: 3}
+      propertyPath: checkHealth
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -16,7 +16,7 @@ public class Locomotion : MonoBehaviour
     protected bool needPriority => agentAvoidance && !priorityFromInstanceID;
     public int avoidancePriority => priority;
 
-    protected Vector3       targetPosition;
+    protected Vector3?      targetPosition;
     protected Rigidbody2D   rb;
 
     private void Awake()

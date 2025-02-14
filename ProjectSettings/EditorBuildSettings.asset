@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameScene_TheAbyss.unity
     guid: 0d2775b0a50110a458f282cbfca277b2
+  - enabled: 1
+    path: Assets/Scenes/GameScene_DeepHunter.unity
+    guid: 430ca6e69d66d3442a2c8ebc084af513
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: a1042648f57c0fa48883cf584d7199a5, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

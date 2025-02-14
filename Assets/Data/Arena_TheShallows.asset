@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 545fa9137739b6840a7d226586de8175, type: 3}
+  m_Script: {fileID: 11500000, guid: f22f6ba95d6ca4747b3d96832beac05e, type: 3}
   m_Name: Arena_TheShallows
   m_EditorClassIdentifier: 
   displayName: The Shallows
   thumbnail: {fileID: 21300000, guid: 86f9af35ae2c4df4d9bac55588e6a438, type: 3}
-  description: A peaceful setting with plenty of light and resources.
+  description: Peaceful coral area, rich in resources
   playerLimit: {x: 2, y: 2}
   sceneName: GameScene_TheShallows

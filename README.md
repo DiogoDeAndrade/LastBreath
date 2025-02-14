@@ -35,6 +35,9 @@ Game ends when one city is out of oxygen, and the associated player is dead.
     - Stun (blue)
     - Explosion (red)
     - Drop system
+    - Hit sound
+    - Death sound
+    - Afected by slow aura
   - Enemy Spawner
 - Algae
 
