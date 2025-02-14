@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int                _numPlayers = 2;
     [SerializeField] private List<PlayerData>   _playerData;
-    [SerializeField] private Arena              _selectedLevel;
+    [SerializeField] private ArenaData              _selectedLevel;
 
     private float playTime = 0.0f;
 
@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
         set { _numPlayers = value; }
     }
 
-    public Arena selectedLevel
+    public ArenaData selectedLevel
     {
         get { return _selectedLevel; }
         set { _selectedLevel = value; }

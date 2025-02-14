@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d81278af1182f4469c9c484d90d82db, type: 3}
+  m_Name: Phase_Escalation
+  m_EditorClassIdentifier: 
+  phaseTrigger: 1
+  time: 30
+  title: Phase 2
+  titleColor: {r: 0.8509804, g: 0.72980946, b: 0.23529409, a: 1}
+  subtitle: Escalation
+  subtitleColor: {r: 0.48718405, g: 0.8679245, b: 0.7428085, a: 1}
+  description: 'Compete for Resources
+
+    Heightened Tension'
+  descriptionColor: {r: 0.8159487, g: 0.9056604, b: 0.8760648, a: 1}
+  cancelOpponentRequestsOnRequestCompletion: 1
+  forceRequestCompetition: 1
+  weaponsFree: 0

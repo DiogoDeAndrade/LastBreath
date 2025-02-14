@@ -992,6 +992,7 @@ MonoBehaviour:
   revivePivot: {fileID: 6021362845102416749}
   reviveRadius: 200
   reviveTime: 10
+  resourcesRequiredToRevive: 2
   oxygenPerResource: 75
   reloadSnd: {fileID: 8300000, guid: 4545afc3be752984c951ce6785522ff5, type: 3}
   requestSnd: {fileID: 8300000, guid: 981b099b7889c354f96a7e4c728aca92, type: 3}
@@ -1254,3 +1255,4 @@ MonoBehaviour:
   city: {fileID: 5666158758741769182}
   image: {fileID: 3007727009426361847}
   text: {fileID: 459462880162590531}
+  anyResourceSprite: {fileID: 21300000, guid: d9382c5dbd2b1e343a27c255d26a7521, type: 3}

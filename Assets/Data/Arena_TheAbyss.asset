@@ -16,4 +16,4 @@ MonoBehaviour:
   thumbnail: {fileID: 21300000, guid: 6f2664a510fe8a04a98c46d96c6ca26e, type: 3}
   description: The dark abyss, rich but dangerous
   playerLimit: {x: 2, y: 2}
-  sceneName: GameScene_TheDeep
+  sceneName: GameScene_TheAbyss

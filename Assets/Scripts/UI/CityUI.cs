@@ -7,6 +7,7 @@ public class CityUI : MonoBehaviour
     [SerializeField] private City               city;
     [SerializeField] private Image              image;
     [SerializeField] private TextMeshProUGUI    text;
+    [SerializeField] private Sprite             anyResourceSprite;
 
     CanvasGroup canvasGroup;
     void Start()
@@ -19,7 +20,24 @@ public class CityUI : MonoBehaviour
     {
         if (city.isDead)
         {
-            if (!city.isReviving) canvasGroup.FadeOut(0.15f);
+            if (!city.isReviving)
+            {
+                if ((city.playerOnReviveArea) && (city.itemsRequiredToRevive > 0))
+                {
+                    canvasGroup.FadeIn(0.15f);
+
+                    image.gameObject.SetActive(true);
+                    image.sprite = anyResourceSprite;
+                    text.color = Color.red;
+
+                    text.text = $"x{city.itemsRequiredToRevive}";
+
+                }
+                else
+                {
+                    canvasGroup.FadeOut(0.15f);
+                }
+            }
             else
             {
                 var remainingTime = city.remainingTimeToRevive;

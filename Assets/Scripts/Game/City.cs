@@ -54,6 +54,8 @@ public class City : MonoBehaviour
     [SerializeField]
     private float       reviveTime = 10.0f;
     [SerializeField]
+    private int         resourcesRequiredToRevive = 3;
+    [SerializeField]
     private float       oxygenPerResource = 50.0f;
     [SerializeField, Header("Audio")]
     private AudioClip   reloadSnd;
@@ -96,18 +98,21 @@ public class City : MonoBehaviour
     Light2D         cityLight;
     Vector3         lastDeathPos;
     Transform       playerPin;
+    bool            _onReviveArea = false;
 
     public bool isPlayerDead => player == null;
     public float timeToRespawn => penaltyTimer;
     public bool isDead => oxygen <= 0.0f;
     public float remainingTimeToRevive => (reviveTime > 0) ? (reviveTime - reviveTimer) : (0);
     public bool isReviving => _isReviving;
+    public bool playerOnReviveArea => _onReviveArea;
 
     public float oxygenPercentage => oxygen / maxOxygen;
     public float oxygenCount => oxygen;
 
     public ResourceData requestItem => requestedItem;
     public int          requestCount => requestedQuantity;
+    public int          itemsRequiredToRevive => resourcesRequiredToRevive;
 
     void Start()
     {
@@ -270,42 +275,45 @@ public class City : MonoBehaviour
         {
             _isReviving = false;
 
-            // City is dead, let's get it back to life!
+            _onReviveArea = false;
             if ((revivePivot) && (reviveTime > 0) && (player))
             {
                 float d = Vector3.Distance(revivePivot.position, player.transform.position);
                 if (d < AdjustRadius(reviveRadius))
                 {
-                    _isReviving = true;
+                    _onReviveArea = true;
+                }
+            }
 
-                    reviveTimer += Time.deltaTime;
-                    if (reviveTimer > reviveTime)
-                    {
-                        // Bring it back to life!
-                        oxygen = startOxygen;
-                        if (airDropSnd) SoundManager.PlaySound(SoundType.PrimaryFX, airDropSnd);
-                        if (invBreakerSnd) SoundManager.PlaySound(SoundType.PrimaryFX, invBreakerSnd);
-                    }
-                    else
-                    {
-                        cityLightsBlinkTimer -= Time.deltaTime;
-                        if (cityLightsBlinkTimer < 0.0f)
-                        {
-                            if (Random.Range(0, 100) < 75)
-                            {
-                                cityRenderer.sprite = deadCitySprite;
-                            }
-                            else
-                            {
-                                cityRenderer.sprite = liveCitySprite;
-                            }
-                            cityLightsBlinkTimer = Random.Range(0.25f, 0.75f);
-                        }
-                    }
+            if ((_onReviveArea) && (player.itemCount >= resourcesRequiredToRevive))
+            {
+                _isReviving = true;
+
+                reviveTimer += Time.deltaTime;
+                if (reviveTimer > reviveTime)
+                {
+                    // Bring it back to life!
+                    oxygen = startOxygen + oxygenPerResource * LevelManager.resourceConsumption * (player.itemCount - resourcesRequiredToRevive) * player.item.valueMultiplier;
+                    player.DropAll(true);
+
+                    if (airDropSnd) SoundManager.PlaySound(SoundType.PrimaryFX, airDropSnd);
+                    if (invBreakerSnd) SoundManager.PlaySound(SoundType.PrimaryFX, invBreakerSnd);
                 }
                 else
                 {
-                    cityRenderer.sprite = deadCitySprite;
+                    cityLightsBlinkTimer -= Time.deltaTime;
+                    if (cityLightsBlinkTimer < 0.0f)
+                    {
+                        if (Random.Range(0, 100) < 75)
+                        {
+                            cityRenderer.sprite = deadCitySprite;
+                        }
+                        else
+                        {
+                            cityRenderer.sprite = liveCitySprite;
+                        }
+                        cityLightsBlinkTimer = Random.Range(0.25f, 0.75f);
+                    }
                 }
             }
             else

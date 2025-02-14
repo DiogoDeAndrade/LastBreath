@@ -16,4 +16,4 @@ MonoBehaviour:
   thumbnail: {fileID: 21300000, guid: 86f9af35ae2c4df4d9bac55588e6a438, type: 3}
   description: A peaceful setting with plenty of light and resources.
   playerLimit: {x: 2, y: 2}
-  sceneName: GameScene_Shallows
+  sceneName: GameScene_TheShallows

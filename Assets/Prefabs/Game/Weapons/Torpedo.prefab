@@ -216,7 +216,7 @@ MonoBehaviour:
   useAcceleration: 1
   acceleration: 250
   duration: 10
-  damage: 50
+  damage: 51
   trackingTags: []
   trackPoint: {fileID: 453090873970044773}
   angularTolerance: 30

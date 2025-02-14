@@ -12,8 +12,21 @@ public class WeaponDisplay : ResourceBar
 
     protected override float GetResourceCount()
     {
-        if (LevelManager.weaponsFree) return weapon.ammo;
+        if (LevelManager.weaponsFree)
+        {
+            return weapon.ammo;
+        }
 
         return 0;
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+
+        if (weapon == null)
+        {
+            Destroy(gameObject);
+        }
     }
 }

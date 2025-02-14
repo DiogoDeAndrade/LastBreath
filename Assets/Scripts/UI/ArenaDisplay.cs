@@ -4,7 +4,7 @@ using TMPro;
 
 public class ArenaDisplay : MonoBehaviour
 {
-    public Arena arenaDef;
+    public ArenaData arenaDef;
 
     [SerializeField]
     private TextMeshProUGUI titleText;

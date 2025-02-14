@@ -2,7 +2,7 @@ using NaughtyAttributes;
 using System;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ResourceData", menuName = "Bubble/ResourceData")]
+[CreateAssetMenu(fileName = "ResourceData", menuName = "Bubble/Resource Data")]
 public class ResourceData : ScriptableObject
 {
     public string displayName;

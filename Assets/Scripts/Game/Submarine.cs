@@ -132,6 +132,23 @@ public class Submarine : MonoBehaviour
             subLight.intensity = playerLightIntensity;
         }
 
+        if (LevelManager.overrideWeapons)
+        {
+            var currentWeapons = GetComponentsInChildren<Weapon>();
+            foreach (var w in currentWeapons)
+            {
+                Destroy(w.gameObject);
+            }
+            var newWeapons = LevelManager.overrideWeaponPrefabs;
+            if (newWeapons != null)
+            {
+                foreach (var w in newWeapons)
+                {
+                    Instantiate(w, transform);
+                }
+            }
+        }
+
         weapons = new Weapon[Weapon.MaxWeapon];
         var childWeapons = GetComponentsInChildren<Weapon>();
         foreach (var w in childWeapons)

@@ -1,12 +1,15 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
 
 public class PhaseDisplay : MonoBehaviour
 {
-    [SerializeField] private int phase;
     [SerializeField] private float displayDelay = 0;
     [SerializeField] private float waitTime = 4.0f;
+    [SerializeField] private TextMeshProUGUI titleText;
+    [SerializeField] private TextMeshProUGUI subtitleText;
+    [SerializeField] private TextMeshProUGUI descriptionText;
 
     bool display = false;
     CanvasGroup canvasGroup;
@@ -15,19 +18,41 @@ public class PhaseDisplay : MonoBehaviour
     {
         canvasGroup = GetComponent<CanvasGroup>();
         canvasGroup.alpha = 0.0f;
-    }
 
-    void Update()
-    {
-        if (!display)
+        // Get current phase
+        var currentPhase = LevelManager.phase;
+
+        if (!string.IsNullOrEmpty(currentPhase.title))
         {
-            if (LevelManager.phase == phase)
-            {
-                display = true;
-
-                StartCoroutine(DisplayCR());
-            }
+            titleText.text = currentPhase.title;
+            titleText.color = currentPhase.titleColor;
         }
+        else
+        {
+            titleText.gameObject.SetActive(false);
+        }
+
+        if (!string.IsNullOrEmpty(currentPhase.subtitle))
+        {
+            subtitleText.text = currentPhase.subtitle;
+            subtitleText.color = currentPhase.subtitleColor;
+        }
+        else
+        {
+            subtitleText.gameObject.SetActive(false);
+        }
+
+        if (!string.IsNullOrEmpty(currentPhase.description))
+        {
+            descriptionText.text = currentPhase.description;
+            descriptionText.color = currentPhase.descriptionColor;
+        }
+        else
+        {
+            descriptionText.gameObject.SetActive(false);
+        }
+
+        StartCoroutine(DisplayCR());
     }
 
     IEnumerator DisplayCR()

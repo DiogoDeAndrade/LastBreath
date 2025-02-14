@@ -19,8 +19,18 @@ public class LevelManager : MonoBehaviour
     private float           _resourceConsumption = 1.0f;
     [SerializeField]
     private float           _resourceBonus  = 1.0f;
+    [SerializeField, Header("Weapons")]
+    private bool            _overrideWeapons = false;
+    [SerializeField, ShowIf(nameof(_overrideWeapons))]
+    private Weapon[]        _weapons;
     [SerializeField, Header("Game Flow")]
-    private int             startPhase = 0;
+    private int             debugStartPhase = 0;
+    [SerializeField]
+    private PhaseData[]     phases;
+    [SerializeField]
+    private RectTransform   gameUI;
+    [SerializeField]
+    private PhaseDisplay    phaseDisplayPrefab;
     [SerializeField]
     private CanvasGroup     gameOverCanvas;
     [SerializeField] 
@@ -31,8 +41,10 @@ public class LevelManager : MonoBehaviour
     private City[]      cities;
     private GameState   state = GameState.Ongoing;
     private int         winnerId;
-    private int         _phase;
+    private int         _phaseIndex;
+    private PhaseData   _phase;
     private float       matchDuration;
+    private float       timeSinceLastPhaseChange;
 
     private static LevelManager Instance;
 
@@ -60,9 +72,13 @@ public class LevelManager : MonoBehaviour
         cities = FindObjectsByType<City>(FindObjectsSortMode.None);
 
 #if UNITY_EDITOR
-        _phase = startPhase;
+        StartPhase(debugStartPhase);
+        if (phases[0].phaseTrigger != PhaseData.PhaseTrigger.Initial)
+        {
+            Debug.LogWarning("First phase needs to have trigger equal to PhaseData.PhaseTrigger.Initial!");
+        }
 #else
-        _phase = 0;
+        StartPhase(0);
 #endif
         matchDuration = 0;
 
@@ -104,12 +120,31 @@ public class LevelManager : MonoBehaviour
         {
             // Phases
             matchDuration += Time.deltaTime;
+            timeSinceLastPhaseChange += Time.deltaTime;
 
-            switch (_phase)
+            if (_phaseIndex + 1 < phases.Length)
             {
-                case 0: if (matchDuration > 30.0f) _phase = 1; break;
-                case 1: if (matchDuration > 75.0f) _phase = 2; break;
-                case 2: break;
+                PhaseData nextPhase = phases[_phaseIndex + 1];
+
+                bool triggerNext = false;
+                switch (nextPhase.phaseTrigger)
+                {
+                    case PhaseData.PhaseTrigger.TimeSinceStart:
+                        triggerNext = (matchDuration >= nextPhase.time);
+                        break;
+                    case PhaseData.PhaseTrigger.TimeSinceLastPhase:
+                        triggerNext = (timeSinceLastPhaseChange >= nextPhase.time);
+                        break;
+                    default:
+                        break;
+                }
+
+                if (triggerNext)
+                {
+                    _phaseIndex++;
+
+                    StartPhase(_phaseIndex);
+                }
             }
 
             // Win condition
@@ -143,6 +178,18 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    void StartPhase(int phase)
+    {
+        _phaseIndex = phase;
+        _phase = phases[_phaseIndex];
+        timeSinceLastPhaseChange = 0;
+
+        if (phaseDisplayPrefab)
+        {
+            Instantiate(phaseDisplayPrefab, gameUI);
+        }
+    }
+
     int GetWinner()
     {
         foreach (var city in cities)
@@ -171,11 +218,14 @@ public class LevelManager : MonoBehaviour
     }
 
     // When we sort a request, should we clear all requests on all cities?
-    public static bool shouldCancelAllRequests => Instance._phase > 0;
+    public static bool shouldCancelAllRequests => Instance._phase.cancelOpponentRequestsOnRequestCompletion;
     // Should we force competition or not (divide requests by two)
-    public static bool shouldCompeteForResources => Instance._phase > 0;
+    public static bool shouldCompeteForResources => Instance._phase.forceRequestCompetition;
     // Can we shoot
-    public static bool weaponsFree => Instance._phase > 1;
+    public static bool weaponsFree => Instance._phase.weaponsFree;
     // What's the phase?
-    public static int phase => Instance._phase;
+    public static PhaseData phase => Instance._phase;
+    // Override weapons
+    public static bool overrideWeapons => Instance._overrideWeapons;
+    public static Weapon[]  overrideWeaponPrefabs => Instance._weapons;
 }

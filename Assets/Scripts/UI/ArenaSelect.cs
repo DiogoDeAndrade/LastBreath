@@ -6,7 +6,7 @@ public class ArenaSelect : UIGroup
 {
     [SerializeField] private AudioClip      musicClip;
     [SerializeField] private ArenaDisplay   arenaDisplayPrefab;
-    [SerializeField] private Arena[]        arenas;
+    [SerializeField] private ArenaData[]        arenas;
 
     List<ArenaDisplay> arenaDisplays;
 
