@@ -297,6 +297,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae40ab108300d7a4c9eb0534e85475b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackRange: 75
+  timeToAttack: 0.5
+  attackCooldown: 2.5
+  targetTags:
+  - {fileID: 11400000, guid: 3305d6d690ea5cb4da99325357c76667, type: 2}
   maxHops: 3
   maxDistancePerHop: 125
   moveSpeed: 3000
@@ -304,7 +309,7 @@ MonoBehaviour:
   playerTag: {fileID: 11400000, guid: 3305d6d690ea5cb4da99325357c76667, type: 2}
   baseDamage: 15
   damagePerHop: 10
-  freezeTime: 4
+  freezeTime: 2
   chainTag: {fileID: 11400000, guid: 499b6f27d7eca544f909d08d91a5dfff, type: 2}
   lightningPrefab: {fileID: 7186273624183345879, guid: b7919645930edbe42918b38a9e70aaa8, type: 3}
 --- !u!1 &1621804915675718646

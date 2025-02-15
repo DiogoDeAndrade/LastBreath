@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: FactionUnderwaterLife
   m_EditorClassIdentifier: 
   hostileFaction:
-  - {fileID: 11400000}
+  - {fileID: 11400000, guid: 9f15fe39b6afe3a4ebea38efd5ad0a88, type: 2}

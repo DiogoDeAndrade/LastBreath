@@ -6,18 +6,28 @@ using System;
 using UnityEngine.InputSystem.HID;
 using UnityEngine.Rendering;
 
-public class ChainLightning : MonoBehaviour
+public class ChainLightning : ProximityAttack
 {
-    [SerializeField] private int            maxHops = 3;
-    [SerializeField] private float          maxDistancePerHop = 200.0f;
-    [SerializeField] private float          moveSpeed = 50.0f;
-    [SerializeField] private float          fadeTime = 0.5f;
-    [SerializeField] private Hypertag       playerTag;
-    [SerializeField] private float          baseDamage = 5;
-    [SerializeField] private float          damagePerHop = 5;
-    [SerializeField] private float          freezeTime = 0.5f;
-    [SerializeField] private Hypertag       chainTag;
-    [SerializeField] private LineRenderer   lightningPrefab;
+    [SerializeField, Header("Chain Lightning")] 
+    private int            maxHops = 3;
+    [SerializeField] 
+    private float          maxDistancePerHop = 200.0f;
+    [SerializeField] 
+    private float          moveSpeed = 50.0f;
+    [SerializeField] 
+    private float          fadeTime = 0.5f;
+    [SerializeField] 
+    private Hypertag       playerTag;
+    [SerializeField] 
+    private float          baseDamage = 5;
+    [SerializeField] 
+    private float          damagePerHop = 5;
+    [SerializeField] 
+    private float          freezeTime = 0.5f;
+    [SerializeField] 
+    private Hypertag       chainTag;
+    [SerializeField] 
+    private LineRenderer   lightningPrefab;
 
     class TreeNode
     {
@@ -34,8 +44,10 @@ public class ChainLightning : MonoBehaviour
 
     static List<LineRenderer> cacheLineRenderers;
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
+
         if (currentTree == null) return;
 
         UpdateNode(null, currentTree, Time.deltaTime, 0);
@@ -153,14 +165,16 @@ public class ChainLightning : MonoBehaviour
         Execute(target);
     }
 
-    private void Execute(HealthSystem target)
+    protected override bool Execute(HealthSystem target)
     {
-        if (currentTree != null) return;
+        if (currentTree != null) return false;
 
         currentTree = new();
         currentTree.transform = transform;
 
         Build(currentTree, maxHops, target, new HashSet<Enemy>());
+
+        return true;
     }
 
     void Build(TreeNode parent, int remainingHops, HealthSystem target, HashSet<Enemy> alreadyChecked)
@@ -291,8 +305,10 @@ public class ChainLightning : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmosSelected()
+    protected override void OnDrawGizmosSelected()
     {
+        base.OnDrawGizmosSelected();
+
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, maxDistancePerHop);
     }
