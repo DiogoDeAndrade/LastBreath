@@ -85,5 +85,6 @@ public abstract class ProximityAttack : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRange);
+        DebugHelpers.DrawTextAt(transform.position + Vector3.left * attackRange, Vector3.up * 20.0f, 10, Gizmos.color, "Proximity Attack\nRange");
     }
 }

@@ -1,4 +1,5 @@
 using NaughtyAttributes;
+using System;
 using UnityEngine;
 
 public class Locomotion : MonoBehaviour
@@ -15,6 +16,7 @@ public class Locomotion : MonoBehaviour
     protected int priority;
     protected bool needPriority => agentAvoidance && !priorityFromInstanceID;
     public int avoidancePriority => priority;
+    public float speedMultiplier = 1.0f;
 
     protected Vector3?      targetPosition;
     protected Rigidbody2D   rb;
@@ -48,5 +50,31 @@ public class Locomotion : MonoBehaviour
         }
 
         this.targetPosition = targetPosition;
+    }
+
+    public bool hasTarget => targetPosition.HasValue;
+
+    private void OnDrawGizmosSelected()
+    {
+        if (hasTarget)
+        {
+            Gizmos.color = new Color(1.0f, 1.0f, 0.0f, 0.5f); ;
+            Gizmos.DrawLine(transform.position, targetPosition.Value);
+            Gizmos.DrawWireCube(targetPosition.Value, Vector3.one * 5.0f);
+            DebugHelpers.DrawTextAt(targetPosition.Value, Vector3.down * 20.0f, 10, Gizmos.color, "Locomotion Target");
+
+        }
+        if (agentAvoidance)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(transform.position, avoidanceRadius);
+        }
+    }
+
+    public virtual void TeleportTo(Vector3 pos)
+    {
+        this.targetPosition = null;
+        transform.position = pos;
+        if (rb) rb.MovePosition(pos);
     }
 }

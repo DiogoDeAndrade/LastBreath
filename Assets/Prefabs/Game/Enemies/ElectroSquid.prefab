@@ -226,8 +226,9 @@ MonoBehaviour:
   avoidanceTag: {fileID: 11400000, guid: e7fa832c87b53404c903f7bcd8a1046f, type: 2}
   priorityFromInstanceID: 1
   priority: 0
+  speedMultiplier: 1
   minDistance: 5
-  linearSpeed: 200
+  _linearSpeed: 200
   minVelocity: 20
   drag: 2
   rotationSpeed: 360
@@ -245,7 +246,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0f7ebaba23ea984a893ab37f0a2b619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lootList: {fileID: 0}
+  wanderRadius: 200
+  stayNearSpawn: 1
+  wanderSpeedMultiplier: 0.6
+  delayBetweenWanders: {x: 2.6484022, y: 8.310503}
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 128
+  pursuitRadius: 0
+  pursuitMaxRadius: 0
+  pursuitSpeedMultiplier: 1
+  pursuitTags: []
+  searchRadius: 0
+  maxSearchRadius: 0
+  searchRadiusIncrease: 0
+  canChangeTargets: 1
+  searchSpeedMultiplier: 1
+  maxSearchTime: 20
+  lootList: {fileID: 11400000, guid: b2d595c4bd39ab54fa8950dbe5d2aac4, type: 2}
   resourcePrefab: {fileID: 4485897042003630804, guid: 498e2c7b013986b429c8d0c70e17d99e, type: 3}
   deathPS: {fileID: 461745563624041164}
   explosionPrefab: {fileID: 0}

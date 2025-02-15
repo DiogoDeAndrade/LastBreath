@@ -8,7 +8,7 @@ public class SquidLocomotion : Locomotion
     [SerializeField] 
     private float       minDistance = 5.0f;
     [SerializeField]    
-    private float       linearSpeed = 200.0f;
+    private float       _linearSpeed = 200.0f;
     [SerializeField]    
     private float       minVelocity = 20.0f;
     [SerializeField]    
@@ -28,6 +28,8 @@ public class SquidLocomotion : Locomotion
     bool        bobbing;
     Vector3     bobPos;
     float       bobAngle;
+
+    private float scaledSpeed => speedMultiplier * _linearSpeed;
 
     void Start()
     {
@@ -58,6 +60,7 @@ public class SquidLocomotion : Locomotion
 
             if (distanceToTarget > minDistance)
             {
+                moving = true;
                 bobbing = false;
 
                 currentSpeed = Mathf.Max(0, currentSpeed - (currentSpeed * drag * Time.fixedDeltaTime));
@@ -68,15 +71,15 @@ public class SquidLocomotion : Locomotion
                 float angle = Quaternion.Angle(transform.rotation, targetRotation);
 
                 if (Mathf.Abs(angle) < 5)
-                {
-                    var info = animator.GetCurrentAnimatorStateInfo(0);
+                {      
                     if (currentSpeed < minVelocity)
                     {
+                        var info = animator.GetCurrentAnimatorStateInfo(0);
                         if ((info.shortNameHash == animSwimHash) && (timeSinceLastImpulse < 1.0f))
                         {
-                            float maxDistance = linearSpeed / drag;
+                            float maxDistance = scaledSpeed / drag;
 
-                            currentSpeed = linearSpeed * Mathf.Clamp01(distanceToTarget / maxDistance);
+                            currentSpeed = scaledSpeed * Mathf.Clamp01(distanceToTarget / maxDistance);
                         }
                         else if (info.shortNameHash != animImpulseHash)
                         {
@@ -86,7 +89,7 @@ public class SquidLocomotion : Locomotion
                     }
                 }
 
-                if ((currentSpeed < (minVelocity + linearSpeed) * 0.5f) && (timeSinceLastImpulse > 1.0f))
+                if ((currentSpeed < (minVelocity + scaledSpeed) * 0.5f) && (timeSinceLastImpulse > 1.0f))
                 {
                     animator.SetTrigger("Idle");
                 }
@@ -132,6 +135,7 @@ public class SquidLocomotion : Locomotion
             }
 
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.identity, Time.fixedDeltaTime * rotationSpeed * speedAura);
+            targetPosition = null;
         }
 
         if (agentAvoidance)
@@ -161,12 +165,10 @@ public class SquidLocomotion : Locomotion
         }
     }
 
-    private void OnDrawGizmosSelected()
+    public override void TeleportTo(Vector3 pos)
     {
-        if (agentAvoidance)
-        {
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(transform.position, avoidanceRadius);
-        }
+        base.TeleportTo(pos);
+
+        bobPos = pos;
     }
 }

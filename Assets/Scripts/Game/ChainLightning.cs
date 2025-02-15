@@ -309,7 +309,8 @@ public class ChainLightning : ProximityAttack
     {
         base.OnDrawGizmosSelected();
 
-        Gizmos.color = Color.cyan;
+        Gizmos.color = Color.magenta;
         Gizmos.DrawWireSphere(transform.position, maxDistancePerHop);
+        DebugHelpers.DrawTextAt(transform.position + Vector3.left * maxDistancePerHop, Vector3.up * 20.0f, 10, Gizmos.color, "Hop Distance");
     }
 }
