@@ -35,7 +35,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Dummy
   - CameraLimits
   m_SortingLayers:
   - name: Background
