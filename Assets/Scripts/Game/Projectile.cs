@@ -213,7 +213,7 @@ public class Projectile : MonoBehaviour
     }
 
 #if UNITY_EDITOR
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         if ((isTracker) && (trackPoint != null))
         {

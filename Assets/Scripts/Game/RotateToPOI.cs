@@ -80,7 +80,7 @@ public class RotateToPOI : MonoBehaviour
     Vector3 GetBaseRight() => ((transform.parent) ? (transform.parent.rotation* initialLocalRotation) : (initialLocalRotation)) * Vector3.right;
 
 #if UNITY_EDITOR
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         Handles.color = new Color(0.0f, 1.0f, 0.0f, 0.1f);
         Handles.DrawSolidArc(transform.position, Vector3.forward, transform.right.RotateZ(-angularTolerance), angularTolerance * 2.0f, minRange);

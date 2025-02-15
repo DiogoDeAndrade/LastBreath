@@ -14,12 +14,14 @@ GameObject:
   - component: {fileID: 4204841611134393104}
   - component: {fileID: 4554687814992609052}
   - component: {fileID: 4498811126397965526}
+  - component: {fileID: 7248274466034174226}
   - component: {fileID: 3385662189842384732}
   - component: {fileID: 408740676964143661}
   - component: {fileID: 1269631321502780725}
   - component: {fileID: 8896921516663587737}
-  m_Layer: 0
-  m_Name: DarkSquid
+  - component: {fileID: 4642751155852474615}
+  m_Layer: 9
+  m_Name: ElectroSquid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,7 +66,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 19d0aae2b125306439101204002324a6, type: 2}
+  - {fileID: 2100000, guid: 974c232940146f4408d063331e827b42, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -82,8 +84,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -272308539
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 7270092256305843575, guid: 62f3be93a822d6d48ab61719ee5547f8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -194,6 +196,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hypertag: {fileID: 11400000, guid: e7fa832c87b53404c903f7bcd8a1046f, type: 2}
+--- !u!114 &7248274466034174226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175509208624760038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc938798f9cbdba48b70a952094371e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hypertag: {fileID: 11400000, guid: 499b6f27d7eca544f909d08d91a5dfff, type: 2}
 --- !u!114 &3385662189842384732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,6 +285,28 @@ MonoBehaviour:
   invulnerabilityBlink: 0
   useAnimatorForBlink: 1
   blinkTime: 0.1
+--- !u!114 &4642751155852474615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175509208624760038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae40ab108300d7a4c9eb0534e85475b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHops: 3
+  maxDistancePerHop: 125
+  moveSpeed: 3000
+  fadeTime: 0.08
+  playerTag: {fileID: 11400000, guid: 3305d6d690ea5cb4da99325357c76667, type: 2}
+  baseDamage: 15
+  damagePerHop: 10
+  freezeTime: 4
+  chainTag: {fileID: 11400000, guid: 499b6f27d7eca544f909d08d91a5dfff, type: 2}
+  lightningPrefab: {fileID: 7186273624183345879, guid: b7919645930edbe42918b38a9e70aaa8, type: 3}
 --- !u!1 &1621804915675718646
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,7 +318,7 @@ GameObject:
   - component: {fileID: 3046928108277368832}
   - component: {fileID: 461745563624041164}
   - component: {fileID: 2607513976812276264}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DeathPS
   m_TagString: Untagged
   m_Icon: {fileID: 0}

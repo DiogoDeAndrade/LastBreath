@@ -38,7 +38,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5113020608957904864, guid: 469f1a67c9f5f444ea2405113e95a258, type: 3}
       propertyPath: trackingTags.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5113020608957904864, guid: 469f1a67c9f5f444ea2405113e95a258, type: 3}
       propertyPath: 'trackingTags.Array.data[0]'
@@ -48,6 +48,10 @@ PrefabInstance:
       propertyPath: 'trackingTags.Array.data[1]'
       value: 
       objectReference: {fileID: 11400000, guid: 70af72d36312d5a43ada4b4a3ec3ef38, type: 2}
+    - target: {fileID: 5113020608957904864, guid: 469f1a67c9f5f444ea2405113e95a258, type: 3}
+      propertyPath: 'trackingTags.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: e7fa832c87b53404c903f7bcd8a1046f, type: 2}
     - target: {fileID: 7014500302478795428, guid: 469f1a67c9f5f444ea2405113e95a258, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

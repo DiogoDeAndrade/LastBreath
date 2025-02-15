@@ -492,4 +492,9 @@ public class Submarine : MonoBehaviour
     {
         return gatherControl;
     }
+
+    public void FreezeControl(float time)
+    {
+        noControlTime = time;
+    }
 }

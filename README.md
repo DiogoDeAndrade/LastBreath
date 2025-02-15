@@ -30,15 +30,17 @@ Game ends when one city is out of oxygen, and the associated player is dead.
 
 ## February Objectives
 - New sub type sprite
+  - Different attributes (top speed, acceleration, health, rotation speed (?))
 - Simple enemies (drop resources)
   - Dark squid type of thing
-    - Stun (blue)
+    - Electro (blue)
     - Explosion (red)
-    - Drop system
     - Hit sound
     - Death sound
+    - Electric burst sound
     - Afected by slow aura
   - Enemy Spawner
+  - Improved UI for requests
 - Algae
 
 ## Future

@@ -43,6 +43,8 @@ public class SquidLocomotion : Locomotion
 
     void FixedUpdate()
     {
+        float speedAura = Submarine.GetAura(transform.position, -1);
+
         timeSinceLastImpulse += Time.fixedDeltaTime;
 
         // See if we're going anywhere
@@ -61,7 +63,7 @@ public class SquidLocomotion : Locomotion
                 currentSpeed = Mathf.Max(0, currentSpeed - (currentSpeed * drag * Time.fixedDeltaTime));
 
                 var targetRotation = Quaternion.LookRotation(Vector3.forward, toTarget.normalized);
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Time.fixedDeltaTime * rotationSpeed);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Time.fixedDeltaTime * rotationSpeed * speedAura);
 
                 float angle = Quaternion.Angle(transform.rotation, targetRotation);
 
@@ -90,9 +92,9 @@ public class SquidLocomotion : Locomotion
                 }
 
                 if (rb)
-                    rb.linearVelocity = currentSpeed * transform.up;
+                    rb.linearVelocity = currentSpeed * transform.up * speedAura;
                 else
-                    transform.position = transform.position + currentSpeed * transform.up * Time.fixedDeltaTime;
+                    transform.position = transform.position + currentSpeed * transform.up * Time.fixedDeltaTime * speedAura;
             }
         }
 
@@ -102,7 +104,7 @@ public class SquidLocomotion : Locomotion
 
             if (distanceToTarget > 1e-3)
             {
-                Vector2 targetPos = Vector3.MoveTowards(transform.position, targetPosition.Value, currentSpeed * Time.fixedDeltaTime);
+                Vector2 targetPos = Vector3.MoveTowards(transform.position, targetPosition.Value, currentSpeed * Time.fixedDeltaTime * speedAura);
 
                 if (rb)
                     rb.MovePosition(targetPos);
@@ -126,10 +128,10 @@ public class SquidLocomotion : Locomotion
                 else
                     transform.position = targetPos;
 
-                bobAngle += Time.fixedDeltaTime * bobSpeed;
+                bobAngle += Time.fixedDeltaTime * bobSpeed * speedAura;
             }
 
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.identity, Time.fixedDeltaTime * rotationSpeed);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.identity, Time.fixedDeltaTime * rotationSpeed * speedAura);
         }
 
         if (agentAvoidance)

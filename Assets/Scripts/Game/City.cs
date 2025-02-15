@@ -226,7 +226,7 @@ public class City : MonoBehaviour
                         {
                             if (player.itemCount >= requestedQuantity)
                             {
-                                oxygenCount = player.item.valueMultiplier * oxygenPerResource * LevelManager.resourceConsumption * (requestedQuantity * 2.0f + (player.itemCount - requestedQuantity));
+                                oxygenCount = player.item.valueMultiplier * oxygenPerResource * LevelManager.resourceBonus * (requestedQuantity * 2.0f + (player.itemCount - requestedQuantity));
 
                                 if (requestSuccessSnd) SoundManager.PlaySound(SoundType.PrimaryFX, requestSuccessSnd, 0.5f);
 
@@ -235,7 +235,7 @@ public class City : MonoBehaviour
                         }
                         else
                         {
-                            oxygenCount = oxygenPerResource * LevelManager.resourceConsumption * player.itemCount * player.item.valueMultiplier;
+                            oxygenCount = oxygenPerResource * LevelManager.resourceBonus * player.itemCount * player.item.valueMultiplier;
 
                             if (airDropSnd) SoundManager.PlaySound(SoundType.PrimaryFX, airDropSnd);
                         }
@@ -293,7 +293,7 @@ public class City : MonoBehaviour
                 if (reviveTimer > reviveTime)
                 {
                     // Bring it back to life!
-                    oxygen = startOxygen + oxygenPerResource * LevelManager.resourceConsumption * (player.itemCount - resourcesRequiredToRevive) * player.item.valueMultiplier;
+                    oxygen = startOxygen + oxygenPerResource * LevelManager.resourceBonus * (player.itemCount - resourcesRequiredToRevive) * player.item.valueMultiplier;
                     player.DropAll(true);
 
                     if (airDropSnd) SoundManager.PlaySound(SoundType.PrimaryFX, airDropSnd);
