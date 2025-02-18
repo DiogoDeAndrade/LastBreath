@@ -7,18 +7,13 @@ public class InventoryDisplay : MonoBehaviour
     [SerializeField] private Submarine          player;
     [SerializeField] private Image              image;
     [SerializeField] private TextMeshProUGUI    text;
-    [SerializeField] private Transform          relativeTransform;
 
     RectTransform   rectTransform;
-    Quaternion      initialRotation;
-    Vector3         deltaPos;
     CanvasGroup     canvasGroup;
 
     void Start()
     {
         rectTransform = transform as RectTransform;
-        initialRotation = transform.rotation;
-        deltaPos = transform.position - relativeTransform.transform.position;
         canvasGroup = GetComponent<CanvasGroup>();
     }
 
@@ -38,11 +33,5 @@ public class InventoryDisplay : MonoBehaviour
             text.color = player.item.displayColor;
             canvasGroup.FadeIn(0.25f);
         }
-    }
-
-    private void LateUpdate()
-    {
-        transform.rotation = initialRotation;
-        transform.position = relativeTransform.position + deltaPos;
     }
 }

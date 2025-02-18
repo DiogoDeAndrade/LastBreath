@@ -69,7 +69,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6905645368174748216}
   - component: {fileID: 330233830352291732}
-  - component: {fileID: 5523532871869060104}
   m_Layer: 8
   m_Name: TopUI
   m_TagString: Untagged
@@ -115,7 +114,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 7
-  m_Spacing: 0
+  m_Spacing: 2
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -123,21 +122,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &5523532871869060104
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1855219754030575690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e230b9ebe93fb4c4b85ea72b2dddee7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  respectRotation: 0
-  preserveRelativePositon: 1
-  relativeTransform: {fileID: 7765164788763201618}
 --- !u!1 &3155257380579705819
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,6 +506,7 @@ GameObject:
   - component: {fileID: 4187695178343093882}
   - component: {fileID: 7182020505109098800}
   - component: {fileID: 2857305842403053646}
+  - component: {fileID: 1755746466796886837}
   m_Layer: 8
   m_Name: PlayerUI
   m_TagString: Untagged
@@ -596,6 +581,22 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 1
+--- !u!114 &1755746466796886837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4764152106066650424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e230b9ebe93fb4c4b85ea72b2dddee7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationBehaviour: 2
+  positionBehaviour: 1
+  relativeTransform: {fileID: 7765164788763201618}
+  offset: {x: 0, y: 25, z: 0}
 --- !u!1 &5729008916709382083
 GameObject:
   m_ObjectHideFlags: 0
@@ -6397,6 +6398,7 @@ MonoBehaviour:
   flashColor: {r: 1, g: 1, b: 1, a: 0}
   outlineWidth: 1
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  createMaterialCopy: 1
 --- !u!114 &5644607448924605011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6459,6 +6461,7 @@ MonoBehaviour:
   _playerId: 0
   maxSpeed: 200
   acceleration: 200
+  maxRotationSpeed: 720
   drag: 1
   collisionDamagePerSpeed: 0.15
   cockpitDamageThreshould: 0.9
