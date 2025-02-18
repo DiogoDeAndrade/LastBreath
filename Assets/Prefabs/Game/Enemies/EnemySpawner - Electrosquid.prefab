@@ -45,7 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefabs:
-  - {fileID: 408740676964143661, guid: 3bd43c978c7d872428d27d09845b08ba, type: 3}
+    originalElements:
+    - value: {fileID: 408740676964143661, guid: 3bd43c978c7d872428d27d09845b08ba, type: 3}
+      weight: 1
+    withReplacement: 1
   spawnArea: {fileID: 0}
   spawnRadius: 100
   initialSpawnCount: {x: 2, y: 5}

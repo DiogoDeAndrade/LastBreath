@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.Universal;
@@ -9,7 +10,9 @@ public class Submarine : MonoBehaviour
     [SerializeField]
     private float           maxSpeed = 200.0f; 
     [SerializeField]
-    private float           acceleration = 200.0f; 
+    private float           acceleration = 200.0f;
+    [SerializeField] 
+    private float           maxRotationSpeed = 720.0f;
     [SerializeField]
     private float           drag = 1.0f;
     [SerializeField, Header("Damage")]
@@ -263,7 +266,7 @@ public class Submarine : MonoBehaviour
 
                 var targetRotation = Quaternion.LookRotation(Vector3.forward, new Vector2(-velocity.y, velocity.x));
 
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Time.deltaTime * 720.0f);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Time.deltaTime * maxRotationSpeed);
             }
         }
 

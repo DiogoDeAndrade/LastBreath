@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField]
-    private List<Enemy>     enemyPrefabs;
+    private EnemyProbList   enemyPrefabs;
     [SerializeField] 
     private BoxCollider2D   spawnArea;
     [SerializeField, ShowIf(nameof(needSpawnRadius))] 
@@ -71,7 +71,7 @@ public class EnemySpawner : MonoBehaviour
         {
             if (GetRandomPoint(out var pos, out var rot))
             {
-                var newEnemy = Instantiate(enemyPrefabs.Random(), pos, rot);
+                var newEnemy = Instantiate(enemyPrefabs.Get(), pos, rot);
                 var spriteRenderer = newEnemy.GetComponent<SpriteRenderer>();
                 if (spriteRenderer != null)
                 {
@@ -88,7 +88,7 @@ public class EnemySpawner : MonoBehaviour
             }
         }
 
-        if (alreadyAddedToCount)
+        if (!alreadyAddedToCount)
         {
             currentSpawnCount += totalSpawns;
         }

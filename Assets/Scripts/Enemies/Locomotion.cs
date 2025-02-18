@@ -52,6 +52,13 @@ public class Locomotion : MonoBehaviour
         this.targetPosition = targetPosition;
     }
 
+    public void Stop()
+    {
+        if (rb) rb.linearVelocity = Vector3.zero;
+        enabled = false;
+    }
+
+
     public bool hasTarget => targetPosition.HasValue;
 
     private void OnDrawGizmosSelected()

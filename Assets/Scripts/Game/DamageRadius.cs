@@ -3,15 +3,31 @@ using static HealthSystem;
 
 public class DamageRadius : MonoBehaviour
 {
-    [SerializeField] private float          radius = 75;
-    [SerializeField] private bool           hemisphere;
-    [SerializeField] private float          damage = 10.0f;
-    [SerializeField] private LayerMask      layers;
-    [SerializeField] private AudioSource    damageSound;
+    [SerializeField] HealthSystem.DamageType    damageType = DamageType.OverTime;
+    [SerializeField] private float              radius = 75;
+    [SerializeField] private bool               hemisphere;
+    [SerializeField] private float              damage = 10.0f;
+    [SerializeField] private float              damageOverDistance = 0.0f;
+    [SerializeField] private LayerMask          layers;
+    [SerializeField] private AudioSource        damageSound;
 
+    private void Start()
+    {
+        if (damageType == DamageType.Burst)
+        {
+            RunDamage();
+
+            Destroy(this);
+        }
+    }
 
     void Update()
     {
+        RunDamage();
+    }
+
+    void RunDamage()
+    { 
         float volume = 0.0f;
 
         Collider2D[]    allObjectsInBox = null;
@@ -39,7 +55,13 @@ public class DamageRadius : MonoBehaviour
             var hs = obj.GetComponent<HealthSystem>();
             if (hs != null)
             {
-                hs.DealDamage(DamageType.OverTime, damage * Time.deltaTime, transform.position, Vector3.zero, gameObject);
+                float distance = Vector3.Distance(hs.transform.position, transform.position);
+
+                float actualDamage = Mathf.Max(0, damage + damageOverDistance * distance);
+
+                if (damageType == DamageType.OverTime) actualDamage *= Time.deltaTime;
+
+                hs.DealDamage(damageType, actualDamage, transform.position, Vector3.zero, gameObject);
                 volume = 1.0f;
             }
         }

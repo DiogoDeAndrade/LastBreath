@@ -18,7 +18,7 @@ public abstract class ProximityAttack : MonoBehaviour
     float           cooldownTimer;
     HealthSystem    healthSystem;
 
-    void Start()
+    void Awake()
     {
         healthSystem = GetComponent<HealthSystem>();
     }

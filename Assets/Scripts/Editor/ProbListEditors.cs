@@ -8,3 +8,10 @@ public class ResourceDataProbListDrawer : ProbListPropertyDrawer<ResourceData>
 
 }
 
+
+[CustomPropertyDrawer(typeof(EnemyProbList))]
+public class EnemyProbListDrawer : ProbListPropertyDrawer<Enemy>
+{
+
+}
+

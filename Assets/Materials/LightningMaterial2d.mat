@@ -63,7 +63,7 @@ Material:
     m_Floats:
     - _Amplitude1: 1
     - _Amplitude2: 0.5
-    - _EmissiveMultiplier: 4
+    - _EmissiveMultiplier: 6
     - _EnableExternalAlpha: 0
     - _InnerWidth: 0
     - _OuterWidth: 1

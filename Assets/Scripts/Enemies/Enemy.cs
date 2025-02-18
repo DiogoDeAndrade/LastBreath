@@ -1,5 +1,6 @@
 using Mono.Cecil.Cil;
 using NaughtyAttributes;
+using System;
 using System.Collections;
 using System.Runtime.CompilerServices;
 using UnityEngine;
@@ -166,11 +167,11 @@ public class Enemy : MonoBehaviour
             Vector2 candidate;
             if (stayNearSpawn)
             {
-                candidate = spawnPoint.xy() + Random.insideUnitCircle * wanderRadius;
+                candidate = spawnPoint.xy() + UnityEngine.Random.insideUnitCircle * wanderRadius;
             }
             else
             {
-                candidate = transform.position.xy() + Random.insideUnitCircle * wanderRadius;
+                candidate = transform.position.xy() + UnityEngine.Random.insideUnitCircle * wanderRadius;
             }
 
             // Check LOS
@@ -280,7 +281,7 @@ public class Enemy : MonoBehaviour
         while (nTries < 20)
         {
             Vector2 candidate;
-            candidate = transform.position.xy() + Random.insideUnitCircle * currentSearchRadius;
+            candidate = transform.position.xy() + UnityEngine.Random.insideUnitCircle * currentSearchRadius;
 
             // Check LOS
             if (CheckLOS(transform.position.xy(), candidate))
@@ -376,3 +377,10 @@ public class Enemy : MonoBehaviour
     }
 #endif
 }
+
+#if UNITY_6000_0_OR_NEWER
+
+[Serializable]
+public class EnemyProbList : ProbList<Enemy> { }
+
+#endif
