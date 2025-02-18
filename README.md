@@ -30,15 +30,12 @@ Game ends when one city is out of oxygen, and the associated player is dead.
 
 ## February Objectives
 - New sub type sprite
-  - Different attributes (top speed, acceleration, health, rotation speed (?))
-- Bugs
-  - Orientation of UI (Deep Hunter level)
+  - Different attributes (top speed, acceleration, health, rotation speed)
 - Simple enemies (drop resources)
   - Dark squid type of thing
     - Hit sound
     - Death sound
     - Electric burst sound
-    - Glowing eyes
   - Improved UI for requests
 - Algae
 
