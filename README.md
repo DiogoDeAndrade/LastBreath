@@ -31,13 +31,12 @@ Game ends when one city is out of oxygen, and the associated player is dead.
 ## February Objectives
 - New sub type sprite
   - Different attributes (top speed, acceleration, health, rotation speed)
-- Simple enemies (drop resources)
+- Simple enemies
   - Dark squid type of thing
     - Hit sound
     - Death sound
     - Electric burst sound
 - Improved UI for requests
-- Review images
 
 ## Future
 - Distortion effect
