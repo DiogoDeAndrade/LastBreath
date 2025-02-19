@@ -14,11 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lootList:
     originalElements:
-    - value: {fileID: 11400000, guid: 0a7dd1955b5fde44581c42d22ef735bd, type: 2}
+    - value: {fileID: 11400000, guid: 07c295db6f3f54243a20c2fdafeeb1af, type: 2}
       weight: 1
-    - value: {fileID: 11400000, guid: 7a13d0a292afe52488c7a45534c53b21, type: 2}
-      weight: 1
-    - value: {fileID: 11400000, guid: e53e96290a2203a4ca53c8af8a843ac0, type: 2}
+    - value: {fileID: 11400000, guid: cf704b21d4cbc5d4fb7a92d8eaaeca90, type: 2}
       weight: 1
     - value: {fileID: 0}
       weight: 1

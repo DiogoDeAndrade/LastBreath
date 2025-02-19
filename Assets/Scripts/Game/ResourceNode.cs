@@ -46,7 +46,9 @@ public class ResourceNode : MonoBehaviour
         if (resource == null)
         {
             if ((unlimitedCharges) || (nCharges > 0))
-            chargeTimer -= Time.deltaTime;
+            {
+                chargeTimer -= Time.deltaTime;
+            }
             if (chargeTimer <= 0.0f)
             {
                 if (randomizeOnEachSpawn) SelectType();

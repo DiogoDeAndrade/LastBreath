@@ -151,15 +151,15 @@ MonoBehaviour:
   chargeTime: 10
   allowedTypes:
     originalElements:
-    - value: {fileID: 11400000, guid: e53e96290a2203a4ca53c8af8a843ac0, type: 2}
+    - value: {fileID: 11400000, guid: a7c4e900faea5f7478d394bacf25fa8b, type: 2}
       weight: 50
-    - value: {fileID: 11400000, guid: ebbefa5aaf73b7743b4f2aa0433c6efe, type: 2}
+    - value: {fileID: 11400000, guid: a59894d0f66e17347be7b87698d91882, type: 2}
       weight: 50
-    - value: {fileID: 11400000, guid: 0a7dd1955b5fde44581c42d22ef735bd, type: 2}
+    - value: {fileID: 11400000, guid: 07c295db6f3f54243a20c2fdafeeb1af, type: 2}
       weight: 50
-    - value: {fileID: 11400000, guid: 7a13d0a292afe52488c7a45534c53b21, type: 2}
+    - value: {fileID: 11400000, guid: cf704b21d4cbc5d4fb7a92d8eaaeca90, type: 2}
       weight: 30
-    withReplacement: 0
+    withReplacement: 1
   randomizeOnEachSpawn: 1
   resourcePrefab: {fileID: 4485897042003630804, guid: 498e2c7b013986b429c8d0c70e17d99e, type: 3}
   spawnPoint: {fileID: 5142546644240207638}

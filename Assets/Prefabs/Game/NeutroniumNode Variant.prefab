@@ -280,7 +280,7 @@ PrefabInstance:
     - target: {fileID: 8930411290387810705, guid: 6bf61bf6127d1e442836c937823ba1ec, type: 3}
       propertyPath: allowedTypes.originalElements.Array.data[0].value
       value: 
-      objectReference: {fileID: 11400000, guid: 36d0d0a578db9c444967ac8209775e92, type: 2}
+      objectReference: {fileID: 11400000, guid: 24cdf9ddbfe34ea4c9d4219085e4a5a3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -312,9 +312,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66c0e2e1bd89b3b4187ca27bb93bf0ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageType: 1
   radius: 75
   hemisphere: 1
   damage: 10
+  damageOverDistance: 0
   layers:
     serializedVersion: 2
     m_Bits: 256

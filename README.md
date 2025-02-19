@@ -36,12 +36,11 @@ Game ends when one city is out of oxygen, and the associated player is dead.
     - Hit sound
     - Death sound
     - Electric burst sound
-  - Improved UI for requests
-- Algae
+- Improved UI for requests
+- Review images
 
 ## Future
 - Distortion effect
-- Blue gradient
 - Remove AI stuff (music)
 - Extra player count (>2)
 - Single player mode (AI bots)
@@ -49,6 +48,8 @@ Game ends when one city is out of oxygen, and the associated player is dead.
 - City upgrades
 - Currents
 - Underwater volcano
+- Algae
+- City attack
 - Enemies
   - Morey
   - Shark thing

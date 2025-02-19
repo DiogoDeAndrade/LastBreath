@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lootList:
     originalElements:
-    - value: {fileID: 11400000, guid: 7a13d0a292afe52488c7a45534c53b21, type: 2}
+    - value: {fileID: 11400000, guid: cf704b21d4cbc5d4fb7a92d8eaaeca90, type: 2}
       weight: 1
     withReplacement: 1
