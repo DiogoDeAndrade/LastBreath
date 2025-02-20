@@ -36,7 +36,6 @@ Game ends when one city is out of oxygen, and the associated player is dead.
     - Hit sound
     - Death sound
     - Electric burst sound
-- Improved UI for requests
 
 ## Future
 - Distortion effect

@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.MaterialProperty;
 
 public class CityUI : MonoBehaviour
 {
@@ -9,11 +10,20 @@ public class CityUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI    text;
     [SerializeField] private Sprite             anyResourceSprite;
 
-    CanvasGroup canvasGroup;
+    [SerializeField, Header("Broadcast Animation")]
+    private Animator        broadcastAnimator;  
+    [SerializeField]
+    private float           broadcastSleepTime = 2.0f;
+
+    CanvasGroup     canvasGroup;
+    float           broadcastTimer;
+    ResourceData    prevRequest;
+
     void Start()
     {
         canvasGroup = GetComponent<CanvasGroup>();
         canvasGroup.alpha = 0.0f;
+        broadcastTimer = broadcastSleepTime;
     }
 
     void Update()
@@ -32,6 +42,13 @@ public class CityUI : MonoBehaviour
 
                     text.text = $"x{city.itemsRequiredToRevive}";
 
+                    broadcastAnimator.speed = 0.5f;
+                    broadcastTimer -= Time.deltaTime * 0.5f;
+                    if (broadcastTimer <= 0.0f)
+                    {
+                        broadcastAnimator.SetTrigger("Reset");
+                        broadcastTimer = broadcastSleepTime;
+                    }
                 }
                 else
                 {
@@ -49,6 +66,14 @@ public class CityUI : MonoBehaviour
 
                 int seconds = Mathf.FloorToInt(remainingTime) % 60;
                 text.text = $"{seconds.ToString("D2")}s";
+
+                broadcastAnimator.speed = 1.0f;
+                broadcastTimer -= Time.deltaTime;
+                if (broadcastTimer <= 0.0f)
+                {
+                    broadcastAnimator.SetTrigger("Reset");
+                    broadcastTimer = broadcastSleepTime;
+                }
             }
             return;
         }
@@ -71,6 +96,8 @@ public class CityUI : MonoBehaviour
         if (type == null)
         {
             canvasGroup.FadeOut(0.5f);
+
+            prevRequest = null; 
         }
         else
         {
@@ -81,6 +108,17 @@ public class CityUI : MonoBehaviour
             image.sprite = type.nodeImage;
             text.color = type.displayColor;
             text.text = $"x{quantity}";
+
+            // Animate broadcast
+            broadcastAnimator.speed = 1.0f;
+            broadcastTimer -= Time.deltaTime;
+            if ((broadcastTimer <= 0.0f) || (prevRequest != type))
+            {
+                broadcastAnimator.SetTrigger("Reset");
+                broadcastTimer = broadcastSleepTime;
+            }
+
+            prevRequest = type;
         }
     }
 }

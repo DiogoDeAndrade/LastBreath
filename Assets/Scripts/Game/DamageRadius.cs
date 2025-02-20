@@ -32,9 +32,9 @@ public class DamageRadius : MonoBehaviour
 
         Collider2D[]    allObjectsInBox = null;
         var allObjectsInRadius = Physics2D.OverlapCircleAll(transform.position, radius, layers);
-        if (hemisphere)
+        if ((hemisphere) && (allObjectsInRadius.Length > 0))
         {
-            allObjectsInBox = Physics2D.OverlapBoxAll(transform.position + Vector3.up * radius * 0.5f, new Vector2(radius * 2.0f, radius), 0.0f, layers);
+            allObjectsInBox = Physics2D.OverlapBoxAll(transform.position + transform.up * radius * 0.5f, new Vector2(radius * 2.0f, radius), transform.rotation.eulerAngles.z, layers);
         }
         foreach (var obj in allObjectsInRadius)
         {
@@ -72,6 +72,9 @@ public class DamageRadius : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, radius);
+        if (hemisphere)
+            DebugHelpers.DrawHemisphere(transform.position, transform.right, transform.up, radius);
+        else
+            Gizmos.DrawWireSphere(transform.position, radius);
     }
 }
