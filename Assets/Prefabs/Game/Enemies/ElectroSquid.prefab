@@ -253,10 +253,11 @@ MonoBehaviour:
   obstacleMask:
     serializedVersion: 2
     m_Bits: 128
-  pursuitRadius: 0
-  pursuitMaxRadius: 0
-  pursuitSpeedMultiplier: 1
-  pursuitTags: []
+  pursuitRadius: 100
+  pursuitMaxRadius: 200
+  pursuitSpeedMultiplier: 0.6
+  pursuitTags:
+  - {fileID: 11400000, guid: 3305d6d690ea5cb4da99325357c76667, type: 2}
   searchRadius: 0
   maxSearchRadius: 0
   searchRadiusIncrease: 0
@@ -285,6 +286,7 @@ MonoBehaviour:
   flashColor: {r: 1, g: 1, b: 1, a: 0}
   outlineWidth: 1
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  createMaterialCopy: 1
 --- !u!114 &8896921516663587737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,9 +327,9 @@ MonoBehaviour:
   moveSpeed: 3000
   fadeTime: 0.08
   playerTag: {fileID: 11400000, guid: 3305d6d690ea5cb4da99325357c76667, type: 2}
-  baseDamage: 15
-  damagePerHop: 10
-  freezeTime: 2
+  baseDamage: 20
+  damagePerHop: 5
+  freezeTimePerEnemy: 0.6
   chainTag: {fileID: 11400000, guid: 499b6f27d7eca544f909d08d91a5dfff, type: 2}
   lightningPrefab: {fileID: 7186273624183345879, guid: b7919645930edbe42918b38a9e70aaa8, type: 3}
 --- !u!1 &1621804915675718646

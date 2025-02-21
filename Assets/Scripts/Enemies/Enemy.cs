@@ -101,6 +101,12 @@ public class Enemy : MonoBehaviour
             }
         }
 
+        var attacks = GetComponentsInChildren<ProximityAttack>();
+        foreach (var attack in attacks)
+        {
+            attack.enabled = false;
+        }
+
         Destroy(gameObject, 1.0f);
     }
 

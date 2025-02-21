@@ -1,7 +1,9 @@
-using System.Runtime.CompilerServices;
+using NaughtyAttributes;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.UIElements;
 
 public class Submarine : MonoBehaviour
 {
@@ -43,7 +45,8 @@ public class Submarine : MonoBehaviour
     private Light2D         auraLight;
     [SerializeField]
     private Light2D         subLight;
-
+    [SerializeField, Header("FX")]
+    private LineRenderer    lightningPrefab;
     [SerializeField, Header("Sound")]
     private AudioClip       hitSnd;
     [SerializeField]
@@ -65,6 +68,7 @@ public class Submarine : MonoBehaviour
 
     private Vector2             movementVector;
     private Rigidbody2D         rb;
+    private Collider2D          mainCollider;
     private HealthSystem        healthSystem;
     private SpriteEffect        spriteEffect;
     private CameraFollowTarget  cameraFollowTarget;
@@ -78,6 +82,8 @@ public class Submarine : MonoBehaviour
     private int                 inventoryQuantity;
     private Vector2             prevVelocity;
     private Weapon[]            weapons;
+    private bool                lightningEffect;
+    private float               lightingEffectTimer;
 
     private Tweener.BaseInterpolator healthGainEffect;
     private Tweener.BaseInterpolator hitFlash;
@@ -203,6 +209,7 @@ public class Submarine : MonoBehaviour
                 capsuleCollider.enabled = true;
                 capsuleCollider.size = _subData.size;
                 capsuleCollider.offset = _subData.offset;
+                mainCollider = capsuleCollider;
                 break;
             default:
                 break;
@@ -304,6 +311,7 @@ public class Submarine : MonoBehaviour
         }
 
         movementVector = moveControl.GetAxis2();
+        if (noControlTime > 0) movementVector = Vector2.zero;
 
         if (!healthSystem.isInvulnerable)
         {
@@ -431,6 +439,24 @@ public class Submarine : MonoBehaviour
         {
             auraLight.enabled = false;
         }
+
+        if (lightningEffect)
+        {
+            if (noControlTime <= 0.0f)
+            {
+                lightningEffect = false;
+            }
+            else
+            {
+                lightingEffectTimer -= Time.deltaTime;
+                if (lightingEffectTimer <= 0.0f)
+                {
+                    DoBolt();
+                    lightingEffectTimer = 0.1f;
+                }
+            }
+        }
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -550,5 +576,43 @@ public class Submarine : MonoBehaviour
     public void FreezeControl(float time)
     {
         noControlTime = time;
+    }
+
+    public void EnableLightningEffect()
+    {
+        lightningEffect = true;
+        lightingEffectTimer = 0.0f;
+    }
+
+    void DoBolt()
+    {
+        var lineRenderer = Instantiate(lightningPrefab);
+        lineRenderer.FadeOut(0.25f).Done(() => Destroy(lineRenderer.gameObject));
+
+        Bounds bounds = mainCollider.bounds;
+        
+        List<Vector3> positions = new();
+        int nHops = Random.Range(4, 8);
+        
+        for (int i = 0; i < nHops; i++)
+        {
+            positions.Add(bounds.Random());
+        }
+
+        if (lineRenderer.numCapVertices > 0)
+        {
+            Vector3 delta1 = (positions[1] - positions[0]);
+            if (delta1.sqrMagnitude > 0) delta1 = delta1.normalized * lineRenderer.widthCurve.Evaluate(0) * lineRenderer.widthMultiplier * 0.5f;
+            Vector3 delta2 = (positions[positions.Count - 1] - positions[positions.Count - 2]);
+            if (delta2.sqrMagnitude > 0) delta2 = delta1.normalized * lineRenderer.widthCurve.Evaluate(0) * lineRenderer.widthMultiplier * 0.5f;
+
+            positions[0] = positions[0] + delta1;
+            positions[positions.Count - 1] = positions[positions.Count - 1] + delta2;
+        }
+
+        lineRenderer.positionCount = positions.Count;
+        lineRenderer.SetPositions(positions.ToArray());
+
+        lineRenderer.enabled = true;
     }
 }

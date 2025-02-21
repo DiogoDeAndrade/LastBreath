@@ -6483,6 +6483,7 @@ MonoBehaviour:
   resourcePrefab: {fileID: 4485897042003630804, guid: 498e2c7b013986b429c8d0c70e17d99e, type: 3}
   auraLight: {fileID: 5893614407962664610}
   subLight: {fileID: 509250413973021082}
+  lightningPrefab: {fileID: 7186273624183345879, guid: 338d485ca61d87c499741883913ea5e6, type: 3}
   hitSnd: {fileID: 8300000, guid: 6937eb951d04a734786e0d86cef88b08, type: 3}
   startGrabSnd: {fileID: 8300000, guid: a731bb7605f844848b179c417502a535, type: 3}
   endGrabSnd: {fileID: 8300000, guid: ad49b93856bafa348ba5a3e658f34eaa, type: 3}

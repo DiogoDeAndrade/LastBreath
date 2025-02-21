@@ -5,6 +5,7 @@ using UnityEditor;
 using System;
 using UnityEngine.InputSystem.HID;
 using UnityEngine.Rendering;
+using UnityEditor.ShaderGraph.Drawing.Inspector.PropertyDrawers;
 
 public class ChainLightning : ProximityAttack
 {
@@ -23,7 +24,7 @@ public class ChainLightning : ProximityAttack
     [SerializeField] 
     private float          damagePerHop = 5;
     [SerializeField] 
-    private float          freezeTime = 0.5f;
+    private float          freezeTimePerEnemy = 0.5f;
     [SerializeField] 
     private Hypertag       chainTag;
     [SerializeField] 
@@ -56,6 +57,11 @@ public class ChainLightning : ProximityAttack
         {
             Clear();
         }
+    }
+
+    private void OnDestroy()
+    {
+        Clear();
     }
 
     void UpdateNode(TreeNode parentNode, TreeNode currentNode, float elapsedTime, int nHops)
@@ -91,12 +97,13 @@ public class ChainLightning : ProximityAttack
                         float damage = baseDamage + nHops * damagePerHop;
                         currentNode.healthSystem.DealDamage(HealthSystem.DamageType.Burst, damage, parentNode.transform.position, Vector3.zero, parentNode.transform.gameObject);
 
-                        if (freezeTime > 0)
+                        if (freezeTimePerEnemy > 0)
                         {
                             Submarine sub = currentNode.healthSystem.GetComponent<Submarine>();
                             if (sub)
                             {
-                                sub.FreezeControl(freezeTime);
+                                sub.FreezeControl(freezeTimePerEnemy * nHops);
+                                sub.EnableLightningEffect();
                             }
                         }
                     }
@@ -291,6 +298,8 @@ public class ChainLightning : ProximityAttack
 
     private void Clear(TreeNode treeNode)
     {
+        if (treeNode == null) return;
+
         if (treeNode.lineRenderer)
         {
             DestroyLineRenderer(treeNode.lineRenderer);
