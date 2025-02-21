@@ -28,13 +28,6 @@ When you get destroyed, you'll respawn at your base after a bit. When your base 
 
 Game ends when one city is out of oxygen, and the associated player is dead.
 
-## February Objectives
-- Simple enemies
-  - Dark squid type of thing
-    - Hit sound
-    - Death sound
-    - Electric burst sound
-
 ## Future
 - Distortion effect
 - Remove AI stuff (music)
@@ -72,6 +65,10 @@ Game ends when one city is out of oxygen, and the associated player is dead.
 - [item_respawn](https://freesound.org/people/Silencer1337/sounds/83301/) by [Silencer1337](https://freesound.org/people/Silencer1337/), licensed through the [CC0] license.
 - [150209 Trevor Webb Air Cyclinder](https://freesound.org/people/Bleachbear/sounds/327011/) by [Bleachbear](https://freesound.org/people/Bleachbear/), licensed through the [CC-BY-NC 3.0] license.
 - [Complex Minigun Spin-Up Firing](https://freesound.org/people/Hybrid_V/sounds/320742/) by [Hybrid_V](https://freesound.org/people/Hybrid_V/), licensed through the [CC-BY-NC 4.0] license.
+- [Electricity Game Sound Pack](https://opengameart.org/content/electricity-game-sound-pack) by [faxcorp](https://opengameart.org/users/faxcorp), licensed through the [CC0] license.
+- [Ice & Electricity Magic](https://opengameart.org/content/ice-electricity-magic) by [qubodup](https://opengameart.org/users/qubodup), licensed through the [CC-BY 3.0] license.
+- [007 - Squish 02](https://freesound.org/people/Trashcan_Studios/sounds/660814/) by [Trashcan_Studios](https://freesound.org/people/Trashcan_Studios/), licensed through the [CC-BY 4.0] license.
+- [Gooey Squish](https://freesound.org/people/editor_adp/sounds/269482/) by [editor_adp](https://freesound.org/people/editor_adp/), licensed through the [CC0] license.
 - Music AI generated with [Suno]
 - Everything else done by [Diogo de Andrade], licensed through the [CC0] license.
 

@@ -55,6 +55,8 @@ public class Submarine : MonoBehaviour
     private AudioClip       endGrabSnd;
     [SerializeField]
     private AudioSource     engineAudioSrc;
+    [SerializeField]
+    private AudioSource     electroStunSrc;
     [SerializeField, Header("Input")] 
     private PlayerInput     playerInput;
     [SerializeField, InputPlayer(nameof(playerInput))] 
@@ -445,6 +447,7 @@ public class Submarine : MonoBehaviour
             if (noControlTime <= 0.0f)
             {
                 lightningEffect = false;
+                electroStunSrc.FadeTo(0.0f, 0.1f);
             }
             else
             {
@@ -582,6 +585,7 @@ public class Submarine : MonoBehaviour
     {
         lightningEffect = true;
         lightingEffectTimer = 0.0f;
+        electroStunSrc.FadeTo(1.0f, 0.1f);
     }
 
     void DoBolt()

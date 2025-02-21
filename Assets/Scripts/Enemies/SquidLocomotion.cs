@@ -1,7 +1,3 @@
-using Mono.Cecil.Cil;
-using NaughtyAttributes;
-using System;
-using System.Linq;
 using UnityEngine;
 
 public class SquidLocomotion : Locomotion

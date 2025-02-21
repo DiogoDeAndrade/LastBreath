@@ -1,7 +1,6 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.MaterialProperty;
 
 public class CityUI : MonoBehaviour
 {

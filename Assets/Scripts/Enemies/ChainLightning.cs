@@ -4,8 +4,6 @@ using NaughtyAttributes;
 using UnityEditor;
 using System;
 using UnityEngine.InputSystem.HID;
-using UnityEngine.Rendering;
-using UnityEditor.ShaderGraph.Drawing.Inspector.PropertyDrawers;
 
 public class ChainLightning : ProximityAttack
 {
@@ -29,6 +27,8 @@ public class ChainLightning : ProximityAttack
     private Hypertag       chainTag;
     [SerializeField] 
     private LineRenderer   lightningPrefab;
+    [SerializeField]
+    private AudioClip       lightningSnd;
 
     class TreeNode
     {
@@ -180,6 +180,11 @@ public class ChainLightning : ProximityAttack
         currentTree.transform = transform;
 
         Build(currentTree, maxHops, target, new HashSet<Enemy>());
+
+        if (lightningSnd)
+        {
+            SoundManager.PlaySound(SoundType.PrimaryFX, lightningSnd, 0.75f, UnityEngine.Random.Range(0.75f, 1.25f));
+        }
 
         return true;
     }

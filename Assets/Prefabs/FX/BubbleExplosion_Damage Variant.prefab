@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageType: 0
-  radius: 150
+  radius: 75
   hemisphere: 0
   damage: 100
   damageOverDistance: -1

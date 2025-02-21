@@ -1,8 +1,6 @@
-using Mono.Cecil.Cil;
 using NaughtyAttributes;
 using System;
 using System.Collections;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -39,7 +37,7 @@ public class Enemy : MonoBehaviour
     private float           searchSpeedMultiplier  =1.0f;
     [SerializeField, ShowIf(nameof(canSearch))]
     private float           maxSearchTime = 20.0f;
-    [SerializeField, Header("Death")] 
+    [SerializeField, Header("Damage")] 
     private LootList        lootList;
     [SerializeField]
     private Resource        resourcePrefab;
@@ -47,6 +45,10 @@ public class Enemy : MonoBehaviour
     private ParticleSystem  deathPS;
     [SerializeField] 
     private GameObject      explosionPrefab;
+    [SerializeField]
+    private AudioClip       hitSnd;
+    [SerializeField]
+    private AudioClip       deathSnd;
 
     State           state = State.Wander;
     SpriteRenderer  spriteRenderer;
@@ -81,6 +83,8 @@ public class Enemy : MonoBehaviour
     private void HealthSystem_onHit(HealthSystem.DamageType damageType, float damage, Vector3 damagePosition, Vector3 hitDirection, GameObject damageSource)
     {
         spriteEffect.FlashInvert(0.1f);
+
+        if (hitSnd) SoundManager.PlaySound(SoundType.PrimaryFX, hitSnd, UnityEngine.Random.Range(0.5f, 1.0f), UnityEngine.Random.Range(0.75f, 1.25f));
     }
 
     private void HealthSystem_onDead(GameObject damageSource)
@@ -106,6 +110,8 @@ public class Enemy : MonoBehaviour
         {
             attack.enabled = false;
         }
+
+        if (deathSnd) SoundManager.PlaySound(SoundType.PrimaryFX, deathSnd, 1.0f, 1.0f);
 
         Destroy(gameObject, 1.0f);
     }

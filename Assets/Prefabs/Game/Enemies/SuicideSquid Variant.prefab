@@ -153,3 +153,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3305d6d690ea5cb4da99325357c76667, type: 2}
   explosionDelay: 0.5
   explosionPrefab: {fileID: 178134577694326821, guid: af2302eb90f08da44ba2edd8e0cc7004, type: 3}
+  triggerSound: {fileID: 8300000, guid: 0dc841c28e588b148aebee0bd2b15111, type: 3}

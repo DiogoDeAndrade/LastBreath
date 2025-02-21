@@ -12,7 +12,7 @@
 - New phase 3, same as 2 but with weapons
 - Screen shake
 
-## Version 1.2 (...)
+## Version 1.2 (21/02/2025)
 
 - Oxygen bars
 - Changed ammount of near resources

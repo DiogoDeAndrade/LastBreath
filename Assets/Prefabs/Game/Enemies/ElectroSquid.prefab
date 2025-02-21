@@ -268,6 +268,8 @@ MonoBehaviour:
   resourcePrefab: {fileID: 4485897042003630804, guid: 498e2c7b013986b429c8d0c70e17d99e, type: 3}
   deathPS: {fileID: 461745563624041164}
   explosionPrefab: {fileID: 0}
+  hitSnd: {fileID: 8300000, guid: 3753425978b04a6438a1a8e8eb9029e9, type: 3}
+  deathSnd: {fileID: 8300000, guid: 0dc841c28e588b148aebee0bd2b15111, type: 3}
 --- !u!114 &1269631321502780725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,6 +334,7 @@ MonoBehaviour:
   freezeTimePerEnemy: 0.6
   chainTag: {fileID: 11400000, guid: 499b6f27d7eca544f909d08d91a5dfff, type: 2}
   lightningPrefab: {fileID: 7186273624183345879, guid: b7919645930edbe42918b38a9e70aaa8, type: 3}
+  lightningSnd: {fileID: 8300000, guid: e219e6c5050ba06448e30ddee62014e0, type: 3}
 --- !u!1 &1621804915675718646
 GameObject:
   m_ObjectHideFlags: 0
