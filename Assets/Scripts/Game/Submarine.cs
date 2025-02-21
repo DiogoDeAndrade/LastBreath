@@ -7,6 +7,8 @@ public class Submarine : MonoBehaviour
 {
     [SerializeField] 
     private int             _playerId = 0;
+    [SerializeField] 
+    private SubData         _subData;   
     [SerializeField]
     private float           maxSpeed = 200.0f; 
     [SerializeField]
@@ -93,9 +95,31 @@ public class Submarine : MonoBehaviour
             return;
         }
 
-        cameraFollowTarget = GetComponent<CameraFollowTarget>();
-
         var pd = GameManager.Instance.GetPlayerData(_playerId);
+        _subData = pd.submarine;
+
+        // Setup sub
+        var spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer)
+        {
+            spriteRenderer.sprite = _subData.primarySprite;
+        }
+        for (int i = 0; i < Mathf.Min(debries.Length, _subData.debrieSprites.Length); i++)
+        {
+            if (debries[i] == null) continue;
+
+            spriteRenderer = debries[i].GetComponent<SpriteRenderer>();
+            if (spriteRenderer)
+            {
+                spriteRenderer.sprite = _subData.debrieSprites[i];
+            }
+        }
+        if (subLight)
+        {
+            subLight.lightCookieSprite = _subData.lightSprite;
+        }
+
+        cameraFollowTarget = GetComponent<CameraFollowTarget>();
 
         spriteEffect = GetComponent<SpriteEffect>();
         SubCustomization playerCustomization = GetComponent<SubCustomization>();
@@ -124,6 +148,8 @@ public class Submarine : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         healthSystem = GetComponent<HealthSystem>();
+        healthSystem.maxHealth = _subData.health;
+        healthSystem.ResetHealth();
         healthSystem.onHit += HealthSystem_onHit;
         healthSystem.onHeal += HealthSystem_onHeal;
         healthSystem.onDead += HealthSystem_onDead;
@@ -158,6 +184,28 @@ public class Submarine : MonoBehaviour
         {
             weapons[w.slot - 1] = w;
             w.Init(this, uiWeaponContainer);
+            w.transform.localPosition = _subData.weaponOffset;
+            if ((_subData.ammoMultiplier != 1.0f) && (w.maxAmmo > 0))
+            {
+                w.maxAmmo = Mathf.CeilToInt(w.maxAmmo * _subData.ammoMultiplier);
+            }
+        }
+
+        maxSpeed = _subData.speed;
+        acceleration = _subData.acceleration;
+        maxRotationSpeed = _subData.rotationSpeed;
+        drag = _subData.drag;
+
+        switch (_subData.colliderType)
+        {
+            case SubData.ColliderType.Capsule:
+                CapsuleCollider2D capsuleCollider = GetComponent<CapsuleCollider2D>();
+                capsuleCollider.enabled = true;
+                capsuleCollider.size = _subData.size;
+                capsuleCollider.offset = _subData.offset;
+                break;
+            default:
+                break;
         }
     }
 
@@ -278,7 +326,10 @@ public class Submarine : MonoBehaviour
                 if (((weapons[i].canHold) && (fireControl[i].IsPressed())) ||
                     ((!weapons[i].canHold) && (fireControl[i].IsDown())))
                 {
-                    weapons[i]?.Shoot((inventoryType) ? (inventoryType.weaponSpeedModifier) : (1.0f));
+                    float damageModifier = (inventoryType) ? (inventoryType.weaponDamageModifier) : (1.0f);
+                    damageModifier *= _subData.damageMultiplier;
+                    float speedModifier = (inventoryType) ? (inventoryType.weaponSpeedModifier) : (1.0f);
+                    weapons[i]?.Shoot(damageModifier, speedModifier);
                 }
             }
         }

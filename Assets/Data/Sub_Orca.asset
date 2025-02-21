@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d10f04bce1ec76943bba1f85b442a4d9, type: 3}
+  m_Name: Sub_Orca
+  m_EditorClassIdentifier: 
+  displayName: Orca
+  primarySprite: {fileID: 21300000, guid: db7e2521327d8014bb2311640e3d1f2c, type: 3}
+  debrieSprites:
+  - {fileID: 21300000, guid: e8e16dc0182ecd04ead90ab1425ba4f4, type: 3}
+  - {fileID: 21300000, guid: 1480f0883bc9c5d4bbbb3c78f3f3ab76, type: 3}
+  - {fileID: 21300000, guid: f9e10cafea03c6d498d488245df0328b, type: 3}
+  - {fileID: 21300000, guid: 4beb815c616dc9747bfd01320d08bf40, type: 3}
+  - {fileID: 21300000, guid: 80ebbf9d2d0a87349a064399823db6bc, type: 3}
+  lightSprite: {fileID: -6112258595271556944, guid: b99f88cdeeae76844abdfc3e01de0101, type: 3}
+  weaponOffset: {x: 19, y: 0}
+  ammoMultiplier: 1.6
+  damageMultiplier: 1.25
+  colliderType: 0
+  offset: {x: 8, y: 0}
+  size: {x: 22.4, y: 14.7}
+  health: 160
+  speed: 150
+  acceleration: 150
+  rotationSpeed: 1080
+  drag: 2

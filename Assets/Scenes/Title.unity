@@ -495,7 +495,7 @@ MonoBehaviour:
   playButton: {fileID: 827205145}
   creditsButton: {fileID: 99038435}
   quitButton: {fileID: 41545278}
-  characterSelectScene: CharacterSelect
+  characterSelectScene: SubmarineSelect
   mainMenuCanvas: {fileID: 273489454}
   creditsScroll: {fileID: 1679557730}
   titleMusic: {fileID: 0}

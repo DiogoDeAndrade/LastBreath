@@ -13,6 +13,7 @@ public class ResourceData : ScriptableObject
     public float  valueMultiplier = 1.0f;
     public float healthRegen = 0.0f;
     public float speedModifier = 1.0f;
+    public float weaponDamageModifier = 1.0f;
     public float weaponSpeedModifier = 1.0f;
     public float speedAura = 1.0f;
     [ShowIf(nameof(hasSpeedAura))]

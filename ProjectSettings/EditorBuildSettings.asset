@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Title.unity
     guid: 73dfa4f2f011aa44eb7f5698e18aa578
   - enabled: 1
-    path: Assets/Scenes/CharacterSelect.unity
+    path: Assets/Scenes/SubmarineSelect.unity
     guid: e06baa03e1e799a499dbc57a318c8861
   - enabled: 1
     path: Assets/Scenes/AreaSelect.unity

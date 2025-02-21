@@ -27,4 +27,7 @@
 - Removed all AI art
 - Swapped buttons on menus
 - New weapon: Machine gun
+- Enemies added: electro squid and suicide squid
+- Added new submarines - Narwhal, Horseshoe and Orca
+
 

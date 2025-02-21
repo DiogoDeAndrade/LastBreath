@@ -29,13 +29,12 @@ When you get destroyed, you'll respawn at your base after a bit. When your base 
 Game ends when one city is out of oxygen, and the associated player is dead.
 
 ## February Objectives
-- New sub type sprite
-  - Different attributes (top speed, acceleration, health, rotation speed)
 - Simple enemies
   - Dark squid type of thing
     - Hit sound
     - Death sound
     - Electric burst sound
+- Shock effect while immobilized
 
 ## Future
 - Distortion effect

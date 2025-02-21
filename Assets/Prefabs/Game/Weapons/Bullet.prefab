@@ -230,7 +230,7 @@ MonoBehaviour:
   maxSpeed: 400
   useAcceleration: 0
   acceleration: 0
-  duration: 0.3
+  duration: 0.45
   damage: 5
   trackingTags: []
   trackPoint: {fileID: 0}

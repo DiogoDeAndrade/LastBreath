@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     [Serializable]
     public class PlayerData
     {
+        public SubData  submarine;
         public Color    hullColor;
         public Color    stripeColor;
         public Color    cockpitColor;
@@ -16,7 +17,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int                _numPlayers = 2;
     [SerializeField] private List<PlayerData>   _playerData;
-    [SerializeField] private ArenaData              _selectedLevel;
+    [SerializeField] private ArenaData          _selectedLevel;
 
     private float playTime = 0.0f;
 

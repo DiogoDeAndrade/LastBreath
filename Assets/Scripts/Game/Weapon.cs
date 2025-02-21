@@ -68,7 +68,11 @@ public class Weapon : MonoBehaviour
     public bool canHold => _canHold;
     public int ammo => _ammo;
     public float normalizedAmmo => (maxAmmo != 0) ? (_ammo / (float)maxAmmo) : (1.0f);
-    public int maxAmmo => _maxAmmo;
+    public int maxAmmo
+    {
+        get { return _maxAmmo; }
+        set { _maxAmmo = value; }
+    }
     public int slot => _slot;
 
     private void Start()
@@ -102,7 +106,7 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    public void Shoot(float weaponSpeedModifier)
+    public void Shoot(float weaponDamageModifier, float weaponSpeedModifier)
     {
         if ((_ammo <= 0) && (_maxAmmo > 0)) return;
         if (cooldownTimer > 0) return;
@@ -122,10 +126,11 @@ public class Weapon : MonoBehaviour
             rotation = rotation * Quaternion.Euler(0.0f, 0.0f, UnityEngine.Random.Range(-noiseAngle, noiseAngle));
         }
 
-        var torpedo = Instantiate(projectilePrefab, position, rotation);
-        torpedo.SetPlayerId(playerId);
-        torpedo.speedModifier = weaponSpeedModifier;
-        var rb = torpedo.GetComponent<Rigidbody2D>();
+        var projectile = Instantiate(projectilePrefab, position, rotation);
+        projectile.SetPlayerId(playerId);
+        projectile.speedModifier = weaponSpeedModifier;
+        projectile.damageModifier = weaponDamageModifier;
+        var rb = projectile.GetComponent<Rigidbody2D>();
         if ((rb) && (inheritVelocity) && (submarineRB))
         {
             rb.linearVelocity = submarineRB.linearVelocity;

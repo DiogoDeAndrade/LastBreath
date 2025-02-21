@@ -690,7 +690,6 @@ MonoBehaviour:
   player: {fileID: 5439900134263999799}
   image: {fileID: 1280721406842654012}
   text: {fileID: 4258720917981513995}
-  relativeTransform: {fileID: 7765164788763201618}
 --- !u!1 &5750330567506363355
 GameObject:
   m_ObjectHideFlags: 0
@@ -6292,7 +6291,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: eb0d6f1593475104893eb050e70ab960, type: 3}
+  m_Sprite: {fileID: 21300000, guid: db7e2521327d8014bb2311640e3d1f2c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6364,8 +6363,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -1.7}
-  m_Size: {x: 27.8, y: 17.9}
+  m_Offset: {x: 7.9, y: 0}
+  m_Size: {x: 22.4, y: 14.78}
   m_Direction: 1
 --- !u!114 &8434464912798688565
 MonoBehaviour:
@@ -6459,6 +6458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerId: 0
+  _subData: {fileID: 11400000, guid: 1f519baf50da81a4f9f0803902f54996, type: 2}
   maxSpeed: 200
   acceleration: 200
   maxRotationSpeed: 720

@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d10f04bce1ec76943bba1f85b442a4d9, type: 3}
+  m_Name: Sub_Horseshoe
+  m_EditorClassIdentifier: 
+  displayName: Horseshoe
+  primarySprite: {fileID: 21300000, guid: a63340ac73d7f9948899e291f5665c0f, type: 3}
+  debrieSprites:
+  - {fileID: 21300000, guid: e8e16dc0182ecd04ead90ab1425ba4f4, type: 3}
+  - {fileID: 21300000, guid: 1480f0883bc9c5d4bbbb3c78f3f3ab76, type: 3}
+  - {fileID: 21300000, guid: f9e10cafea03c6d498d488245df0328b, type: 3}
+  - {fileID: 21300000, guid: 4beb815c616dc9747bfd01320d08bf40, type: 3}
+  - {fileID: 21300000, guid: 80ebbf9d2d0a87349a064399823db6bc, type: 3}
+  lightSprite: {fileID: -6112258595271556944, guid: b99f88cdeeae76844abdfc3e01de0101, type: 3}
+  weaponOffset: {x: 6.5, y: 0}
+  colliderType: 0
+  offset: {x: -0.8, y: 0}
+  size: {x: 22.4, y: 11.6}
+  health: 80
+  speed: 150
+  acceleration: 300
+  rotationSpeed: 900
+  drag: 1.5

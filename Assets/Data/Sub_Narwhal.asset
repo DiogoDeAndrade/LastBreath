@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d10f04bce1ec76943bba1f85b442a4d9, type: 3}
+  m_Name: Sub_Narwhal
+  m_EditorClassIdentifier: 
+  displayName: Narwhal
+  primarySprite: {fileID: 21300000, guid: 82f07117575f4f341bf34f3701bc743f, type: 3}
+  debrieSprites:
+  - {fileID: 21300000, guid: e8e16dc0182ecd04ead90ab1425ba4f4, type: 3}
+  - {fileID: 21300000, guid: 1480f0883bc9c5d4bbbb3c78f3f3ab76, type: 3}
+  - {fileID: 21300000, guid: f9e10cafea03c6d498d488245df0328b, type: 3}
+  - {fileID: 21300000, guid: 4beb815c616dc9747bfd01320d08bf40, type: 3}
+  - {fileID: 21300000, guid: 80ebbf9d2d0a87349a064399823db6bc, type: 3}
+  lightSprite: {fileID: 7850644529504656003, guid: 4142c932ed4770643976f936363193e1, type: 3}
+  colliderType: 0
+  offset: {x: 10.1, y: 0}
+  size: {x: 30, y: 7.8}
+  health: 100
+  speed: 250
+  acceleration: 250
+  rotationSpeed: 540
+  drag: 0.8

@@ -1,12 +1,16 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(PlayerInput))]
 public class Customizer : UIGroup
 {
+    [SerializeField] Image                      thumbnailImage;
     [SerializeField] UIImageEffect              uiEffect;
     [SerializeField] ColorPalette               originalPalette;
+    [SerializeField] UIDiscreteSubDataSelector  modelSelector;
     [SerializeField] UIDiscreteColorSelector    hullColorSelector;
     [SerializeField] UIDiscreteColorSelector    stripeColorSelector;
     [SerializeField] UIDiscreteColorSelector    cockpitColorSelector;
@@ -26,11 +30,18 @@ public class Customizer : UIGroup
 
         palette = originalPalette.Clone();
 
+        modelSelector.onChange += OnModelChange;
         hullColorSelector.onChange += OnColorChange;
         stripeColorSelector.onChange += OnColorChange;
         cockpitColorSelector.onChange += OnColorChange;
         continueButton.onInteract += OnContinue;
 
+        OnModelChange(null);
+    }
+
+    private void OnModelChange(BaseUIControl control)
+    {
+        thumbnailImage.sprite = modelSelector.value.primarySprite;
         OnColorChange(null);
     }
 
@@ -53,6 +64,7 @@ public class Customizer : UIGroup
 
         var pd = new GameManager.PlayerData
         {
+            submarine = modelSelector.value,
             hullColor = hullColorSelector.value,
             stripeColor = stripeColorSelector.value,
             cockpitColor = cockpitColorSelector.value,
