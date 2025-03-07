@@ -28,6 +28,17 @@ When you get destroyed, you'll respawn at your base after a bit. When your base 
 
 Game ends when one city is out of oxygen, and the associated player is dead.
 
+## Match goals
+- Playtest
+  - Darkness
+  - Ship types
+  - Machine gun
+- Display submarine stats on selection
+- Preserve selection from match to match
+- Pause/Exit menu on gameplay
+- Bug: Hull color shouldn't change light color
+- Bug: Hull color shouldn't change game end text color
+
 ## Future
 - Distortion effect
 - Remove AI stuff (music)
@@ -42,6 +53,7 @@ Game ends when one city is out of oxygen, and the associated player is dead.
 - Enemies
   - Morey
   - Shark thing
+  - Worm thing
 
 ## Art
 
