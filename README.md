@@ -29,10 +29,16 @@ When you get destroyed, you'll respawn at your base after a bit. When your base 
 Game ends when one city is out of oxygen, and the associated player is dead.
 
 ## April goals
-- Bug: Hull color shouldn't change light color
-- Bug: Hull color shouldn't change game end text color
+- Bug: Hull color shouldn't change light color if it is dark (invert it, maybe)
+- Bug: Hull color shouldn't change game end text color (invert it, maybe)
+- Bug: Emissive stuff on game - default emissive texture is white, so if we're using that value, we need to have emissive = 0, except in the cases when I need it
+- Bug: When both ships die, no draw
 - Currents
 - Distortion effect
+  - Explosion
+  - Torpedo/submarine wake
+  - Underwater general distortion
+  - Currents
 
 ## Future
 - Display submarine stats on selection
