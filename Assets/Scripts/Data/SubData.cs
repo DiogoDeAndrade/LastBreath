@@ -1,6 +1,6 @@
-using NaughtyAttributes;
 using System;
 using UnityEngine;
+using UC;
 
 [CreateAssetMenu(fileName = "SubData", menuName = "Bubble/Submarine Data")]
 public class SubData : UIDiscreteSOOption, IEquatable<SubData>

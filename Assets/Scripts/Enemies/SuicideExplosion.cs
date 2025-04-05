@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-using NaughtyAttributes;
+using UC;
 
 public class SuicideExplosion : ProximityAttack
 {

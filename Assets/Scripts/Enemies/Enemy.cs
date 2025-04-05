@@ -2,6 +2,7 @@ using NaughtyAttributes;
 using System;
 using System.Collections;
 using UnityEngine;
+using UC;
 
 public class Enemy : MonoBehaviour
 {
@@ -393,6 +394,6 @@ public class Enemy : MonoBehaviour
 #if UNITY_6000_0_OR_NEWER
 
 [Serializable]
-public class EnemyProbList : ProbList<Enemy> { }
+public class EnemyProbList : UC.ProbList<Enemy> { }
 
 #endif

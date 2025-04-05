@@ -26,6 +26,6 @@ public class ResourceData : ScriptableObject
 #if UNITY_6000_0_OR_NEWER
 
 [Serializable]
-public class ResourceDataProbList : ProbList<ResourceData> { }
+public class ResourceDataProbList : UC.ProbList<ResourceData> { }
 
 #endif

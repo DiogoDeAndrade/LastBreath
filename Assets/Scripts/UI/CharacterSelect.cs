@@ -1,6 +1,7 @@
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UC;
 
 public class CharacterSelect : MonoBehaviour
 {

@@ -1,8 +1,7 @@
-using System;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UC;
 
 [RequireComponent(typeof(PlayerInput))]
 public class Customizer : UIGroup

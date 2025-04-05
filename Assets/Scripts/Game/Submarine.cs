@@ -1,9 +1,8 @@
-using NaughtyAttributes;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.Rendering.Universal;
-using UnityEngine.UIElements;
+using UC;
+using UnityEngine.InputSystem;
 
 public class Submarine : MonoBehaviour
 {
@@ -60,13 +59,13 @@ public class Submarine : MonoBehaviour
     [SerializeField, Header("Input")] 
     private PlayerInput     playerInput;
     [SerializeField, InputPlayer(nameof(playerInput))] 
-    private InputControl    moveControl;
+    private UC.InputControl     moveControl;
     [SerializeField, InputPlayer(nameof(playerInput)), InputButton]
-    private InputControl[]  fireControl = new InputControl[2];
+    private UC.InputControl[]   fireControl = new UC.InputControl[2];
     [SerializeField, InputPlayer(nameof(playerInput)), InputButton]
-    private InputControl    gatherControl;
+    private UC.InputControl    gatherControl;
     [SerializeField, InputPlayer(nameof(playerInput)), InputButton]
-    private InputControl    dropControl;
+    private UC.InputControl    dropControl;
 
     private Vector2             movementVector;
     private Rigidbody2D         rb;
@@ -566,12 +565,12 @@ public class Submarine : MonoBehaviour
         return speed;
     }
 
-    internal InputControl GetAttackControl()
+    internal UC.InputControl GetAttackControl()
     {
         return fireControl[1];
     }
 
-    internal InputControl GetGatherControl()
+    internal UC.InputControl GetGatherControl()
     {
         return gatherControl;
     }

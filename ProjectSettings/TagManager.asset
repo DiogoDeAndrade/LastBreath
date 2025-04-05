@@ -34,7 +34,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - DistortionFX
   - Dummy
   - CameraLimits
   m_SortingLayers:

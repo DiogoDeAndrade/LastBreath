@@ -1,9 +1,9 @@
 using UnityEngine;
-using static HealthSystem;
+using UC;
 
 public class DamageRadius : MonoBehaviour
 {
-    [SerializeField] HealthSystem.DamageType    damageType = DamageType.OverTime;
+    [SerializeField] HealthSystem.DamageType    damageType = HealthSystem.DamageType.OverTime;
     [SerializeField] private float              radius = 75;
     [SerializeField] private bool               hemisphere;
     [SerializeField] private float              damage = 10.0f;
@@ -13,7 +13,7 @@ public class DamageRadius : MonoBehaviour
 
     private void Start()
     {
-        if (damageType == DamageType.Burst)
+        if (damageType == HealthSystem.DamageType.Burst)
         {
             RunDamage();
 
@@ -59,7 +59,7 @@ public class DamageRadius : MonoBehaviour
 
                 float actualDamage = Mathf.Max(0, damage + damageOverDistance * distance);
 
-                if (damageType == DamageType.OverTime) actualDamage *= Time.deltaTime;
+                if (damageType == HealthSystem.DamageType.OverTime) actualDamage *= Time.deltaTime;
 
                 hs.DealDamage(damageType, actualDamage, transform.position, Vector3.zero, gameObject);
                 volume = 1.0f;

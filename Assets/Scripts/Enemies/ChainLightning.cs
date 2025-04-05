@@ -3,7 +3,7 @@ using UnityEngine;
 using NaughtyAttributes;
 using UnityEditor;
 using System;
-using UnityEngine.InputSystem.HID;
+using UC;
 
 public class ChainLightning : ProximityAttack
 {

@@ -1,7 +1,7 @@
 using NaughtyAttributes;
-using System;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UC;
 
 public class Weapon : MonoBehaviour
 {

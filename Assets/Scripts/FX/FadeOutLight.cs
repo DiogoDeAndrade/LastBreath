@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UC;
 
 public class FadeOutLight : MonoBehaviour
 {

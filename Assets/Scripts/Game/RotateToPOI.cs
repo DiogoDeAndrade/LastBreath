@@ -1,8 +1,8 @@
 using UnityEditor;
 using UnityEngine;
-using System.Collections.Generic;
 using System.Linq;
 using NaughtyAttributes;
+using UC;
 
 public class RotateToPOI : MonoBehaviour
 {
