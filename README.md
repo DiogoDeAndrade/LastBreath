@@ -35,8 +35,6 @@ Game ends when one city is out of oxygen, and the associated player is dead.
 - Bug: When both ships die, no draw
 - Currents
 - Distortion effect
-  - Explosion
-  - Torpedo/submarine wake
   - Underwater general distortion
   - Currents
 

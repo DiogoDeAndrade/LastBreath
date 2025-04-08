@@ -397,6 +397,7 @@ MonoBehaviour:
   preserveRelativePositon: 0
   relativeTransform: {fileID: 7765164788763201618}
   zeroResourceZeroAlpha: 1
+  displayIcon: {fileID: 0}
   healthSystem: {fileID: 2988944142474767809}
 --- !u!1 &3360259561808321625
 GameObject:
