@@ -10,6 +10,8 @@ public class CurrentLineFX : MonoBehaviour
     private float                       currentT = 0.0f;
     private Vector3                     offset;
     private PathXY                      path;
+    private BoxCollider2D               boxCollider;
+    private Current                     parentCurrent;
     private TrailRenderer               trailRenderer;
     private float                       minT, maxT;
     private bool                        active;
@@ -27,12 +29,19 @@ public class CurrentLineFX : MonoBehaviour
         this.offset = offset;
         active = true;
 
+        if (boxCollider)
+        {
+            transform.position = boxCollider.bounds.Random();
+        }
+
         trailRenderer.FadeTo(1.0f, 1.0f, fadeTime, "TrailFade");
     }
 
     void Start()
     {
         path = GetComponentInParent<PathXY>();
+        boxCollider = GetComponentInParent<BoxCollider2D>();
+        parentCurrent = GetComponentInParent<Current>();
 
         InitTrailRenderer();
 
@@ -48,24 +57,53 @@ public class CurrentLineFX : MonoBehaviour
         currentT = Mathf.Clamp(currentT + tSpeed * Time.deltaTime, minT, maxT);
 
         UpdatePos();
-        if ((active) && (currentT == maxT))
+        if (path != null)
         {
-            trailRenderer.emitting = false;
-            if ((interpolator == null) || (interpolator.isFinished))
+            if ((active) && (currentT == maxT))
             {
-                interpolator = trailRenderer.FadeTo(0.0f, 0.0f, fadeTime, "TrailFade").Done(
-                    () =>
+                trailRenderer.emitting = false;
+                if ((interpolator == null) || (interpolator.isFinished))
+                {
+                    interpolator = trailRenderer.FadeTo(0.0f, 0.0f, fadeTime, "TrailFade").Done(
+                        () =>
+                        {
+                            active = false;
+                            interpolator = null;
+                        });
+                }
+            }
+        }
+        else if (boxCollider)
+        {
+            if (active) 
+            {
+                if (!boxCollider.bounds.Contains(transform.position))
+                {
+                    if ((interpolator == null) || (interpolator.isFinished))
                     {
-                        active = false;
-                        interpolator = null;
-                    });
+                        interpolator = trailRenderer.FadeTo(0.0f, 0.0f, fadeTime, "TrailFade").Done(
+                            () =>
+                            {
+                                active = false;
+                                interpolator = null;
+                            });
+                    }
+                }
             }
         }
     }
 
     void UpdatePos()
     {
-        transform.position = path.EvaluateWorld(currentT).xy0() + offset;
+        if (path)
+        {
+            transform.position = path.EvaluateWorld(currentT).xy0() + offset;
+        }
+        else if ((boxCollider) && (active))
+        {
+            float maxSize = Mathf.Max(boxCollider.bounds.size.x, boxCollider.bounds.size.y);
+            transform.position = transform.position.xy() + parentCurrent.direction * tSpeed * maxSize * Time.deltaTime;
+        }
     }
 
     void InitTrailRenderer()
