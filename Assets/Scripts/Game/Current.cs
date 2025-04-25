@@ -92,6 +92,7 @@ public class Current : MonoBehaviour
             var points = path.GetPoints();
             int count = points.Count;
             if (path.isClosed) count++;
+            else count--;
 
             for (int i = 0; i < count; i++)
             {

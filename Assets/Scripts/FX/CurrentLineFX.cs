@@ -6,6 +6,7 @@ public class CurrentLineFX : MonoBehaviour
 {
     [SerializeField] private float      tSpeed;
     [SerializeField] private float      fadeTime = 0.1f;
+    [SerializeField] private float      alpha = 1.0f;
 
     private float                       currentT = 0.0f;
     private Vector3                     offset;
@@ -34,7 +35,7 @@ public class CurrentLineFX : MonoBehaviour
             transform.position = boxCollider.bounds.Random();
         }
 
-        trailRenderer.FadeTo(1.0f, 1.0f, fadeTime, "TrailFade");
+        trailRenderer.FadeTo(alpha, 0.0f, fadeTime, "TrailFade");
     }
 
     void Start()

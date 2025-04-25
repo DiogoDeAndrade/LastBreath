@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5490474092507892985}
   - component: {fileID: 6314289857921002217}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: SingleScreenLimits
   m_TagString: Untagged
   m_Icon: {fileID: 0}

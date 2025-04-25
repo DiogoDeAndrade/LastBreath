@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f22f6ba95d6ca4747b3d96832beac05e, type: 3}
+  m_Name: Arena_SirensFlow
+  m_EditorClassIdentifier: 
+  displayName: Siren's Flow
+  thumbnail: {fileID: 21300000, guid: 44716fe720f039842bb562d056711c55, type: 3}
+  description: Treacherous currents
+  playerLimit: {x: 2, y: 2}
+  sceneName: GameScene_SirensFlow
