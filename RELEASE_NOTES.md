@@ -1,5 +1,13 @@
 # RELEASE NOTES
 
+## Version 1.3 (26/04/2025)
+
+- Added currents system
+- Added new level: Siren's Flow
+- Bug: Hull color shouldn't change light color if it is dark, it now chooses a better color
+- Bug: Hull color shouldn't change game end text color, it now chooses a better color
+- Bug: When both ships die, there is a tie
+
 ## Version 1.2 (21/02/2025)
 
 - Oxygen bars

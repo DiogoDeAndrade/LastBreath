@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using NaughtyAttributes;
 using UnityEngine.Rendering.Universal;
 using UC;
+using System.Collections.Generic;
 
 public class LevelManager : MonoBehaviour
 {
@@ -147,31 +148,33 @@ public class LevelManager : MonoBehaviour
                 }
             }
 
-            // Win condition
-            int alive = 0;
-            foreach (var city in cities)
+            winnerId = GetWinner();
+
+            if (winnerId >= 0)
             {
-                if (!city.isDead) continue;
-                if (!city.isPlayerDead) continue;
+                var playerData = GameManager.Instance.GetPlayerData(winnerId);
 
-                alive++;
+                gameOverText.text = $"PLAYER {winnerId + 1} WINS!";
+
+                var submarines = FindObjectsByType<Submarine>(FindObjectsSortMode.None);
+                foreach (var sub in submarines)
+                {
+                    if (sub.playerId == winnerId)
+                    {
+                        SubCustomization sc = sub.GetComponent<SubCustomization>();
+                        if (sc)
+                        {
+                            gameOverText.color = sc.GetTextColor();
+                        }
+                    }
+                }
+
+                gameOverCanvas.FadeIn(0.5f);
+                state = GameState.GameOver;
             }
-
-            // Only one alive
-            if (alive == 1)
-            { 
-                winnerId = GetWinner();
-                if (winnerId != -1)
-                {
-                    var playerData = GameManager.Instance.GetPlayerData(winnerId);
-
-                    gameOverText.text = $"PLAYER {winnerId + 1} WINS!";
-                    gameOverText.color = playerData.hullColor;
-                }
-                else
-                {
-                    gameOverText.text = $"TIE!";
-                }
+            else if (winnerId == -1)
+            {
+                gameOverText.text = $"TIE!";
                 gameOverCanvas.FadeIn(0.5f);
                 state = GameState.GameOver;
             }
@@ -192,17 +195,30 @@ public class LevelManager : MonoBehaviour
 
     int GetWinner()
     {
-        foreach (var city in cities)
-        {
-            if (!city.isDead) return city.playerId;
-        }
+        HashSet<int> alivePlayers = new HashSet<int>();
 
         foreach (var city in cities)
         {
-            if (!city.isPlayerDead) return city.playerId;
+            if (!city.isDead || !city.isPlayerDead)
+            {
+                alivePlayers.Add(city.playerId);
+            }
         }
 
-        return -1;
+        if (alivePlayers.Count == 1)
+        {
+            // One winner
+            foreach (int id in alivePlayers)
+                return id;
+        }
+        else if (alivePlayers.Count == 0)
+        {
+            // Everyone is dead
+            return -1;
+        }
+
+        // More than one alive
+        return -2;
     }
 
     private void OnContinue()

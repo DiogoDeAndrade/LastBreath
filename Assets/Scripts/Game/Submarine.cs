@@ -140,10 +140,7 @@ public class Submarine : MonoBehaviour
             }
             if (subLight)
             {
-                Color.RGBToHSV(pd.hullColor, out float h, out float s, out float v);
-                s *= 0.5f;
-                v = 0.8f;
-                subLight.color = pd.hullColor;// Color.HSVToRGB(h, s, v);
+                subLight.color = playerCustomization.GetLightColor();
             }
         }
 

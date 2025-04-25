@@ -169,7 +169,7 @@ MonoBehaviour:
     width: 200
     height: 200
   cameraLimits: {fileID: 0}
-  displayTargetPos: 1
+  displayTargetPos: 0
   displayTargetPosRadius: 10
 --- !u!114 &7410059201779737154
 MonoBehaviour:

@@ -39,10 +39,6 @@ public class CurrentLineFX : MonoBehaviour
 
     void Start()
     {
-        path = GetComponentInParent<PathXY>();
-        boxCollider = GetComponentInParent<BoxCollider2D>();
-        parentCurrent = GetComponentInParent<Current>();
-
         InitTrailRenderer();
 
         currentT = minT;
@@ -112,5 +108,8 @@ public class CurrentLineFX : MonoBehaviour
         {
             trailRenderer = GetComponent<TrailRenderer>();
         }
+        path = GetComponentInParent<PathXY>();
+        boxCollider = GetComponentInParent<BoxCollider2D>();
+        parentCurrent = GetComponentInParent<Current>();
     }
 }

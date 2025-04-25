@@ -66,4 +66,31 @@ public class SubCustomization : MonoBehaviour
 
         return modifiedPalette;
     }
+
+    internal Color GetLightColor()
+    {
+        Color lightColor = hullColor;
+
+        // Remap colors from [0..1] to [0.5..1]
+        lightColor = lightColor * 0.5f + 0.5f * Color.white;
+        
+        // Set max component to be 1
+        lightColor = lightColor / Mathf.Max(lightColor.r, lightColor.g, lightColor.b);
+
+        lightColor.a = 1.0f;
+        return lightColor;
+    }
+
+    internal Color GetTextColor()
+    {
+        Color lightColor = hullColor;
+
+        // Remap colors from [0..1] to [0.5..1]
+        lightColor = lightColor * 0.5f + 0.5f * Color.white;
+
+        if (lightColor.grayscale == 0.0f) lightColor = Color.white * 0.9f;
+
+        lightColor.a = 1.0f;
+        return lightColor;
+    }
 }
