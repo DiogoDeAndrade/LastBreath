@@ -34,7 +34,7 @@ Game ends when one city is out of oxygen, and the associated player is dead.
 - Bug: Emissive stuff on game - default emissive texture is white, so if we're using that value, we need to have emissive = 0, except in the cases when I need it
 - Bug: When both ships die, no draw
 - Path: Bezier
-- Current: Box
+- Siren's Flow level design
 
 ## Future
 - Display submarine stats on selection
