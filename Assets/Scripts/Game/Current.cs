@@ -90,10 +90,13 @@ public class Current : MonoBehaviour
             pa = pb = Vector3.zero;
 
             var points = path.GetPoints();
-            for (int i = 0; i < points.Count - 1; i++)
+            int count = points.Count;
+            if (path.isClosed) count++;
+
+            for (int i = 0; i < count; i++)
             {
-                var a = points[i];
-                var b = points[i + 1];
+                var a = points[i % points.Count];
+                var b = points[(i + 1) % points.Count];
                 var dir = (b - a).normalized.PerpendicularXY();
 
                 var da = a + dir * range;
