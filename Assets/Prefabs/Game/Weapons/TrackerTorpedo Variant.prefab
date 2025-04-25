@@ -13,10 +13,6 @@ PrefabInstance:
       value: TrackerTorpedo Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5113020608957904864, guid: 469f1a67c9f5f444ea2405113e95a258, type: 3}
-      propertyPath: damage
-      value: 51
-      objectReference: {fileID: 0}
-    - target: {fileID: 5113020608957904864, guid: 469f1a67c9f5f444ea2405113e95a258, type: 3}
       propertyPath: tracker
       value: 1
       objectReference: {fileID: 0}
@@ -30,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5113020608957904864, guid: 469f1a67c9f5f444ea2405113e95a258, type: 3}
       propertyPath: acceleration
-      value: 300
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 5113020608957904864, guid: 469f1a67c9f5f444ea2405113e95a258, type: 3}
       propertyPath: alsoTrackTorpedoes

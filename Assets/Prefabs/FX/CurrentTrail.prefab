@@ -83,7 +83,7 @@ TrailRenderer:
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 1.5
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -98,19 +98,19 @@ TrailRenderer:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0
-        inSlope: -2.7749968
-        outSlope: -2.7749968
+        value: 0.5
+        inSlope: -0.7520063
+        outSlope: -0.7520063
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.08333343
+        inWeight: 0.08878257
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.6921057, g: 0.960283, b: 0.9716981, a: 1}
+      key0: {r: 0.6921057, g: 0.960283, b: 0.9716981, a: 0.78431374}
       key1: {r: 0.6921057, g: 0.960283, b: 0.9716981, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}

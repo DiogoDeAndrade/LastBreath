@@ -8,6 +8,7 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  importerVersion: 2
   textureImporterSettings:
     alphaSource: 1
     mipMapMode: 0
@@ -839,7 +840,12 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 1397502068
+    uuid:
+      value0: 3595281220
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: -699686076
     name: DarkSquid
     layerFlags: 0
     layerType: 0
@@ -1196,3 +1202,4 @@ ScriptedImporter:
     texture: {fileID: 2800000, guid: 50554c700f0d4fa449ef2a55f7ec7312, type: 3}
   spritePackingTag: 
   canvasSize: {x: 32, y: 32}
+  previousTextureSize: {x: 128, y: 256}

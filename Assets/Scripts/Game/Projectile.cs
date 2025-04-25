@@ -15,6 +15,8 @@ public class Projectile : MonoBehaviour
     private bool            useAcceleration;
     [SerializeField, ShowIf(nameof(useAcceleration))] 
     private float           acceleration = 250.0f;
+    [SerializeField, ShowIf(nameof(useAcceleration))]
+    private float           currentsScale = 1.0f;
     [SerializeField] 
     private float           duration = 10.0f;
     [SerializeField] 
@@ -99,7 +101,16 @@ public class Projectile : MonoBehaviour
             float ms = maxSpeed;
             ms *= Submarine.GetAura(transform.position, _playerId);
 
-            velocity = transform.right * Mathf.Clamp(speed + acceleration * Time.fixedDeltaTime, 0.0f, ms) * _speedModifier;
+            velocity = velocity + transform.right.xy() * (acceleration * Time.fixedDeltaTime * _speedModifier);
+            if (currentsScale > 0.0f)
+            {
+                velocity = velocity + currentsScale * Current.GetCurrentsStrength(transform.position) * Time.fixedDeltaTime;
+
+                // Force rotation
+                Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, velocity.Perpendicular());
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _speedModifier * rotationSpeed * Time.deltaTime);
+            }
+            velocity = velocity.normalized * Mathf.Clamp(velocity.magnitude, 0.0f, ms);
             rb.linearVelocity = velocity;
         }
         else

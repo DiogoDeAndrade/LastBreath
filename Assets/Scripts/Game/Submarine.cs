@@ -294,6 +294,9 @@ public class Submarine : MonoBehaviour
             velocity = velocity + movementVector * acceleration * Time.fixedDeltaTime;
         }
 
+        var currentForce = Current.GetCurrentsStrength(transform.position);
+        velocity = velocity + currentForce * Time.fixedDeltaTime;
+
         float ms = maxSpeed;
         if (inventoryType) ms *= inventoryType.speedModifier;
         ms *= GetAura(transform.position, playerId);

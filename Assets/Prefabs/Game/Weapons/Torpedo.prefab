@@ -216,6 +216,7 @@ MonoBehaviour:
   maxSpeed: 250
   useAcceleration: 1
   acceleration: 250
+  currentsScale: 5
   duration: 10
   damage: 51
   trackingTags: []
