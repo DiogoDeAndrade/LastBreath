@@ -87,14 +87,13 @@ public class Current : MonoBehaviour
         if (path != null)
         {
             Vector3 pa, pb;
+            Vector3 lastDir;
             pa = pb = Vector3.zero;
 
             var points = path.GetPoints();
             int count = points.Count;
-            if (path.isClosed) count++;
-            else count--;
 
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < count - 1; i++)
             {
                 var a = points[i % points.Count];
                 var b = points[(i + 1) % points.Count];
@@ -111,6 +110,18 @@ public class Current : MonoBehaviour
 
                 pa = da;
                 pb = db;
+                lastDir = dir;
+            }
+
+            if ((path.isClosed) && (count > 1))
+            {
+                var a = points[0];
+                var b = points[1];
+                var dir = (b - a).normalized.PerpendicularXY();
+
+                Gizmos.DrawLine(pa, a + dir * range);
+                Gizmos.DrawLine(pb, a - dir * range);
+
             }
         }
         boxCollider = GetComponent<BoxCollider2D>();
