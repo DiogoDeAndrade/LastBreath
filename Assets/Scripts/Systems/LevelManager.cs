@@ -99,22 +99,20 @@ public class LevelManager : MonoBehaviour
     {
         if (state == GameState.GameOver)
         {
-            // Check inputs
-            if (winnerId == -1)
+            int playerCount = 0;
+            var players = FindObjectsByType<Submarine>(FindObjectsSortMode.None);
+            foreach (var player in players)
+            {
+                if ((player.GetAttackControl().IsDown()) ||
+                    (player.GetGatherControl().IsDown()))
+                {
+                    OnContinue();
+                }
+                playerCount++;
+            }
+            if (playerCount == 0)
             {
                 if (Input.anyKeyDown) OnContinue();
-            }
-            else
-            {
-                var players = FindObjectsByType<Submarine>(FindObjectsSortMode.None);
-                foreach (var player in players)
-                {
-                    if ((player.GetAttackControl().IsDown()) ||
-                        (player.GetGatherControl().IsDown()))
-                    {
-                        OnContinue();
-                    }
-                }
             }
         }
         else

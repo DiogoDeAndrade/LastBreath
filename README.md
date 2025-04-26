@@ -28,14 +28,13 @@ When you get destroyed, you'll respawn at your base after a bit. When your base 
 
 Game ends when one city is out of oxygen, and the associated player is dead.
 
-## April goals
-- Shader for background
-
-## Future
+## May goals
+- Remove AI stuff (music)
 - Display submarine stats on selection
 - Preserve selection from match to match
 - Pause/Exit menu on gameplay
-- Remove AI stuff (music)
+
+## Future
 - Extra player count (>2)
 - Single player mode (AI bots)
 - Powerups

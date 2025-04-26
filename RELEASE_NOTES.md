@@ -1,12 +1,16 @@
 # RELEASE NOTES
 
+## Version 1.3.1 (26/04/2025)
+
+- Bugfix: Fixed issue with proceeding after match over when both players are dead
+
 ## Version 1.3 (26/04/2025)
 
 - Added currents system
 - Added new level: Siren's Flow
-- Bug: Hull color shouldn't change light color if it is dark, it now chooses a better color
-- Bug: Hull color shouldn't change game end text color, it now chooses a better color
-- Bug: When both ships die, there is a tie
+- Bugfix: Hull color shouldn't change light color if it is dark, it now chooses a better color
+- Bugfix: Hull color shouldn't change game end text color, it now chooses a better color
+- Bugfix: When both ships die, there is a tie
 
 ## Version 1.2 (21/02/2025)
 
