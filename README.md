@@ -29,7 +29,6 @@ When you get destroyed, you'll respawn at your base after a bit. When your base 
 Game ends when one city is out of oxygen, and the associated player is dead.
 
 ## April goals
-- Bezier edit => Move point = Move tangents
 - Shader for background
 
 ## Future
