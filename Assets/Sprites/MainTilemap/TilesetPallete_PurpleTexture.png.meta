@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      TilesetPallete_PurpleTexture_0: 8896248213421935153
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
