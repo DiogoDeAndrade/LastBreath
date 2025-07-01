@@ -30,6 +30,15 @@ public class Customizer : UIGroup
 
         palette = originalPalette.Clone();
 
+        var playerData = GameManager.Instance.GetPlayerData(playerId);
+        if (playerData != null)
+        {
+            modelSelector.ChangeValue(playerData.submarine);
+            hullColorSelector.ChangeValue(playerData.hullColor);
+            stripeColorSelector.ChangeValue(playerData.stripeColor);
+            cockpitColorSelector.ChangeValue(playerData.cockpitColor);
+        }
+
         modelSelector.onChange += OnModelChange;
         hullColorSelector.onChange += OnColorChange;
         stripeColorSelector.onChange += OnColorChange;

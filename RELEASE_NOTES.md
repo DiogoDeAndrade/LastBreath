@@ -3,6 +3,8 @@
 ## Version 1.4.0 (?)
 
 - Added submarine stats display on the submarine selection screen
+- Selections are kept between fights
+- Pause option in game
 
 ## Version 1.3.2 (01/07/2025)
 

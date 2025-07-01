@@ -30,8 +30,6 @@ Game ends when one city is out of oxygen, and the associated player is dead.
 
 ## May goals
 - Remove AI stuff (music)
-- Preserve selection from match to match
-- Pause/Exit menu on gameplay
 
 ## Future
 - Extra player count (>2)

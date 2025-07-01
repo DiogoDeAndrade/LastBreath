@@ -971,6 +971,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2675829865153892083}
   - component: {fileID: 7460277818932058622}
+  - component: {fileID: 8175102910628556658}
   m_Layer: 8
   m_Name: EngineSound
   m_TagString: Untagged
@@ -1090,6 +1091,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8175102910628556658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6246437450632397160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cae30e80e4702f9498508545ae6eb134, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6336165985272080193
 GameObject:
   m_ObjectHideFlags: 0
@@ -6660,6 +6673,14 @@ MonoBehaviour:
     keyPositive: 275
     keyNegative: 276
     inputAction: Drop
+  pauseControl:
+    _type: 3
+    axis: Horizontal
+    buttonPositive: Right
+    buttonNegative: Left
+    keyPositive: 275
+    keyNegative: 276
+    inputAction: Pause
 --- !u!114 &2988944142474767809
 MonoBehaviour:
   m_ObjectHideFlags: 0

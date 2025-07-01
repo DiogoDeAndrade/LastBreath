@@ -66,6 +66,8 @@ public class Submarine : MonoBehaviour
     private UC.InputControl    gatherControl;
     [SerializeField, InputPlayer(nameof(playerInput)), InputButton]
     private UC.InputControl    dropControl;
+    [SerializeField, InputPlayer(nameof(playerInput)), InputButton]
+    private UC.InputControl    pauseControl;
 
     private Vector2             movementVector;
     private Rigidbody2D         rb;
@@ -92,7 +94,6 @@ public class Submarine : MonoBehaviour
     public int          playerId { get { return _playerId; } set { _playerId = value; } }
     public ResourceData item => inventoryType;
     public int          itemCount => inventoryQuantity;
-
 
     void Start()
     {
@@ -149,6 +150,7 @@ public class Submarine : MonoBehaviour
         foreach (var f in fireControl) f.playerInput = playerInput;
         gatherControl.playerInput = playerInput;
         dropControl.playerInput = playerInput;
+        pauseControl.playerInput = playerInput;
 
         rb = GetComponent<Rigidbody2D>();
         healthSystem = GetComponent<HealthSystem>();
@@ -301,6 +303,8 @@ public class Submarine : MonoBehaviour
 
         rb.linearVelocity = prevVelocity = velocity;
     }
+
+    
 
     private void Update()
     {
@@ -459,6 +463,21 @@ public class Submarine : MonoBehaviour
             }
         }
 
+        if (pauseControl.IsDown())
+        {
+            var pauseMenu = FindFirstObjectByType<PauseMenu>();
+            if (pauseMenu != null)
+            {
+                if (!pauseMenu.isPaused)
+                {
+                    pauseMenu.Pause(playerInput);
+                }
+                else
+                {
+                    pauseMenu.Unpause(playerInput);
+                }
+            }
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

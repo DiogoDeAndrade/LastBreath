@@ -517,8 +517,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlighterImage: {fileID: 8154252822303796463}
+  highlighterText: {fileID: 0}
+  highlightColor: {r: 0, g: 0, b: 0, a: 0}
   _navUp: {fileID: 0}
   _navDown: {fileID: 0}
+  _navLeft: {fileID: 0}
+  _navRight: {fileID: 0}
   changeSnd: {fileID: 8300000, guid: 34613125421c21b4592e539801c94af8, type: 3}
   leftArrow: {fileID: 3309478150738844954}
   rightArrow: {fileID: 6884483160768096204}
@@ -528,6 +532,9 @@ MonoBehaviour:
   - {r: 0.8584906, g: 0.80228794, b: 0.125534, a: 1}
   - {r: 0.9150943, g: 0.12996475, b: 0.09927912, a: 1}
   - {r: 0.26683807, g: 0.8396226, b: 0.19406372, a: 1}
+  - {r: 0.07262372, g: 0.9056604, b: 0.75300944, a: 1}
+  - {r: 0.07450979, g: 0.28549108, b: 0.90588236, a: 1}
+  - {r: 0.23871966, g: 0.49056602, b: 0.20594516, a: 1}
   - {r: 0.07262372, g: 0.9056604, b: 0.75300944, a: 1}
   - {r: 0.07450979, g: 0.28549108, b: 0.90588236, a: 1}
   - {r: 0.5450064, g: 0.07450979, b: 0.90588236, a: 1}
