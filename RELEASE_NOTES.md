@@ -1,5 +1,9 @@
 # RELEASE NOTES
 
+## Version 1.3.2 (01/07/2025)
+
+- Bugfix: Fixed distortion effects
+
 ## Version 1.3.1 (26/04/2025)
 
 - Bugfix: Fixed issue with proceeding after match over when both players are dead

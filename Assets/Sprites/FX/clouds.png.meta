@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: eaa8f1ff21b374f4385e6d01a6925308
+guid: 41425d0da81b2aa4ab0ceca173fbd0d8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8499756403323783743
-    second: wake_normals_0
+      213: 8287873616420496286
+    second: clouds_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,8 +49,8 @@ TextureImporter:
   spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 9
-  spritePivot: {x: 0.92473, y: 0.47686824}
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 1
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: wake_normals_0
+      name: clouds_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 504
-        height: 238
-      alignment: 9
-      pivot: {x: 0.9227117, y: 0.47977048}
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1c5b886b59cca0a80800000000000000
-      internalID: -8499756403323783743
+      spriteID: e936312a421740370800000000000000
+      internalID: 8287873616420496286
       vertices: []
       indices: 
       edges: []
@@ -138,8 +138,8 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 62bb6c396378ec94bba47a0178b25613
-    internalID: 682370656
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
     vertices: []
     indices: 
     edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      wake_normals_0: -8499756403323783743
+      clouds_0: 8287873616420496286
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

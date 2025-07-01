@@ -47,6 +47,10 @@ MonoBehaviour:
   playOnStart: 1
   startDelay: 0
   destroyOnEnd: 1
+  spawnOnMovement: 0
+  deltaDistance: 20
+  turnToMovement: 0
+  localSpace: 1
   nRipples: 1
   delayBetweenRipples: 0.75
   rippleDuration: 0.5
@@ -82,27 +86,37 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: -1
-      outSlope: -1
-      tangentMode: 34
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.33333334
+      outWeight: 0
     - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: -1
-      outSlope: -1
-      tangentMode: 34
+      time: 0.4
+      value: 1
+      inSlope: 0.0152983535
+      outSlope: 0.0152983535
+      tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0.30833334
+    - serializedVersion: 3
+      time: 1.0041809
+      value: 0
+      inSlope: -2.9704313
+      outSlope: -2.9704313
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.033208705
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  rippleSprite: {fileID: 3352977100518504676, guid: 693cb173f94c2f746af150865f83ea6b, type: 3}
+  strengthIsSpriteAlpha: 1
+  rippleSprite: {fileID: 21300000, guid: 866d3c5d53b56434e9737c9d1f6185c0, type: 3}
   rippleLayer: 29
-  spriteSortingLayer: -272308539
+  spriteSortingLayer: -1990082021
   spriteOrderInLayer: 10
   rippleMaterial: {fileID: 2100000, guid: f211e4d72efe99749926eb95a58b3e05, type: 2}
 --- !u!1 &8294285090635143417
