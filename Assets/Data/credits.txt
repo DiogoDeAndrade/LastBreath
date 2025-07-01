@@ -4,10 +4,16 @@ Last Breath
 Special Thanks
 <size=60%>Wilson Almeida
 <size=60%>Daniel Fernandes
+<size=60%>Filipe Luz
 
 Art
 <size=60%>UI Pack Sci-Fi by Kenney, licensed through the [CC0] license.
 <size=60%>Font Optimus by Pixel Sagas, free for non-commercial use.
+<size=60%>Crosshair icon by Pixa_icons/Flat Icon, free for personal and commercial purpose with attribution.
+<size=60%>Propeler icon by Freepik/Flat Icon, free for personal and commercial purpose with attribution.
+<size=60%>Rudder icon by IwitoStudio/Flat Icon, free for personal and commercial purpose with attribution.
+<size=60%>Shield icon by Good Ware/Flat Icon, free for personal and commercial purpose with attribution.
+<size=60%>Star icon by Pixel perfect/Flat Icon, free for personal and commercial purpose with attribution.
 <size=60%>Everything else done by Diogo de Andrade, CC0 license
 
 Sound

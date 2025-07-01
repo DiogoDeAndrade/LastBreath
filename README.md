@@ -50,6 +50,9 @@ Game ends when one city is out of oxygen, and the associated player is dead.
 
 - [UI Pack Sci-Fi](https://kenney.nl/assets/ui-pack-sci-fi) by [Kenney](https://kenney.nl), licensed through the [CC0] license.
 - Font [Optimus](https://www.dafont.com/pt/optimus.font) by [Pixel Sagas](https://www.dafont.com/pt/pixel-sagas.d32), free for non-commercial use.
+- Crosshair icon by Pixa_icons, from [Flat Icon](https://www.flaticon.com/), free for personal and commercial purpose with attribution.
+- Propeler icon by Freepik, from [Flat Icon](https://www.flaticon.com/), free for personal and commercial purpose with attribution.
+- Rudder icon by IwitoStudio, from [Flat Icon](https://www.flaticon.com/), free for personal and commercial purpose with attribution.
 - Shield icon by Good Ware, from [Flat Icon](https://www.flaticon.com/), free for personal and commercial purpose with attribution.
 - Star icon by Pixel perfect, from [Flat Icon](https://www.flaticon.com/), free for personal and commercial purpose with attribution.
 - Stock photos from [pexels.com](https://pexels.com), free to use.
