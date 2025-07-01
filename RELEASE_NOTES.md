@@ -1,5 +1,9 @@
 # RELEASE NOTES
 
+## Version 1.4.0 (?)
+
+- Added submarine stats display on the submarine selection screen
+
 ## Version 1.3.2 (01/07/2025)
 
 - Bugfix: Fixed distortion effects

@@ -32,3 +32,7 @@ MonoBehaviour:
   acceleration: 150
   rotationSpeed: 1080
   drag: 2
+  starsHull: 3
+  starsDamage: 3
+  starsSpeed: 1
+  starsManoeuvrability: 1
