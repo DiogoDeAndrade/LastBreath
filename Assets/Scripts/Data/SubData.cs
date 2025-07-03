@@ -26,6 +26,11 @@ public class SubData : UIDiscreteSOOption, IEquatable<SubData>
     public float    acceleration = 200.0f;
     public float    rotationSpeed = 720.0f;
     public float    drag = 1.0f;
+    [Header("Display Stats")]
+    public int      starsHull = 1;
+    public int      starsDamage = 1;
+    public int      starsSpeed = 1;
+    public int      starsManoeuvrability = 1;
 
     public override string GetDisplayName()
     {

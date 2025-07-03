@@ -21,6 +21,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4beb815c616dc9747bfd01320d08bf40, type: 3}
   - {fileID: 21300000, guid: 80ebbf9d2d0a87349a064399823db6bc, type: 3}
   lightSprite: {fileID: 21300000, guid: d0182a0787e498d47b5dbcbfc38cf58f, type: 3}
+  weaponOffset: {x: 22, y: 0}
+  ammoMultiplier: 1
+  damageMultiplier: 1
   colliderType: 0
   offset: {x: 8.6, y: 0}
   size: {x: 28.1, y: 14.3}
@@ -29,3 +32,7 @@ MonoBehaviour:
   acceleration: 200
   rotationSpeed: 720
   drag: 1
+  starsHull: 2
+  starsDamage: 2
+  starsSpeed: 2
+  starsManoeuvrability: 2

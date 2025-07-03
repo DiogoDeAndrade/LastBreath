@@ -14,6 +14,7 @@ public class Customizer : UIGroup
     [SerializeField] UIDiscreteColorSelector    stripeColorSelector;
     [SerializeField] UIDiscreteColorSelector    cockpitColorSelector;
     [SerializeField] UIButton                   continueButton;
+    [SerializeField] StatDisplay[]              statDisplay;
 
     ColorPalette palette;
 
@@ -29,6 +30,15 @@ public class Customizer : UIGroup
 
         palette = originalPalette.Clone();
 
+        var playerData = GameManager.Instance.GetPlayerData(playerId);
+        if (playerData != null)
+        {
+            modelSelector.ChangeValue(playerData.submarine);
+            hullColorSelector.ChangeValue(playerData.hullColor);
+            stripeColorSelector.ChangeValue(playerData.stripeColor);
+            cockpitColorSelector.ChangeValue(playerData.cockpitColor);
+        }
+
         modelSelector.onChange += OnModelChange;
         hullColorSelector.onChange += OnColorChange;
         stripeColorSelector.onChange += OnColorChange;
@@ -40,8 +50,15 @@ public class Customizer : UIGroup
 
     private void OnModelChange(BaseUIControl control)
     {
+        var submarine = modelSelector.value;
+
         thumbnailImage.sprite = modelSelector.value.primarySprite;
         OnColorChange(null);
+
+        statDisplay[0].Value = submarine.starsHull;
+        statDisplay[1].Value = submarine.starsDamage;
+        statDisplay[2].Value = submarine.starsSpeed;
+        statDisplay[3].Value = submarine.starsManoeuvrability;
     }
 
     private void OnColorChange(BaseUIControl control)

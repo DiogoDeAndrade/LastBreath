@@ -48,15 +48,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _numPlayers: 2
   _playerData:
-  - submarine: {fileID: 11400000, guid: 1f519baf50da81a4f9f0803902f54996, type: 2}
-    hullColor: {r: 0.35018757, g: 0.7169812, b: 0.32128873, a: 1}
-    stripeColor: {r: 0.3216002, g: 0.63091564, b: 0.6886792, a: 1}
+  - submarine: {fileID: 11400000, guid: 29f2d951c2424cf458882653077c1fe6, type: 2}
+    hullColor: {r: 0.9150943, g: 0.12996475, b: 0.09927912, a: 1}
+    stripeColor: {r: 0.8584906, g: 0.80228794, b: 0.125534, a: 1}
     cockpitColor: {r: 0.38812745, g: 0.9245283, b: 0.89828354, a: 1}
     score: 0
   - submarine: {fileID: 11400000, guid: 29f2d951c2424cf458882653077c1fe6, type: 2}
-    hullColor: {r: 0.7706183, g: 0.42352942, b: 0.78431374, a: 1}
-    stripeColor: {r: 0.764151, g: 0.30252063, b: 0.24150053, a: 1}
-    cockpitColor: {r: 0.38823524, g: 0.9254902, b: 0.6264757, a: 1}
+    hullColor: {r: 0.23871966, g: 0.49056602, b: 0.20594516, a: 1}
+    stripeColor: {r: 0.26683807, g: 0.8396226, b: 0.19406372, a: 1}
+    cockpitColor: {r: 0.8773585, g: 0.8473047, b: 0.47592562, a: 1}
     score: 0
   _selectedLevel: {fileID: 0}
 --- !u!114 &6772162164662750430

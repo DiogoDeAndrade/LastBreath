@@ -164,6 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tSpeed: 0.2
   fadeTime: 0.25
+  alpha: 1
 --- !u!114 &2304703006448153833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,7 +187,7 @@ MonoBehaviour:
   nRipples: 1
   delayBetweenRipples: 0.5
   rippleDuration: 0.25
-  startAmplitude: 0.05
+  startAmplitude: 0.25
   amplitudeMultiplier: 0.5
   sizeCurve:
     serializedVersion: 2
@@ -218,20 +219,20 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: -1
-      outSlope: -1
-      tangentMode: 34
+      inSlope: 0.0037898554
+      outSlope: 0.0037898554
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.33333334
+      outWeight: 0.22083332
     - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: -1
-      outSlope: -1
-      tangentMode: 34
+      time: 1.0041809
+      value: 0.002380371
+      inSlope: -3.0155582
+      outSlope: -3.0155582
+      tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0.0375
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -239,6 +240,6 @@ MonoBehaviour:
   strengthIsSpriteAlpha: 1
   rippleSprite: {fileID: 21300000, guid: eaa8f1ff21b374f4385e6d01a6925308, type: 3}
   rippleLayer: 29
-  spriteSortingLayer: -272308539
+  spriteSortingLayer: -1990082021
   spriteOrderInLayer: 10
-  rippleMaterial: {fileID: 2100000, guid: f688868819f93cf48b89b4d80533a391, type: 2}
+  rippleMaterial: {fileID: 2100000, guid: f211e4d72efe99749926eb95a58b3e05, type: 2}

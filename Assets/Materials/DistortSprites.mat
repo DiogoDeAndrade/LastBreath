@@ -67,8 +67,9 @@ Material:
     m_Ints: []
     m_Floats:
     - PixelSnap: 0
+    - _Amplitude: 15
     - _EnableExternalAlpha: 0
-    - _Strength: 0.444
+    - _Strength: 0.025
     - _ZWrite: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}

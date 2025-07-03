@@ -49,6 +49,7 @@ MonoBehaviour:
   destroyOnEnd: 0
   spawnOnMovement: 1
   deltaDistance: 20
+  turnToMovement: 0
   localSpace: 0
   nRipples: 1
   delayBetweenRipples: 0.5
@@ -124,6 +125,6 @@ MonoBehaviour:
   strengthIsSpriteAlpha: 1
   rippleSprite: {fileID: 21300000, guid: eaa8f1ff21b374f4385e6d01a6925308, type: 3}
   rippleLayer: 29
-  spriteSortingLayer: -272308539
+  spriteSortingLayer: -1990082021
   spriteOrderInLayer: 10
-  rippleMaterial: {fileID: 2100000, guid: f688868819f93cf48b89b4d80533a391, type: 2}
+  rippleMaterial: {fileID: 2100000, guid: f211e4d72efe99749926eb95a58b3e05, type: 2}
