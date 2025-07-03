@@ -181,9 +181,16 @@ public class LevelManager : MonoBehaviour
 
     void StartPhase(int phase)
     {
+        Debug.Log($"Starting phase {phase}...");
+
         _phaseIndex = phase;
         _phase = phases[_phaseIndex];
         timeSinceLastPhaseChange = 0;
+
+        if (_phase.phaseMusic != null)
+        {
+            SoundManager.PlayMusic(_phase.phaseMusic, 1.0f, 1.0f, 1.0f);
+        }
 
         if (phaseDisplayPrefab)
         {

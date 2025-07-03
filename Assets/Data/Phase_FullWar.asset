@@ -25,3 +25,4 @@ MonoBehaviour:
   cancelOpponentRequestsOnRequestCompletion: 1
   forceRequestCompetition: 1
   weaponsFree: 1
+  phaseMusic: {fileID: 8300000, guid: 5167c1c54e96ec144aae778e1c70008b, type: 3}
