@@ -234,6 +234,7 @@ MonoBehaviour:
   moveSnd: {fileID: 8300000, guid: 34613125421c21b4592e539801c94af8, type: 3}
   selectSnd: {fileID: 8300000, guid: 884b9176429277e40b79f09d08d76676, type: 3}
   initialControl: {fileID: 646074140}
+  _useUnscaledTime: 0
 --- !u!225 &168176276
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -492,6 +493,7 @@ MonoBehaviour:
   moveSnd: {fileID: 8300000, guid: 34613125421c21b4592e539801c94af8, type: 3}
   selectSnd: {fileID: 8300000, guid: 884b9176429277e40b79f09d08d76676, type: 3}
   initialControl: {fileID: 827205145}
+  _useUnscaledTime: 0
   playButton: {fileID: 827205145}
   creditsButton: {fileID: 99038435}
   quitButton: {fileID: 41545278}
@@ -1061,7 +1063,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &884781530
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1078,8 +1080,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 182.5}
-  m_SizeDelta: {x: 1600, y: 1600}
+  m_AnchoredPosition: {x: 0, y: 8.039978}
+  m_SizeDelta: {x: 1200, y: 1200}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &884781531
 MonoBehaviour:
@@ -1226,7 +1228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1397,11 +1399,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 535655044}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -10, y: 10}
-  m_SizeDelta: {x: 192, y: 192}
-  m_Pivot: {x: 1, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 60, y: 32}
+  m_SizeDelta: {x: 96, y: 96}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1313167524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1597,11 +1599,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 535655044}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 10, y: 10}
-  m_SizeDelta: {x: 192, y: 192}
-  m_Pivot: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -60, y: 32}
+  m_SizeDelta: {x: 96, y: 96}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1623269380
 MonoBehaviour:
   m_ObjectHideFlags: 0
