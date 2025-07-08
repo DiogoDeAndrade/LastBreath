@@ -225,6 +225,7 @@ MonoBehaviour:
   rangeTolerance: 100
   rotationSpeed: 180
   sonarSnd: {fileID: 8300000, guid: 291c63bbd9d721942b3e0e84b6586194, type: 3}
+  trailPS: {fileID: 1279530941999025357}
   explosionPrefab: {fileID: 8294285090635143417, guid: 063a999e28a630341b086e3025aeed4d, type: 3}
 --- !u!114 &6573723777566648191
 MonoBehaviour:
@@ -350,5 +351,10 @@ PrefabInstance:
 --- !u!4 &302482252158993647 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2913944099333387226, guid: 7002ad9f833669d49a668d7973afedbe, type: 3}
+  m_PrefabInstance: {fileID: 3189334383371794229}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1279530941999025357 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4432391017406774264, guid: 7002ad9f833669d49a668d7973afedbe, type: 3}
   m_PrefabInstance: {fileID: 3189334383371794229}
   m_PrefabAsset: {fileID: 0}
