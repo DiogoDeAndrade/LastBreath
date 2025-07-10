@@ -1,11 +1,17 @@
 # RELEASE NOTES
 
-## Version 1.4.0 (?)
+## Version 1.4.1 (10/07/2025)
+
+- Fixed audio on pause (music would stop permanently if game was paused, then moved cursor, then resumed)
+
+## Version 1.4.0 (10/07/2025)
 
 - Added submarine stats display on the submarine selection screen
 - Selections are kept between fights
 - Pause option in game
 - Bugfix: torpedo trail doesn't disappear as soon as torpedo explodes
+- Bugfix: combat text now renders correctly
+- ​Improved visuals on Siren's Flow
 
 ## Version 1.3.2 (01/07/2025)
 
