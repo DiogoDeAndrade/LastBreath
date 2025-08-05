@@ -55,6 +55,7 @@ Game ends when one city is out of oxygen, and the associated player is dead.
 
 ## Sound
 
+- Music by [Wilson Almeida]
 - [Game Start Sound](https://freesound.org/people/plasterbrain/sounds/243020/) by [plasterbrain](https://freesound.org/people/plasterbrain/), [CC0] license.
 - [Synthetic Submarine Rotor](https://freesound.org/people/urbanmatter/sounds/269705/) by [urbanmatter](https://freesound.org/people/urbanmatter/), licensed through the [CC-BY 3.0]
 - [Depth Charges Kaboom SFX](https://freesound.org/people/Renovatio871/sounds/324924/) by [Renovatio871](https://freesound.org/people/Renovatio871/), licensed through the [CC0] license.
@@ -72,7 +73,6 @@ Game ends when one city is out of oxygen, and the associated player is dead.
 - [Ice & Electricity Magic](https://opengameart.org/content/ice-electricity-magic) by [qubodup](https://opengameart.org/users/qubodup), licensed through the [CC-BY 3.0] license.
 - [007 - Squish 02](https://freesound.org/people/Trashcan_Studios/sounds/660814/) by [Trashcan_Studios](https://freesound.org/people/Trashcan_Studios/), licensed through the [CC-BY 4.0] license.
 - [Gooey Squish](https://freesound.org/people/editor_adp/sounds/269482/) by [editor_adp](https://freesound.org/people/editor_adp/), licensed through the [CC0] license.
-- Music AI generated with [Suno]
 - Everything else done by [Diogo de Andrade], licensed through the [CC0] license.
 
 ## Code
@@ -95,5 +95,5 @@ Game ends when one city is out of oxygen, and the associated player is dead.
 [OkapiKit]:https://github.com/VideojogosLusofona/OkapiKit
 [Unity Common]:https://github.com/DiogoDeAndrade/UnityCommon
 [Global Game Jam'25]:https://globalgamejam.org/
-[Suno]:https://suno.com/
+[Wilson Almeida]:https://wilson.itch.io/
 [MIT]:LICENSE
