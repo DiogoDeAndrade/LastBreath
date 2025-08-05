@@ -72,15 +72,7 @@ public class LevelManager : MonoBehaviour
     {
         cities = FindObjectsByType<City>(FindObjectsSortMode.None);
 
-#if UNITY_EDITOR
-        StartPhase(debugStartPhase);
-        if (phases[0].phaseTrigger != PhaseData.PhaseTrigger.Initial)
-        {
-            Debug.LogWarning("First phase needs to have trigger equal to PhaseData.PhaseTrigger.Initial!");
-        }
-#else
-        StartPhase(0);
-#endif
+        _phaseIndex = -1;
         matchDuration = 0;
 
         // Find global light
@@ -97,6 +89,19 @@ public class LevelManager : MonoBehaviour
 
     void Update()
     {
+        if (_phaseIndex == -1)
+        {
+#if UNITY_EDITOR
+            StartPhase(debugStartPhase);
+            if (phases[0].phaseTrigger != PhaseData.PhaseTrigger.Initial)
+            {
+                Debug.LogWarning("First phase needs to have trigger equal to PhaseData.PhaseTrigger.Initial!");
+            }
+#else
+        StartPhase(0);
+#endif
+        }
+
         if (state == GameState.GameOver)
         {
             int playerCount = 0;

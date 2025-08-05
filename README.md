@@ -28,9 +28,6 @@ When you get destroyed, you'll respawn at your base after a bit. When your base 
 
 Game ends when one city is out of oxygen, and the associated player is dead.
 
-## May goals
-- Remove AI stuff (music)
-
 ## Future
 - Extra player count (>2)
 - Single player mode (AI bots)

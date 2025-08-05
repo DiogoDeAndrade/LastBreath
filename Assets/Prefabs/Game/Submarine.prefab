@@ -6632,6 +6632,7 @@ MonoBehaviour:
   startGrabSnd: {fileID: 8300000, guid: a731bb7605f844848b179c417502a535, type: 3}
   endGrabSnd: {fileID: 8300000, guid: ad49b93856bafa348ba5a3e658f34eaa, type: 3}
   engineAudioSrc: {fileID: 7460277818932058622}
+  engineAudioMaxVolume: 0.75
   electroStunSrc: {fileID: 3853233375620691456}
   playerInput: {fileID: 7698209387435550969}
   moveControl:

@@ -51,5 +51,5 @@ MonoBehaviour:
   fx2MixerGroup: {fileID: 4468260185815644172, guid: cb4bb8384c6840646926e3ab5b7bcc7e, type: 2}
   backgroundMixerGroup: {fileID: 1383454112497497197, guid: cb4bb8384c6840646926e3ab5b7bcc7e, type: 2}
   voiceMixerGroup: {fileID: -3498579756421679526, guid: cb4bb8384c6840646926e3ab5b7bcc7e, type: 2}
-  startMusic: {fileID: 0}
+  startMusic: {fileID: 8300000, guid: 1063a7b9ec704954f9018c4a235f71f0, type: 3}
   defaultCrossfadeTime: 1

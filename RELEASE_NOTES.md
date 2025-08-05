@@ -1,5 +1,9 @@
 # RELEASE NOTES
 
+## Version 1.5.0 (05/08/2025)
+
+- New soundtrack, courtesy of Wilson Almeida
+
 ## Version 1.4.1 (10/07/2025)
 
 - Fixed audio on pause (music would stop permanently if game was paused, then moved cursor, then resumed)

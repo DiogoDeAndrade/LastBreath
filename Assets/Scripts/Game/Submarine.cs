@@ -55,6 +55,8 @@ public class Submarine : MonoBehaviour
     [SerializeField]
     private AudioSource     engineAudioSrc;
     [SerializeField]
+    private float           engineAudioMaxVolume = 0.5f;
+    [SerializeField]
     private AudioSource     electroStunSrc;
     [SerializeField, Header("Input")] 
     private PlayerInput     playerInput;
@@ -311,7 +313,7 @@ public class Submarine : MonoBehaviour
         if (engineAudioSrc)
         {
             float normalizedSpeed = Mathf.Clamp01(rb.linearVelocity.magnitude / maxSpeed);
-            engineAudioSrc.volume = 0.5f * Mathf.Clamp01(normalizedSpeed * 10.0f);
+            engineAudioSrc.volume = engineAudioMaxVolume * Mathf.Clamp01(normalizedSpeed * 10.0f);
             engineAudioSrc.pitch = 0.5f + 0.5f * normalizedSpeed;
         }
 
