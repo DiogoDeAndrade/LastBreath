@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UIElements;
 using UC;
+using Unity.MLAgents.Policies;
 
 public class City : MonoBehaviour
 {
@@ -164,6 +165,14 @@ public class City : MonoBehaviour
                     player.playerId = playerId;
                     player.name = $"Player {playerId}";
                     penaltyTimer = penaltyDuration;
+
+                    // For RL
+                    BehaviorParameters bp = player.GetComponent<BehaviorParameters>();
+                    if (bp != null)
+                    {
+                        bp.TeamId = player.playerId;
+                    }
+                    player.gameObject.SetActive(true);
 
                     if (firstSpawn)
                     {

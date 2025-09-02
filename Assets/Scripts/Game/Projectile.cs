@@ -50,8 +50,9 @@ public class Projectile : MonoBehaviour
     private bool            targetAcquired;
     private bool            dead = false;
 
-    bool isTracker => (trackingTags != null) ? (trackingTags.Count > 0) : (false);
+    public bool isTracker => (trackingTags != null) ? (trackingTags.Count > 0) : (false);
     bool isDead => dead;
+    public bool IsHostile(int playerId) => (playerId != _playerId);
 
     public float speedModifier
     {

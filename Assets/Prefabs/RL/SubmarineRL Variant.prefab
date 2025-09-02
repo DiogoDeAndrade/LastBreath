@@ -1,0 +1,135 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &1743824983286264765
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5439900134263999799, guid: 58f09f2a75c312d4b8195618ef1e5577, type: 3}
+      propertyPath: enableInput
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999605004592227391, guid: 58f09f2a75c312d4b8195618ef1e5577, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -227.47003
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999605004592227391, guid: 58f09f2a75c312d4b8195618ef1e5577, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 106.739235
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999605004592227391, guid: 58f09f2a75c312d4b8195618ef1e5577, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999605004592227391, guid: 58f09f2a75c312d4b8195618ef1e5577, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999605004592227391, guid: 58f09f2a75c312d4b8195618ef1e5577, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999605004592227391, guid: 58f09f2a75c312d4b8195618ef1e5577, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999605004592227391, guid: 58f09f2a75c312d4b8195618ef1e5577, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999605004592227391, guid: 58f09f2a75c312d4b8195618ef1e5577, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999605004592227391, guid: 58f09f2a75c312d4b8195618ef1e5577, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999605004592227391, guid: 58f09f2a75c312d4b8195618ef1e5577, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9078551628919542819, guid: 58f09f2a75c312d4b8195618ef1e5577, type: 3}
+      propertyPath: m_Name
+      value: SubmarineRL Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 9078551628919542819, guid: 58f09f2a75c312d4b8195618ef1e5577, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9078551628919542819, guid: 58f09f2a75c312d4b8195618ef1e5577, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7015444411065593947}
+    - targetCorrespondingSourceObject: {fileID: 9078551628919542819, guid: 58f09f2a75c312d4b8195618ef1e5577, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1407995354042031963}
+  m_SourcePrefab: {fileID: 100100000, guid: 58f09f2a75c312d4b8195618ef1e5577, type: 3}
+--- !u!1 &7335854781177636766 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9078551628919542819, guid: 58f09f2a75c312d4b8195618ef1e5577, type: 3}
+  m_PrefabInstance: {fileID: 1743824983286264765}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7015444411065593947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7335854781177636766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b215cae18326d54286641d43cc5e9d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentParameters:
+    maxStep: 0
+  hasUpgradedFromAgentParameters: 1
+  MaxStep: 5000
+  envProbeCount: 32
+  envProbeLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  allResourceData:
+  - {fileID: 11400000, guid: 07c295db6f3f54243a20c2fdafeeb1af, type: 2}
+  - {fileID: 11400000, guid: cf704b21d4cbc5d4fb7a92d8eaaeca90, type: 2}
+  - {fileID: 11400000, guid: 24cdf9ddbfe34ea4c9d4219085e4a5a3, type: 2}
+  - {fileID: 11400000, guid: a59894d0f66e17347be7b87698d91882, type: 2}
+  - {fileID: 11400000, guid: a7c4e900faea5f7478d394bacf25fa8b, type: 2}
+--- !u!114 &1407995354042031963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7335854781177636766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d1c4e0b1822b495aa52bc52839ecb30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BrainParameters:
+    VectorObservationSize: 86
+    NumStackedVectorObservations: 1
+    m_ActionSpec:
+      m_NumContinuousActions: 2
+      BranchSizes: 
+    VectorActionSize: 02000000
+    VectorActionDescriptions: []
+    VectorActionSpaceType: 1
+    hasUpgradedBrainParametersWithActionSpec: 1
+  m_Model: {fileID: 0}
+  m_InferenceDevice: 0
+  m_BehaviorType: 0
+  m_BehaviorName: SubmarineBehaviour
+  TeamId: 0
+  m_UseChildSensors: 1
+  m_UseChildActuators: 1
+  m_DeterministicInference: 0
+  m_ObservableAttributeHandling: 0

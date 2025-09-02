@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UC;
 using UnityEngine.InputSystem;
+using NaughtyAttributes;
 
 public class Submarine : MonoBehaviour
 {
@@ -58,17 +59,19 @@ public class Submarine : MonoBehaviour
     private float           engineAudioMaxVolume = 0.5f;
     [SerializeField]
     private AudioSource     electroStunSrc;
-    [SerializeField, Header("Input")] 
-    private PlayerInput     playerInput;
-    [SerializeField, InputPlayer(nameof(playerInput))] 
+    [SerializeField, Header("Input")]
+    private bool                enableInput = true;
+    [SerializeField, ShowIf(nameof(enableInput))]
+    private PlayerInput         playerInput;
+    [SerializeField, InputPlayer(nameof(playerInput)), ShowIf(nameof(enableInput))] 
     private UC.InputControl     moveControl;
-    [SerializeField, InputPlayer(nameof(playerInput)), InputButton]
+    [SerializeField, InputPlayer(nameof(playerInput)), InputButton, ShowIf(nameof(enableInput))]
     private UC.InputControl[]   fireControl = new UC.InputControl[2];
-    [SerializeField, InputPlayer(nameof(playerInput)), InputButton]
+    [SerializeField, InputPlayer(nameof(playerInput)), InputButton, ShowIf(nameof(enableInput))]
     private UC.InputControl    gatherControl;
-    [SerializeField, InputPlayer(nameof(playerInput)), InputButton]
+    [SerializeField, InputPlayer(nameof(playerInput)), InputButton, ShowIf(nameof(enableInput))]
     private UC.InputControl    dropControl;
-    [SerializeField, InputPlayer(nameof(playerInput)), InputButton]
+    [SerializeField, InputPlayer(nameof(playerInput)), InputButton, ShowIf(nameof(enableInput))]
     private UC.InputControl    pauseControl;
 
     private Vector2             movementVector;
@@ -89,6 +92,7 @@ public class Submarine : MonoBehaviour
     private Weapon[]            weapons;
     private bool                lightningEffect;
     private float               lightingEffectTimer;
+    private Vector2             externalInputDir = Vector2.zero;
 
     private Tweener.BaseInterpolator healthGainEffect;
     private Tweener.BaseInterpolator hitFlash;
@@ -96,6 +100,16 @@ public class Submarine : MonoBehaviour
     public int          playerId { get { return _playerId; } set { _playerId = value; } }
     public ResourceData item => inventoryType;
     public int          itemCount => inventoryQuantity;
+    public bool         isAlive => healthSystem.isAlive;
+    public SubData      subData => _subData;
+    public Vector2      currentVelocity => rb.linearVelocity;   
+    public float        normalizedHealth => healthSystem.normalizedHealth;
+
+    public Vector2      inputDir
+    {
+        get { return externalInputDir; }
+        set { externalInputDir = value; }
+    }
 
     void Start()
     {
@@ -147,12 +161,15 @@ public class Submarine : MonoBehaviour
             }
         }
 
-        MasterInputManager.SetupInput(_playerId, playerInput);
-        moveControl.playerInput = playerInput;
-        foreach (var f in fireControl) f.playerInput = playerInput;
-        gatherControl.playerInput = playerInput;
-        dropControl.playerInput = playerInput;
-        pauseControl.playerInput = playerInput;
+        if (enableInput)
+        {
+            MasterInputManager.SetupInput(_playerId, playerInput);
+            moveControl.playerInput = playerInput;
+            foreach (var f in fireControl) f.playerInput = playerInput;
+            gatherControl.playerInput = playerInput;
+            dropControl.playerInput = playerInput;
+            pauseControl.playerInput = playerInput;
+        }
 
         rb = GetComponent<Rigidbody2D>();
         healthSystem = GetComponent<HealthSystem>();
@@ -305,9 +322,6 @@ public class Submarine : MonoBehaviour
 
         rb.linearVelocity = prevVelocity = velocity;
     }
-
-    
-
     private void Update()
     {
         if (engineAudioSrc)
@@ -317,7 +331,11 @@ public class Submarine : MonoBehaviour
             engineAudioSrc.pitch = 0.5f + 0.5f * normalizedSpeed;
         }
 
-        movementVector = moveControl.GetAxis2();
+        if (enableInput)
+            movementVector = moveControl.GetAxis2();
+        else
+            movementVector = externalInputDir;
+
         if (noControlTime > 0) movementVector = Vector2.zero;
 
         if (!healthSystem.isInvulnerable)
@@ -333,7 +351,7 @@ public class Submarine : MonoBehaviour
             }
         }
 
-        if (LevelManager.weaponsFree)
+        if ((LevelManager.weaponsFree) && (enableInput))
         {
             for (int i = 0; i < fireControl.Length; i++)
             { 
@@ -351,12 +369,12 @@ public class Submarine : MonoBehaviour
 
         if (cooldownTimer > 0) cooldownTimer -= Time.deltaTime;
 
-        if (gatherControl.IsDown())
+        if ((enableInput) && (gatherControl.IsDown()))
         {
             Gather();
         }
 
-        if (dropControl.IsDown())
+        if ((enableInput) && (dropControl.IsDown()))
         {
             DropAll(false);
         }
@@ -465,18 +483,21 @@ public class Submarine : MonoBehaviour
             }
         }
 
-        if (pauseControl.IsDown())
+        if (enableInput)
         {
-            var pauseMenu = FindFirstObjectByType<PauseMenu>();
-            if (pauseMenu != null)
+            if (pauseControl.IsDown())
             {
-                if (!pauseMenu.isPaused)
+                var pauseMenu = FindFirstObjectByType<PauseMenu>();
+                if (pauseMenu != null)
                 {
-                    pauseMenu.Pause(playerInput);
-                }
-                else
-                {
-                    pauseMenu.Unpause(playerInput);
+                    if (!pauseMenu.isPaused)
+                    {
+                        pauseMenu.Pause(playerInput);
+                    }
+                    else
+                    {
+                        pauseMenu.Unpause(playerInput);
+                    }
                 }
             }
         }
