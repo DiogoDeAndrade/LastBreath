@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Phase_Gather
   m_EditorClassIdentifier: 
   phaseTrigger: 0
+  time: 0
   title: Phase 1
   titleColor: {r: 0.246837, g: 0.8490566, b: 0.23629406, a: 1}
   subtitle: Gather
@@ -24,3 +25,4 @@ MonoBehaviour:
   cancelOpponentRequestsOnRequestCompletion: 0
   forceRequestCompetition: 0
   weaponsFree: 0
+  phaseMusic: {fileID: 8300000, guid: 1063a7b9ec704954f9018c4a235f71f0, type: 3}

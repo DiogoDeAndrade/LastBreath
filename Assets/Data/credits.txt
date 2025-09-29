@@ -1,6 +1,9 @@
 Last Breath
 <size=60%>A Game By Diogo de Andrade
 
+Music by
+<size=60%>Wilson Almeida
+
 Special Thanks
 <size=60%>Wilson Almeida
 <size=60%>Daniel Fernandes
@@ -17,7 +20,6 @@ Art
 <size=60%>Everything else done by Diogo de Andrade, CC0 license
 
 Sound
-
 <size=60%>Game Start Sound by plasterbrain, [CC0] license.
 <size=60%>Synthetic Submarine Rotor by urbanmatter, [CC-BY 3.0] license.
 <size=60%>Depth Charges Kaboom SFX by Renovatio871, [CC0] license.
@@ -35,7 +37,6 @@ Sound
 <size=60%>Ice & Electricity Magic by qubodup, [CC-BY 3.0] license.
 <size=60%>007 - Squish 02 by Trashcan_Studios, [CC-BY 4.0] license.
 <size=60%>Gooey Squish by editor_adp, [CC0] license.
-<size=60%>Songs AI generated using Suno
 <size=60%>Everything else done by Diogo de Andrade, CC0 license
 
 Code
@@ -49,5 +50,5 @@ Stock photos
 <size=60%>Jellyfish Underwater - Francesco Ungaro
 <size=60%>Sea anemone in ocean depth - Ivan Babydov
 
-<size=60%>Full game source available at https://github.com/DiogoDeAndrade/Bubble
+<size=60%>Full game source available at https://github.com/DiogoDeAndrade/LastBreath
 <size=60%>with complete credits (links, licences, etc)

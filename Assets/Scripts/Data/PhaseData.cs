@@ -19,6 +19,7 @@ public class PhaseData : ScriptableObject
     public bool         cancelOpponentRequestsOnRequestCompletion;
     public bool         forceRequestCompetition;
     public bool         weaponsFree;
+    public AudioClip    phaseMusic;
 
     bool needsTime => (phaseTrigger == PhaseTrigger.TimeSinceStart) || (phaseTrigger == PhaseTrigger.TimeSinceLastPhase);
 }

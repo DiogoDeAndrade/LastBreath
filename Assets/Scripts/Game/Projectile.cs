@@ -2,6 +2,8 @@ using NaughtyAttributes;
 using UnityEngine;
 using System.Collections.Generic;
 using UC;
+using System.Collections;
+
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -33,6 +35,8 @@ public class Projectile : MonoBehaviour
     private float           rotationSpeed = 360.0f;
     [SerializeField, ShowIf(nameof(isTracker))]
     private AudioClip       sonarSnd;
+    [SerializeField]
+    private ParticleSystem  trailPS;
     [SerializeField] 
     private GameObject      explosionPrefab;
 
@@ -44,9 +48,10 @@ public class Projectile : MonoBehaviour
     private float           _speedModifier = 1.0f;
     private float           _damageModifier = 1.0f;
     private bool            targetAcquired;
+    private bool            dead = false;
 
     bool isTracker => (trackingTags != null) ? (trackingTags.Count > 0) : (false);
-    bool isDead => ((trailRenderer) && (!trailRenderer.emitting));
+    bool isDead => dead;
 
     public float speedModifier
     {
@@ -211,17 +216,44 @@ public class Projectile : MonoBehaviour
 
     void SelfDestruct()
     {
-        float destroyTime = 0.0f;
+        if (dead) return;
 
+        dead = true;
         if (explosionPrefab) Instantiate(explosionPrefab, transform.position, transform.rotation);
         if (trailRenderer)
         {
             trailRenderer.emitting = false;
-            destroyTime = 0.2f;
+        }
+        if (trailPS)
+        {
+            var emission = trailPS.emission;
+            emission.enabled = false;
+        }
+        var spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.enabled = false;
+        rb.linearVelocity = Vector3.zero;
+
+        var colliders = GetComponents<Collider2D>();
+        foreach (var collider in colliders)
+        {
+            collider.enabled = false;
         }
 
-        if (destroyTime > 0) Destroy(gameObject, destroyTime);
-        else Destroy(gameObject);
+        StartCoroutine(SelfDestructCR());
+    }
+
+    IEnumerator SelfDestructCR()
+    {
+        while (true)
+        {
+            bool canDestroy = true;
+            if ((trailRenderer) && (trailRenderer.positionCount > 0)) canDestroy = false;
+            if ((trailPS) && (trailPS.particleCount > 0)) canDestroy = false;
+            if (canDestroy) break;
+            yield return null;
+        }
+
+        Destroy(gameObject);
     }
 
 #if UNITY_EDITOR

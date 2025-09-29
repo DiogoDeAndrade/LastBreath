@@ -1,0 +1,702 @@
+fileFormatVersion: 2
+guid: 22718043a85d9a54989283fd7d175abe
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4833867647809851321
+    second: logo_ulht_0
+  - first:
+      213: 5091755479016760835
+    second: logo_ulht_1
+  - first:
+      213: -2170751503383553060
+    second: logo_ulht_2
+  - first:
+      213: -2067910178420333217
+    second: logo_ulht_3
+  - first:
+      213: 1442579971118412969
+    second: logo_ulht_4
+  - first:
+      213: -7005240519245420309
+    second: logo_ulht_5
+  - first:
+      213: 8780253604333279002
+    second: logo_ulht_6
+  - first:
+      213: 8398829715288857532
+    second: logo_ulht_7
+  - first:
+      213: 750376097984852963
+    second: logo_ulht_8
+  - first:
+      213: 3150191846988040744
+    second: logo_ulht_9
+  - first:
+      213: -6014769346949013536
+    second: logo_ulht_10
+  - first:
+      213: -7036809233588536457
+    second: logo_ulht_11
+  - first:
+      213: 6790368349950848044
+    second: logo_ulht_12
+  - first:
+      213: 1695578301135155293
+    second: logo_ulht_13
+  - first:
+      213: -5293336875678472282
+    second: logo_ulht_14
+  - first:
+      213: 2810314842648460795
+    second: logo_ulht_15
+  - first:
+      213: 1877571867323583395
+    second: logo_ulht_16
+  - first:
+      213: -578476389692893384
+    second: logo_ulht_17
+  - first:
+      213: 54511049312910332
+    second: logo_ulht_18
+  - first:
+      213: 3987576965334602565
+    second: logo_ulht_19
+  - first:
+      213: 7590071525987445421
+    second: logo_ulht_20
+  - first:
+      213: 5509701682546690392
+    second: logo_ulht_21
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 1
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: logo_ulht_0
+      rect:
+        serializedVersion: 2
+        x: 804
+        y: 915
+        width: 709
+        height: 708
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9bf85f6c309551340800000000000000
+      internalID: 4833867647809851321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo_ulht_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 559
+        width: 106
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30661f181ac89a640800000000000000
+      internalID: 5091755479016760835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo_ulht_2
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 559
+        width: 112
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cdb9d214201ffd1e0800000000000000
+      internalID: -2170751503383553060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo_ulht_3
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 560
+        width: 45
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5567d326ae4d43e0800000000000000
+      internalID: -2067910178420333217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo_ulht_4
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 558
+        width: 105
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a43b9237d2150410800000000000000
+      internalID: 1442579971118412969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo_ulht_5
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 560
+        width: 84
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be82434fcd268ce90800000000000000
+      internalID: -7005240519245420309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo_ulht_6
+      rect:
+        serializedVersion: 2
+        x: 1027
+        y: 559
+        width: 94
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a17d024222ab9d970800000000000000
+      internalID: 8780253604333279002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo_ulht_7
+      rect:
+        serializedVersion: 2
+        x: 1211
+        y: 559
+        width: 70
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbb99cc8023ae8470800000000000000
+      internalID: 8398829715288857532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo_ulht_8
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 560
+        width: 46
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e3b450e51fd96a00800000000000000
+      internalID: 750376097984852963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo_ulht_9
+      rect:
+        serializedVersion: 2
+        x: 1512
+        y: 560
+        width: 104
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82acd0e5bcab7bb20800000000000000
+      internalID: 3150191846988040744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo_ulht_10
+      rect:
+        serializedVersion: 2
+        x: 1710
+        y: 560
+        width: 111
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ef1235852f378ca0800000000000000
+      internalID: -6014769346949013536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo_ulht_11
+      rect:
+        serializedVersion: 2
+        x: 1911
+        y: 560
+        width: 104
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77b34cfd84b385e90800000000000000
+      internalID: -7036809233588536457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo_ulht_12
+      rect:
+        serializedVersion: 2
+        x: 2109
+        y: 560
+        width: 84
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2c20e0990c3c3e50800000000000000
+      internalID: 6790368349950848044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo_ulht_13
+      rect:
+        serializedVersion: 2
+        x: 932
+        y: 450
+        width: 81
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5075083b77e78710800000000000000
+      internalID: 1695578301135155293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo_ulht_14
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 180
+        width: 193
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a765b8282a4a86b0800000000000000
+      internalID: -5293336875678472282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo_ulht_15
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 177
+        width: 253
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfdb11fa57e300720800000000000000
+      internalID: 2810314842648460795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo_ulht_16
+      rect:
+        serializedVersion: 2
+        x: 637
+        y: 177
+        width: 167
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3abc6106aa97e0a10800000000000000
+      internalID: 1877571867323583395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo_ulht_17
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 177
+        width: 245
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8379769d9c6d8f7f0800000000000000
+      internalID: -578476389692893384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo_ulht_18
+      rect:
+        serializedVersion: 2
+        x: 1133
+        y: 180
+        width: 180
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfb31a2b289a1c000800000000000000
+      internalID: 54511049312910332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo_ulht_19
+      rect:
+        serializedVersion: 2
+        x: 1352
+        y: 177
+        width: 245
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5439c457f18b65730800000000000000
+      internalID: 3987576965334602565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo_ulht_20
+      rect:
+        serializedVersion: 2
+        x: 1635
+        y: 177
+        width: 268
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: daae946c6d9555960800000000000000
+      internalID: 7590071525987445421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: logo_ulht_21
+      rect:
+        serializedVersion: 2
+        x: 1925
+        y: 180
+        width: 268
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85941961d74667c40800000000000000
+      internalID: 5509701682546690392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      logo_ulht_0: 4833867647809851321
+      logo_ulht_1: 5091755479016760835
+      logo_ulht_10: -6014769346949013536
+      logo_ulht_11: -7036809233588536457
+      logo_ulht_12: 6790368349950848044
+      logo_ulht_13: 1695578301135155293
+      logo_ulht_14: -5293336875678472282
+      logo_ulht_15: 2810314842648460795
+      logo_ulht_16: 1877571867323583395
+      logo_ulht_17: -578476389692893384
+      logo_ulht_18: 54511049312910332
+      logo_ulht_19: 3987576965334602565
+      logo_ulht_2: -2170751503383553060
+      logo_ulht_20: 7590071525987445421
+      logo_ulht_21: 5509701682546690392
+      logo_ulht_3: -2067910178420333217
+      logo_ulht_4: 1442579971118412969
+      logo_ulht_5: -7005240519245420309
+      logo_ulht_6: 8780253604333279002
+      logo_ulht_7: 8398829715288857532
+      logo_ulht_8: 750376097984852963
+      logo_ulht_9: 3150191846988040744
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
